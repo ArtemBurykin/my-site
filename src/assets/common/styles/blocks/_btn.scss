@@ -2,7 +2,7 @@
 
 .btn {
     display: inline-block;
-    padding: 0 40px;
+    padding: 5px 40px;
     background-color: $primary-color;
     font-family: $font-family;
     line-height: 3rem;
@@ -12,7 +12,6 @@
     color: $font-color;
     box-shadow: 10px 5px 5px $back1-color;
     outline: none;
-    margin-bottom: 50px;
 
     @include horizontal-mobile {
         font-size: 1.2rem;
@@ -22,8 +21,6 @@
     @include mobile {
         font-size: 1rem;
         display: block;
-        margin: 30px 30% 50px;
         padding: 10px 30px;
-
     }
 }

@@ -12,6 +12,7 @@ Encore
     .addStyleEntry('reset-password', './assets/security/reset-password/styles/reset-password.scss')
     .addStyleEntry('common', './assets/common/styles/common.scss')
     .addStyleEntry('index-page', './assets/site/index-page/index.page.scss')
+    .addEntry('common-site', './assets/site/common.js')
     .addEntry('admin', './assets/admin/admin.js')
     .enableSassLoader()
 

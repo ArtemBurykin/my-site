@@ -144,8 +144,10 @@
         </div>
     </section>
 
-    <section class="content contact-form">
+    <section class="content contact-form" id="contact-form">
         <h3 class="content__header">Connect with us</h3>
+
+        <input type="hidden" name="_token" value="{{ csrf_token('contact-form') }}"/>
 
         <div>
             <label for="email" class="contact-form__text">Your email:</label>
@@ -159,10 +161,11 @@
 
         <div>
             <label for="message" class="contact-form__text">Message:</label>
-            <textarea class="contact-form__field contact-form__field_textarea" id="message" name="message" rows="4"
+            <textarea class="contact-form__field contact-form__field--textarea" id="message" name="message" rows="4"
                       cols="50"></textarea>
         </div>
 
-        <div class="btn offer__cta">Contact us</div>
+        <div class="btn contact-form__cta" id="contact-form-submit">Contact us</div>
+        <p class="contact-form__status" id="contact-form-status"></p>
     </section>
 {% endblock %}

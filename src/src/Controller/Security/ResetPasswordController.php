@@ -33,7 +33,7 @@ class ResetPasswordController extends AbstractController
     public function __construct(
         private readonly ResetPasswordHelperInterface $resetPasswordHelper,
         private readonly EntityManagerInterface $entityManager,
-        #[Autowire('%env(SMTP_SENDER)%')]
+        #[Autowire('%emailFrom%')]
         private readonly string $emailFrom,
         #[Autowire('%siteName%')]
         private readonly string $siteName,

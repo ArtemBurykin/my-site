@@ -3,19 +3,33 @@
 .contact-form {
     margin: 50px auto;
 
+    &__status {
+        font-family: $font-family;
+        font-size: $font-size-text;
+        line-height: $line-height-base;
+        color: $font-color;
+        font-weight: 300;
+
+        @include horizontal-mobile {
+            font-size: $small-font-size;
+            line-height: $small-font-line-height;
+            text-align: center;
+        }
+    }
+
     &__text {
         display: block;
         width: 100%;
         margin-bottom: 10px;
         font-family: $font-family;
         font-size: $font-size-text;
-        line-height: 1.8rem;
+        line-height: $line-height-base;
         font-weight: 300;
         color: $font-color;
 
         @include horizontal-mobile {
-            font-size: 0.9rem;
-            line-height: 1.4rem;
+            font-size: $small-font-size;
+            line-height: $small-font-line-height;
         }
 
         @include mobile {
@@ -30,8 +44,20 @@
             border-radius: 0;
         }
 
+        &--error {
+            border: 1px solid #ff4a57;
+        }
+
+        &--textarea {
+            padding-top: 5px;
+            height: 200px;
+            resize: none;
+        }
+
         display: block;
         width: 50%;
+        padding-left: 5px;
+        color: $font-color;
         outline: none;
         height: 50px;
         margin-bottom: 30px;
@@ -41,11 +67,6 @@
 
         @include horizontal-mobile {
             width: 100%;
-        }
-
-        &_textarea {
-            height: 200px;
-            resize: none;
         }
     }
 }

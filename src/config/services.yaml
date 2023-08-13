@@ -8,6 +8,8 @@ parameters:
     uploadDirPath: '%kernel.project_dir%/public/uploads'
     uploadDirUrl: '/uploads'
     siteName: 'Blog'
+    feedbackRecipient: '%env(FEEDBACK_RECIPIENT)%'
+    emailFrom: '%env(SMTP_SENDER)%'
     router.request_context.host: '%env(HOST)%'
 
 services:
@@ -30,3 +32,9 @@ services:
     _instanceof:
         App\Editorjs\BlockParsers\BlockParser:
             tags: [ 'app.editorjs_parser_extension' ]
+
+
+when@test:
+    parameters:
+        feedbackRecipient: 'test@example.com'
+        emailFrom: 'test@example.com'
