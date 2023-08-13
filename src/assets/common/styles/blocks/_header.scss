@@ -3,10 +3,11 @@
 .header {
     background-color: $back1-color;
     width: 100%;
-    box-shadow: 0 0 10px $back2-color;
+    box-shadow: 0 0 10px $shadow-color;
     position: sticky;
     top: 0;
     z-index: 1;
+    border-bottom: 1px solid $shadow-color;
 
     &__menu {
         width: 900px;
@@ -42,6 +43,9 @@
 
         &_mobile-icon {
             width: 30px;
+            @media (prefers-color-scheme: dark) {
+                filter: invert(100);
+            }
         }
     }
 
