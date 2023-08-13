@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
@@ -10,6 +11,24 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header class="header">
+            <div class="header__menu--mobile">
+                <img class="header__menu_mobile-icon" src="{{ asset('build/images/menu-bar-icon.svg') }}" alt="menu">
+            </div>
+
+            <nav class="header__menu">
+                <a class="header__menu-item" href="#">Home</a>
+                <a class="header__menu-item" href="#">Our CVs</a>
+                <a class="header__menu-item" href="#">Our cases</a>
+                <a class="header__menu-item" href="#">Blog</a>
+                <a class="header__menu-item" href="#">Contacts</a>
+            </nav>
+        </header>
+        <div class="container">
+        {% block content%}{% endblock %}
+        </div>
+        <footer class="footer">
+            <p class="footer__text">© ITech Guild, 2023 </p>
+        </footer>
     </body>
 </html>

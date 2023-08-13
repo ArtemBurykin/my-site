@@ -11,6 +11,7 @@ Encore
     .setPublicPath('/build')
     .addStyleEntry('reset-password', './assets/security/reset-password/styles/reset-password.scss')
     .addStyleEntry('common', './assets/common/styles/common.scss')
+    .addStyleEntry('index-page', './assets/site/index-page/index.page.scss')
     .addEntry('admin', './assets/admin/admin.js')
     .enableSassLoader()
 
@@ -21,23 +22,11 @@ Encore
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()
 
-    /*
-     * FEATURE CONFIG
-     *
-     * Enable & configure other features below. For a full
-     * list of features, see:
-     * https://symfony.com/doc/current/frontend.html#adding-more-features
-     */
     .cleanupOutputBeforeBuild()
     .enableBuildNotifications()
     .enableSourceMaps(!Encore.isProduction())
     // enables hashed filenames (e.g. app.abc123.css)
     .enableVersioning(Encore.isProduction())
-
-    // configure Babel
-    // .configureBabel((config) => {
-    //     config.plugins.push('@babel/a-babel-plugin');
-    // })
 
     // enables and configure @babel/preset-env polyfills
     .configureBabelPresetEnv((config) => {
@@ -45,19 +34,10 @@ Encore
         config.corejs = '3.23';
     })
     .enableSassLoader()
-
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
-
-    // uncomment if you use React
-    //.enableReactPreset()
-
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    //.enableIntegrityHashes(Encore.isProduction())
-
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
+    .copyFiles({
+        from: './assets/common/images',
+        to: 'images/[path][name].[hash:8].[ext]',
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();

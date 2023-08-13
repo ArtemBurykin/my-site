@@ -1,0 +1,59 @@
+@import '../variables';
+
+.header {
+    background-color: $back1-color;
+    width: 100%;
+    box-shadow: 0 0 10px $back2-color;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    &__menu {
+        width: 900px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 25px 0;
+
+        @include tablet {
+            width: 700px;
+            padding: 18px 0;
+        }
+
+        @include horizontal-mobile {
+            width: 500px;
+        }
+
+        @include mobile {
+            display: none;
+        }
+
+        &--mobile {
+            display: none;
+            width: 100%;
+            padding: 10px 20px;
+            text-align: right;
+
+            @include mobile {
+                display: block;
+            }
+        }
+
+        &_mobile-icon {
+            width: 30px;
+        }
+    }
+
+    &__menu-item {
+        font-family: $font-family;
+        font-size: $font-size-text;
+        font-weight: 300;
+        color: $font-color;
+        text-decoration: none;
+
+        @include tablet {
+            font-size: 0.85rem;
+        }
+    }
+}

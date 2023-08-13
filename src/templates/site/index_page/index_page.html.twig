@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('index-page') }}
+{% endblock %}
+
+{% block content %}
+    <section class="offer">
+        <h1 class="offer__main">Our dedicated development team <br>are here to solve your business challenges.</h1>
+
+        <h2 class="offer__desc">We are a company focused on the development of<br>mobile and web applications,
+            specializing in both<br>backend and frontend.</h2>
+
+        <div class="btn offer__cta">Contact us</div>
+    </section>
+
+    <section class="about-us content">
+        <h3 class="content__header">What we're about:</h3>
+
+        <p class="content__block-text">
+            If you have an idea of an amazing application or website,
+            but just don't have the right team to do all the coding for it,
+            than you've come to the right place.
+            Our team of skilled specialists is here to help you.
+            Together we can create the exact service you want
+            and set the solid foundation for your business to grow.
+        </p>
+        <p class="content__simple-text">
+            Starting a project comes with its fair share of challenges.
+            From the initial idea to managing time effectively, there's a lot to consider.
+            And let's not forget about the coding part, which is vital for the success of any high-tech endeavor.
+            Finding the right person for the job is crucial.
+        </p>
+        <p class="content__simple-text">
+            Our company specializing in mobile and web development can help you with the coding part.
+            As a dedicated team of professionals, we have strong business acumen and skills
+            that allow us to create fast, scalable, and reliable software.
+        </p>
+        <p class="content__simple-text">
+            And to make the development process less risky for you, we use the iterative approach.
+            So basically, after every iteration, you'll get a better service or app (in terms of business value)
+            with minimal financial risks.
+            Our team understands that the risk of the entire application development at once is too high for every
+            business.
+        </p>
+    </section>
+
+    <section class="content our-methodologies">
+        <h3 class="content__header">Our methodologies and&nbsp;technologies</h3>
+        <p class="content__simple-text">
+            When it comes to backend development, we use technologies such as PHP (Symfony)
+            and Java/Kotlin( a variety of libraries including Vertx and Spring).
+        </p>
+        <p class="content__simple-text">
+            For mobile application development, we primarily rely on Flutter.
+            This powerful framework allows us to create applications that are compatible
+            with all major platforms simultaneously, ensuring a seamless user experience across devices.
+        </p>
+        <p class="content__simple-text">
+            Additionally, our specialists are proficient in frontend development and
+            can assist you with the creation of captivating user interfaces.
+            We leverage the iconic JavaScript frameworks, including Angular, ReactJs, and Vue,
+            to build responsive and dynamic web applications.
+        </p>
+        <p class="content__simple-text">
+            Our dedicated development team boasts an average experience of
+            <span class="content__simple-text--stressed">five years of active coding.</span> With
+            extensive expertise, we've successfully tackled numerous business tasks for many businesses,
+            enabling them to achieve their goals effectively.
+        </p>
+
+        <p class="content__simple-text">
+            Our teams operate using Agile methodologies, which enables us to have direct involvement
+            in the process of solving business tasks. By adopting Agile practices,
+            we prioritize delivering solutions that provide the highest business value.
+            This approach allows us to stay responsive to evolving requirements and adapt our strategies accordingly.
+            Through iterative development, frequent communication, and continuous feedback,
+            we ensure that our solutions align closely with your business objectives.
+        </p>
+    </section>
+
+    <div class="side-nav">
+        <div class="side-nav__item">
+            <div class="side-nav__circle"></div>
+            <a class="side-nav__text" href="#">Home</a>
+        </div>
+
+        <div class="side-nav__line"></div>
+
+        <div class="side-nav__item">
+            <div class="side-nav__circle"></div>
+            <a href="#" class="side-nav__text">Our CVs</a>
+        </div>
+
+        <div class="side-nav__line"></div>
+
+        <div class="side-nav__item">
+            <div class="side-nav__circle"></div>
+            <a class="side-nav__text" href="#">Our cases</a>
+        </div>
+
+        <div class="side-nav__line"></div>
+
+        <div class="side-nav__item">
+            <div class="side-nav__circle"></div>
+            <a class="side-nav__text" href="#">Blog</a>
+        </div>
+
+        <div class="side-nav__line"></div>
+
+        <div class="side-nav__item">
+            <div class="side-nav__circle"></div>
+            <a class="side-nav__text" href="#">Contacts</a>
+        </div>
+    </div>
+
+    <section class="content how-to-work">
+        <h3 class="content__header">How to work with us</h3>
+
+        <div class="how-to-work__process">
+            <div class="how-to-work__step">
+                <p class="how-to-work__dig">1</p>
+                <p class="how-to-work__text">Contact us</p>
+            </div>
+
+            <div class="how-to-work__step how-to-work__step--large">
+                <p class=" how-to-work__dig">2</p>
+                <p class="how-to-work__text">We contact you back and discuss the project (the&nbsp;idea,
+                    tasks to
+                    be done, available options how job can be secured (contracts etc), the contents
+                    of&nbsp;the&nbsp;first
+                    iteration, etc)</p>
+            </div>
+
+            <div class="how-to-work__step">
+                <p class="how-to-work__dig">3</p>
+                <p class="how-to-work__text">Seal the contract and start the first iteration
+                    of&nbsp;the&nbsp;project
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content contact-form">
+        <h3 class="content__header">Connect with us</h3>
+
+        <div>
+            <label for="email" class="contact-form__text">Your email:</label>
+            <input class="contact-form__field" type="email" id="email" name="email">
+        </div>
+
+        <div>
+            <label for="theme" class="contact-form__text">Theme:</label>
+            <input class="contact-form__field" type="text" id="theme" name="theme">
+        </div>
+
+        <div>
+            <label for="message" class="contact-form__text">Message:</label>
+            <textarea class="contact-form__field contact-form__field_textarea" id="message" name="message" rows="4"
+                      cols="50"></textarea>
+        </div>
+
+        <div class="btn offer__cta">Contact us</div>
+    </section>
+{% endblock %}

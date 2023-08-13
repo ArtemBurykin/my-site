@@ -1,0 +1,46 @@
+$desktop: 1200px;
+$tablet: 960px;
+$horizonatal-mobile: 768px;
+$mobile: 576px;
+
+@mixin large-screen {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (max-width: #{$desktop - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: #{$tablet - 1px}) {
+        @content;
+    }
+}
+
+@mixin horizontal-mobile {
+    @media (max-width: #{$horizonatal-mobile - 1px}) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: #{$mobile - 1px}) {
+        @content;
+    }
+}
+
+$primary-color: #ff4a57;
+$back-color: #23263a;
+$font-color: white;
+$back1-color: #212336;
+$back2-color: #2b2d41;
+$font-family: "Roboto";
+$font-size-text: 1rem;
+$line-height-base: 1.8rem;
+$small-font-size: 0.9rem;
+$small-font-line-height: 1.4rem;
+$font-size-header: 1.8rem;
