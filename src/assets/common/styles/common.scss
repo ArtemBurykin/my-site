@@ -6,7 +6,7 @@
 
 body {
     margin: 0;
-    background-color: $back-color;
+    background-color: var(--background-color);
 }
 
 * {

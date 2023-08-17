@@ -32,10 +32,8 @@
     width: 20px;
     height: 20px;
   }
+}
 
-  &__icon {
-    @media (prefers-color-scheme: dark) {
-      filter: invert(1);
-    }
-  }
+body.dark-theme .theme-toggle__icon {
+  filter: invert(1);
 }
