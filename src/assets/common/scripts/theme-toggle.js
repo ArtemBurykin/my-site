@@ -14,7 +14,7 @@ export function themeToggle(toggleId, baseClass) {
             marker.classList.add(`${markerClass}--light`);
             marker.classList.remove(`${markerClass}--dark`);
         }
-    }
+    };
 
     const setTheme = (theme, setInStore) => {
         currentTheme = theme;
@@ -32,28 +32,28 @@ export function themeToggle(toggleId, baseClass) {
         }
 
         setMarkerToTheme(theme);
-    }
+    };
 
     const toggleTheme = () => {
         const toggledTheme = currentTheme === 'dark' ? 'light' : 'dark';
         setTheme(toggledTheme, true);
-    }
+    };
 
     const init = () => {
         const themeFromLocalStorage  = window.localStorage.getItem('theme');
 
-        let themeToSet = null;
+        let themeToSet;
         if (themeFromLocalStorage) {
             themeToSet = themeFromLocalStorage;
         } else {
-            const isDarkThemed = window.matchMedia("(prefers-color-scheme: dark)");
+            const isDarkThemed = window.matchMedia('(prefers-color-scheme: dark)');
             themeToSet = isDarkThemed.matches ? 'dark' : 'light';
         }
 
         setTheme(themeToSet, false);
 
         document.querySelector(`#${toggleId}`).addEventListener('click', toggleTheme);
-    }
+    };
 
     init();
 }

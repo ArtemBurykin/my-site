@@ -1,7 +1,7 @@
 /**
  *  @jest-environment jsdom
  */
-import {themeToggle} from "./theme-toggle";
+import {themeToggle} from './theme-toggle';
 
 describe('themeToggle', () => {
     beforeEach(() => {
@@ -37,7 +37,7 @@ describe('themeToggle', () => {
 
             expect(document.querySelector('body').classList.contains('dark-theme')).toBe(false);
 
-            expect(window.matchMedia).toBeCalledWith("(prefers-color-scheme: dark)");
+            expect(window.matchMedia).toBeCalledWith('(prefers-color-scheme: dark)');
             expect(window.matchMedia).toBeCalledTimes(1);
         });
 
@@ -50,7 +50,7 @@ describe('themeToggle', () => {
             expect(document.querySelector('.theme-toggle__marker--light')).toBeNull();
             expect(document.querySelector('body').classList.contains('dark-theme')).toBe(true);
 
-            expect(window.matchMedia).toBeCalledWith("(prefers-color-scheme: dark)");
+            expect(window.matchMedia).toBeCalledWith('(prefers-color-scheme: dark)');
             expect(window.matchMedia).toBeCalledTimes(1);
         });
 
@@ -107,5 +107,5 @@ describe('themeToggle', () => {
             expect(marker.classList.contains('theme-toggle__marker--dark')).toBe(false);
             expect(document.querySelector('body').classList.contains('dark-theme')).toBe(false);
         });
-    })
+    });
 });
