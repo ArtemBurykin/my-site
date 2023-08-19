@@ -1,7 +1,9 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    globals:
+        menu: '%menu%'
     form_themes:
-      - 'admin/form/editorjs_widget.html.twig'
+        - 'admin/form/editorjs_widget.html.twig'
 
 when@test:
     twig:

@@ -28,21 +28,17 @@
                     </g>
                 </svg>
             </div>
-            <a class="header__menu-item header__menu-item--mobile" href="#">Home</a>
-            <a class="header__menu-item header__menu-item--mobile" href="#">Our CVs</a>
-            <a class="header__menu-item header__menu-item--mobile" href="#">Our cases</a>
-            <a class="header__menu-item header__menu-item--mobile" href="#">Blog</a>
-            <a class="header__menu-item header__menu-item--mobile" href="#">Contacts</a>
+            {% for item in menu %}
+                <a class="header__menu-item header__menu-item--mobile" href="{{ path(item.path) }}">{{ item.title }}</a>
+            {% endfor %}
         </nav>
     </div>
 
     <div class="header__menu-wrapper">
         <nav class="header__menu">
-            <a class="header__menu-item" href="#">Home</a>
-            <a class="header__menu-item" href="#">Our CVs</a>
-            <a class="header__menu-item" href="#">Our cases</a>
-            <a class="header__menu-item" href="#">Blog</a>
-            <a class="header__menu-item" href="#">Contacts</a>
+            {% for item in menu %}
+                <a class="header__menu-item" href="{{ path(item.path) }}">{{ item.title }}</a>
+            {% endfor %}
         </nav>
 
         <div class="header__theme-toggle theme-toggle__container">

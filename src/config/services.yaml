@@ -11,6 +11,22 @@ parameters:
     feedbackRecipient: '%env(FEEDBACK_RECIPIENT)%'
     emailFrom: '%env(SMTP_SENDER)%'
     router.request_context.host: '%env(HOST)%'
+    menu:
+        home:
+            path: app_index_page
+            title: Home
+        cvs:
+            path: app_our_cvs_page
+            title: Our CVs
+        cases:
+            path: app_our_cases_page
+            title: Our cases
+        blog:
+            path: app_blog_page
+            title: Blog
+        contacts:
+            path: app_contacts_page
+            title: Contacts
 
 services:
     # default configuration for services in *this* file
