@@ -17,8 +17,23 @@
 </head>
 <body>
 <header class="header">
-    <div class="header__menu--mobile">
-        <img class="header__menu_mobile-icon" src="{{ asset('build/images/menu-bar-icon.svg') }}" alt="menu">
+    <div class="header__menu header__menu--mobile">
+        <img class="header__menu-mobile-icon" id="mobile-menu-show" src="{{ asset('build/images/menu-bar-icon.svg') }}" alt="menu">
+        <nav class="header__menu-popup header__menu-popup--hidden">
+            <div class="header__menu-popup-close" id="mobile-menu-close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g>
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"></path>
+                    </g>
+                </svg>
+            </div>
+            <a class="header__menu-item header__menu-item--mobile" href="#">Home</a>
+            <a class="header__menu-item header__menu-item--mobile" href="#">Our CVs</a>
+            <a class="header__menu-item header__menu-item--mobile" href="#">Our cases</a>
+            <a class="header__menu-item header__menu-item--mobile" href="#">Blog</a>
+            <a class="header__menu-item header__menu-item--mobile" href="#">Contacts</a>
+        </nav>
     </div>
 
     <div class="header__menu-wrapper">
