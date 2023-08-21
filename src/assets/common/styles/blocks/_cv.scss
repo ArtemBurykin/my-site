@@ -3,17 +3,6 @@
 .cv {
   margin-bottom: 30px;
 
-  &__image-container {
-    float: right;
-    margin-left: 20px;
-
-    @include mobile {
-      text-align: center;
-      float: none;
-      margin: 20px 0;
-    }
-  }
-
   &__title {
     font-family: $font-family;
     font-size: 1.3rem;

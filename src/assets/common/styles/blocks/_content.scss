@@ -70,4 +70,24 @@
             color: $primary-color;
         }
     }
+
+    &__img-container {
+        float: right;
+        margin-left: 20px;
+
+        @include mobile {
+            width: 100%;
+            text-align: center;
+            float: none;
+            margin: 20px 0;
+        }
+    }
+
+    &__anchor-img {
+        width: 150px;
+    }
+}
+
+body.dark-theme .content__anchor-img {
+    filter: invert(1);
 }
