@@ -1,0 +1,27 @@
+@import '../common/styles/fonts';
+@import '../common/styles/variables';
+@import '../common/styles/blocks/header';
+@import '../common/styles/blocks/footer';
+@import '../common/styles/blocks/theme-toggle';
+@import '../common/styles/blocks/side-nav';
+@import '../common/styles/blocks/content';
+
+body {
+    margin: 0;
+    background-color: var(--background-color);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    margin: auto;
+    width: 960px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    @include tablet {
+        width: 100%;
+    }
+}

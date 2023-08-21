@@ -7,6 +7,11 @@
     {{ encore_entry_link_tags('index-page') }}
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('index-page') }}
+{% endblock %}
+
 {% block content %}
     <section class="offer">
         <h1 class="offer__main">Our dedicated development team <br>are here to solve your business challenges.</h1>
@@ -81,41 +86,6 @@
             we ensure that our solutions align closely with your business objectives.
         </p>
     </section>
-
-    <div class="side-nav">
-        <div class="side-nav__item">
-            <div class="side-nav__circle"></div>
-            <a class="side-nav__text" href="#">Home</a>
-        </div>
-
-        <div class="side-nav__line"></div>
-
-        <div class="side-nav__item">
-            <div class="side-nav__circle"></div>
-            <a href="#" class="side-nav__text">Our CVs</a>
-        </div>
-
-        <div class="side-nav__line"></div>
-
-        <div class="side-nav__item">
-            <div class="side-nav__circle"></div>
-            <a class="side-nav__text" href="#">Our cases</a>
-        </div>
-
-        <div class="side-nav__line"></div>
-
-        <div class="side-nav__item">
-            <div class="side-nav__circle"></div>
-            <a class="side-nav__text" href="#">Blog</a>
-        </div>
-
-        <div class="side-nav__line"></div>
-
-        <div class="side-nav__item">
-            <div class="side-nav__circle"></div>
-            <a class="side-nav__text" href="#">Contacts</a>
-        </div>
-    </div>
 
     <section class="content how-to-work">
         <h3 class="content__header">How to work with us</h3>

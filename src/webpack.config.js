@@ -10,9 +10,9 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addStyleEntry('reset-password', './assets/security/reset-password/styles/reset-password.scss')
-    .addStyleEntry('common', './assets/common/styles/common.scss')
-    .addStyleEntry('index-page', './assets/site/index-page/index.page.scss')
-    .addEntry('common-site', './assets/site/common.js')
+    .addStyleEntry('our-cvs-page', './assets/site/our-cvs-page/our-cvs.page.scss')
+    .addEntry('index-page', './assets/site/index-page/index.page.js')
+    .addEntry('common', './assets/site/common.js')
     .addEntry('admin', './assets/admin/admin.js')
     .enableSassLoader()
 

@@ -1,11 +1,11 @@
 @import '../variables';
 
 .theme-toggle {
-  border: 1px solid $back-color;
+  border: 1px solid $font-color;
   border-radius: 14px;
   height: 28px;
   width: 60px;
-  background-color: $back2-color;
+  background-color: $back-color;
   position: relative;
 
   &__container {

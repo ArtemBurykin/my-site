@@ -12,7 +12,7 @@
     {% endblock %}
 
     {% block javascripts %}
-        {{ encore_entry_script_tags('common-site') }}
+        {{ encore_entry_script_tags('common') }}
     {% endblock %}
 </head>
 <body>
@@ -54,6 +54,7 @@
 </header>
 <div class="container">
     {% block content %}{% endblock %}
+    {% include 'common/parts/side-nav.html.twig' %}
 </div>
 <footer class="footer">
     <p class="footer__text">© ITech Guild, 2023 </p>
