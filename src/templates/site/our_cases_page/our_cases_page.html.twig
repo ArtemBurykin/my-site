@@ -1,7 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block meta %}
+    {% include 'common/parts/meta.html.twig' with {
+        'title': casesCategory.metaTitle,
+        'description': casesCategory.metaDescription,
+        'ogTitle': casesCategory.ogTitle,
+        'ogDescription': casesCategory.ogDescription,
+        'ogImage': host ~ '/uploads/category/' ~ casesCategory.ogImage
+    } %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('our-cases-page') }}
+{% endblock %}
 
 {% block content %}
-    <p> Our cases</p>
+    <section class="content">
+        <h1 class="content__header">{{ casesCategory.title }}</h1>
+        {% for case in cases %}
+            <a href="/" class="blog-item__link">
+            <div class="blog-item">
+                <h2 class="blog-item__title">{{ case.title }}</h2>
+
+                <div class="blog-item__data">
+                    <p class="blog-item__description">{{ case.description }}</p>
+                    {% if case.mainImage is not null %}
+                        <div class="blog-item__img-container">
+                            <img
+                                    src="/uploads/post/{{ case.mainImage }}"
+                                    alt="{{ case.title }}"
+                                    class="blog-item__img"
+                            />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            </a>
+        {% endfor %}
+    </section>
 {% endblock %}

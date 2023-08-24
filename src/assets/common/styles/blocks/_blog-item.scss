@@ -1,0 +1,80 @@
+@import '../variables';
+
+.blog-item {
+  margin-bottom: 30px;
+  padding: 10px;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    background: $back2-color;
+    box-shadow: 5px 5px 10px $shadow-color;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__title {
+    font-family: $font-family;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    margin: 0;
+    font-weight: 400;
+    text-decoration: none;
+    color: $font-color;
+
+    @include tablet {
+      font-size: 1rem;
+    }
+
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  &__description {
+    font-family: $font-family;
+    font-size: $font-size-text;
+    line-height: $line-height-base;
+    text-decoration: none;
+    font-weight: 300;
+    color: $font-color;
+
+    @include tablet {
+      font-size: $small-font-size;
+      line-height: $small-font-line-height;
+    }
+
+    @include mobile {
+      order: 1;
+      text-align: center;
+    }
+  }
+
+  &__img-container {
+    order: 0;
+    @include mobile {
+      width: 100%;
+      text-align: center;
+    }
+
+  }
+
+  &__img {
+    width: 100px;
+    margin: auto;
+  }
+
+  &__data {
+    display: flex;
+    gap: 20px;
+
+    @include mobile {
+      gap: 0;
+      flex-wrap: wrap;
+    }
+  }
+}
+body.dark-theme .blog-item__img {
+  filter: invert(1);
+}

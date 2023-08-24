@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block meta %}
+    {% include 'common/parts/meta.html.twig' with {
+        'title': 'Hire a dedicated frontend or backend development team | Itech guild',
+        'description': 'Our dedicated development team is here to solve your business challenges',
+        'ogTitle': 'Hire a dedicated frontend or backedn development team | Itech guild',
+        'ogDescription': 'Our dedicated development team is here to solve your business challenges',
+        'ogImage': ''
+    } %}
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -14,7 +22,7 @@
 
 {% block content %}
     <section class="offer">
-        <h1 class="offer__main">Our dedicated development team <br>are here to solve your business challenges.</h1>
+        <h1 class="offer__main">Our dedicated development team <br>is here to solve your business challenges.</h1>
 
         <h2 class="offer__desc">We are a company focused on the development of&nbsp;mobile and web applications,
             specializing in&nbsp;both backend and frontend.</h2>

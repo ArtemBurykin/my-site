@@ -3,6 +3,7 @@
 namespace App\Tests\Traits;
 
 use App\Editorjs\Twig\EditorjsTwigExtension;
+use App\Repository\Blog\CategoryRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -30,5 +31,10 @@ trait DependenciesTrait
     protected function getEditorjsExtension(): EditorjsTwigExtension
     {
         return static::getContainer()->get(EditorjsTwigExtension::class);
+    }
+
+    protected function getCategoryRepository(): CategoryRepository
+    {
+        return static::getContainer()->get(CategoryRepository::class);
     }
 }

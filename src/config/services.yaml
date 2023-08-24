@@ -7,10 +7,12 @@ parameters:
     maxFileSize: 2 #Mb
     uploadDirPath: '%kernel.project_dir%/public/uploads'
     uploadDirUrl: '/uploads'
+    host: '%env(HOST)%'
     siteName: 'Blog'
     feedbackRecipient: '%env(FEEDBACK_RECIPIENT)%'
     emailFrom: '%env(SMTP_SENDER)%'
     router.request_context.host: '%env(HOST)%'
+    casesCategory: 'our-cases'
     menu:
         home:
             path: app_index_page
@@ -54,3 +56,4 @@ when@test:
     parameters:
         feedbackRecipient: 'test@example.com'
         emailFrom: 'test@example.com'
+        host: 'https://host.example'
