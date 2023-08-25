@@ -12,6 +12,7 @@ Encore
     .addStyleEntry('reset-password', './assets/security/reset-password/styles/reset-password.scss')
     .addStyleEntry('our-cvs-page', './assets/site/our-cvs-page/our-cvs.page.scss')
     .addStyleEntry('our-cases-page', './assets/site/our-cases-page/our-cases.page.scss')
+    .addStyleEntry('case-page', './assets/site/case-page/case.page.scss')
     .addEntry('index-page', './assets/site/index-page/index.page.js')
     .addEntry('common', './assets/site/common.js')
     .addEntry('admin', './assets/admin/admin.js')

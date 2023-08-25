@@ -31,7 +31,7 @@ class ParagraphParserTest extends KernelTestCase
         $parsedHTML = $extension->editorjsParse($fixtureJSON);
 
         $crawler = new Crawler($parsedHTML);
-        $p = $crawler->filter('p');
+        $p = $crawler->filter('p.content__simple-text');
         $this->assertCount(1, $p);
         $this->assertEquals('some text', $p->innerText());
     }

@@ -1,0 +1,15 @@
+@import '../variables';
+
+.breadcrumbs {
+  font-family: $font-family;
+  font-size: $small-font-size;
+  line-height: $small-font-line-height;
+  color: $font-color;
+
+  &__item {
+    &--link {
+      color: $font-color;
+      text-decoration: underline;
+    }
+  }
+}

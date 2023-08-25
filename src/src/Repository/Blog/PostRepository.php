@@ -12,4 +12,9 @@ class PostRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Post::class);
     }
+
+    public function findOneBySeoUrl(string $slug): ?Post
+    {
+        return $this->findOneBy(['seoUrl' => $slug]);
+    }
 }

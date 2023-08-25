@@ -1,5 +1,28 @@
 {% extends 'base.html.twig' %}
 
+{% block meta %}
+    {% include 'common/parts/meta.html.twig' with {
+        'title': case.metaTitle,
+        'description': case.metaDescription,
+        'ogTitle': case.ogTitle,
+        'ogDescription': case.ogDescription,
+        'ogImage': host ~ '/uploads/post/' ~ case.ogImage
+    } %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('case-page') }}
+{% endblock %}
+
 {% block content %}
-    <h1>Case</h1>
+    <article class="content">
+        <h1 class="content__header">{{ case.title }}</h1>
+        <div class="breadcrumbs">
+            <a href="{{ path('app_index_page') }}" class="breadcrumbs__item breadcrumbs__item--link">Home</a> /
+            <a href="{{ path('app_our_cases_page') }}" class="breadcrumbs__item breadcrumbs__item--link">Our cases</a> /
+            <span class="breadcrumbs__item">{{ case.title }}</span>
+        </div>
+        <div>{{ editorjs_parse(case.content) | raw }}</div>
+    </article>
 {% endblock %}

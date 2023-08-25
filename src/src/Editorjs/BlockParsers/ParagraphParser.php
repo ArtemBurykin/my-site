@@ -14,7 +14,7 @@ class ParagraphParser implements BlockParser
     public function parse(stdClass $blockData): string
     {
         return <<<"END"
-            <p>$blockData->text</p>
+            <p class="content__simple-text">$blockData->text</p.>
             END;
     }
 }
