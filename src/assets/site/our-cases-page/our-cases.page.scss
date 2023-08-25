@@ -1,2 +1,8 @@
 @import '../../common/styles/blocks/cv';
 @import '../../common/styles/blocks/blog-item';
+
+.content__simple-text {
+  @include mobile {
+    text-align: center;
+  }
+}
