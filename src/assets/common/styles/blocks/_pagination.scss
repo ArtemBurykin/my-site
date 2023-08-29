@@ -1,0 +1,33 @@
+@import '../variables';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  &__btn {
+    border-radius: 6px;
+    padding: 10px;
+    text-decoration: none;
+    color: $font-color;
+    font-size: $font-size-text;
+    font-family: $font-family;
+
+    @include tablet {
+      font-size: $small-font-size;
+    }
+  }
+
+  &__count {
+    font-size: $font-size-text;
+    font-family: $font-family;
+    color: $font-color;
+
+    @include tablet {
+      font-size: $small-font-size;
+    }
+  }
+}

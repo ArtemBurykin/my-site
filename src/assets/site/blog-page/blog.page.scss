@@ -1,0 +1,8 @@
+@import '../../common/styles/blocks/blog-item';
+@import '../../common/styles/blocks/pagination';
+
+.content__simple-text {
+  @include mobile {
+    text-align: center;
+  }
+}

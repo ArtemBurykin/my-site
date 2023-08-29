@@ -5,12 +5,16 @@ namespace App\Repository\Blog;
 use App\DTO\PostListItem;
 use App\Entity\Blog\Category;
 use App\Entity\Blog\Post;
+use App\Service\PaginationService;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\QueryBuilder;
 
 class PostListRepository
 {
-    public function __construct(private readonly EntityManagerInterface $em)
-    {
+    public function __construct(
+        private readonly EntityManagerInterface $em,
+        private readonly PaginationService $paginationService,
+    ) {
     }
 
     /**
@@ -18,16 +22,64 @@ class PostListRepository
      */
     public function findByCategory(Category $category): array
     {
-        $qb = $this->em->createQueryBuilder();
+        $qb = $this->createBaseQueryBuilder();
 
-        $qb->select('p.id, p.seoUrl, p.title, p.description, p.mainImage')
-            ->from(Post::class, 'p')
-            ->where('p.category = :category')
-            ->setParameter('category', $category->getId())
-            ->orderBy('p.createdAt', 'DESC');
+        $qb->where('p.category = :category')
+            ->setParameter('category', $category->getId());
 
         $data = $qb->getQuery()->getResult();
 
+        return $this->toPostListItems($data);
+    }
+
+    /**
+     * @return PostListItem[]
+     */
+    public function findExcludingCategoryOnPage(string $categoryToExcludeSlug, int $page): array
+    {
+        $qb = $this->createBaseQueryBuilder();
+
+        $qb->leftJoin('p.category', 'c')
+            ->where('c.seoUrl <> :category')
+            ->orWhere('p.category is null')
+            ->setParameter('category', $categoryToExcludeSlug);
+
+        $this->paginationService->addOffsetLimitToQueryBuilderForPage($qb, $page);
+
+        $data = $qb->getQuery()->getResult();
+
+        return $this->toPostListItems($data);
+    }
+
+    public function getCountOfPostsExcludingCategory(string $categoryToExcludeSlug): int
+    {
+        $qb = $this->em->createQueryBuilder();
+
+        $qb->select('count(p.id)')
+            ->from(Post::class, 'p')
+            ->leftJoin('p.category', 'c')
+            ->where('c.seoUrl <> :category')
+            ->orWhere('p.category is null')
+            ->setParameter('category', $categoryToExcludeSlug);
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    private function createBaseQueryBuilder(): QueryBuilder
+    {
+        $qb = $this->em->createQueryBuilder();
+        $qb->select('p.id, p.seoUrl, p.title, p.description, p.mainImage')
+            ->from(Post::class, 'p')
+            ->orderBy('p.createdAt', 'DESC');
+
+        return $qb;
+    }
+
+    /**
+     * @return PostListItem[]
+     */
+    private function toPostListItems(array $data): array
+    {
         return array_map(
             fn (array $item) => new PostListItem(
                 $item['id'],

@@ -1,9 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('blog-page') }}
+{% endblock %}
 
 {% block content %}
-    <h1>Blog</h1>
-    {% include 'common/parts/side-nav.html.twig' %}
+    <section class="content">
 
+    <h1 class="content__header">Our blog</h1>
+    {% for post in posts %}
+        <a href="{{ path('app_post_page', { 'slug' : post.seoUrl }) }}" class="blog-item__link">
+            <div class="blog-item">
+                <h2 class="blog-item__title">{{ post.title }}</h2>
+
+                <div class="blog-item__data">
+                    <p class="blog-item__description">{{ post.description }}</p>
+                    {% if post.mainImage is not null %}
+                        <div class="blog-item__img-container">
+                            <img
+                                    src="/uploads/post/{{ post.mainImage }}"
+                                    alt="{{ post.title }}"
+                                    class="blog-item__img"
+                            />
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+
+    {% include 'common/parts/pagination.html.twig' with {
+        'page': page,
+        'pagination': pagination,
+        'baseUrl': path('app_blog_page')
+    } %}
+    </section>
 {% endblock %}

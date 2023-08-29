@@ -8,6 +8,7 @@ parameters:
     uploadDirPath: '%kernel.project_dir%/public/uploads'
     uploadDirUrl: '/uploads'
     host: '%env(HOST)%'
+    postsPerPage: 8
     siteName: 'Blog'
     feedbackRecipient: '%env(FEEDBACK_RECIPIENT)%'
     emailFrom: '%env(SMTP_SENDER)%'
@@ -57,3 +58,4 @@ when@test:
         feedbackRecipient: 'test@example.com'
         emailFrom: 'test@example.com'
         host: 'https://host.example'
+        postsPerPage: 2

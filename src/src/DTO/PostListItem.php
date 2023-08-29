@@ -2,14 +2,14 @@
 
 namespace App\DTO;
 
-final class PostListItem
+final readonly class PostListItem
 {
     public function __construct(
-        public readonly int $id,
-        public readonly string $seoUrl,
-        public readonly string $title,
-        public readonly string $description,
-        public readonly ?string $mainImage,
+        public int $id,
+        public string $seoUrl,
+        public string $title,
+        public string $description,
+        public ?string $mainImage,
     ) {
     }
 }
