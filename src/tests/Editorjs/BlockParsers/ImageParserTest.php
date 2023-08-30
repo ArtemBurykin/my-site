@@ -37,7 +37,7 @@ class ImageParserTest extends KernelTestCase
         $parsedHTML = $extension->editorjsParse($fixtureJSON);
         $crawler = new Crawler($parsedHTML);
 
-        $image = $crawler->filter('img');
+        $image = $crawler->filter('img.content__img');
         $this->assertStringContainsString(
             '/uploads/editorjs/Screenshot-from-2022-07-14-15-57-20-633431860e8b9.png',
             $image->getNode(0)->attributes->getNamedItem('src')->textContent,

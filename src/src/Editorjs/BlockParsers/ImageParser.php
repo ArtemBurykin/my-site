@@ -17,9 +17,9 @@ class ImageParser implements BlockParser
         $alt = htmlspecialchars($blockData->caption);
 
         return <<< "END"
-                <div class="content-image">
-                    <img src="$src" alt="$alt" />
-                </div>
+            <div class="content__img-container">
+                <img class="content__img" loading="lazy" src="$src" alt="$alt" />
+            </div>
             END;
     }
 }

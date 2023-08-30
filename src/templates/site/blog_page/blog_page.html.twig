@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block meta %}
+    {% include 'common/parts/meta.html.twig' with {
+        'title': 'Our Blog | a backend, frontend development team - Itech quild',
+        'description': 'This is blog of our dedicated development team, where we write different posts about our experience, our ideas, and researches.',
+        'ogTitle': 'Our Blog | a backend, fronend development team - Itech guild',
+        'ogDescription': 'This is blog of our dedicated development team, where we write different posts about our experience, our ideas, and researches.',
+        'ogImage': ''
+    } %}
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('blog-page') }}

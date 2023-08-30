@@ -35,7 +35,7 @@ class ListParserTest extends KernelTestCase
         $parsedHTML = $extension->editorjsParse($fixtureJSON);
         $crawler = new Crawler($parsedHTML);
 
-        $li = $crawler->filter('ol>li');
+        $li = $crawler->filter('ol.content__list>li.content__li');
         $this->assertCount(2, $li);
         $this->assertEquals('Первый элемент списка', $li->eq(0)->innerText());
         $this->assertEquals('Второй элемент списка', $li->eq(1)->innerText());
@@ -66,7 +66,7 @@ class ListParserTest extends KernelTestCase
         $parsedHTML = $extension->editorjsParse($fixtureJSON);
         $crawler = new Crawler($parsedHTML);
 
-        $li = $crawler->filter('ul>li');
+        $li = $crawler->filter('ul.content__list>li.content__li');
         $this->assertCount(2, $li);
         $this->assertEquals('Первый элемент списка', $li->eq(0)->innerText());
         $this->assertEquals('Второй элемент списка', $li->eq(1)->innerText());
@@ -94,7 +94,7 @@ class ListParserTest extends KernelTestCase
         $parsedHTML = $extension->editorjsParse($fixtureJSON);
         $crawler = new Crawler($parsedHTML);
 
-        $li = $crawler->filter('ul>li');
+        $li = $crawler->filter('ul.content__list>li.content__li');
         $this->assertCount(0, $li);
     }
 }

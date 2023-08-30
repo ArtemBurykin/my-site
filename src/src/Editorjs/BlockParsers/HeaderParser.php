@@ -17,9 +17,10 @@ class HeaderParser implements BlockParser
         // По правилам семантики заголовок H1 на странице должнен быть только один.
         $level = $blockData->level ?: 2;
         $headerTag = "h$level";
+        $classes = 'content__header content__header--h'.$level;
 
         return <<<"END"
-                <$headerTag>$blockData->text</$headerTag>
+                <$headerTag class="$classes">$blockData->text</$headerTag>
             END;
     }
 }

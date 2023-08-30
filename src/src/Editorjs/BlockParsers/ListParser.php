@@ -21,13 +21,13 @@ class ListParser implements BlockParser
         $listItems = implode(
             '',
             array_map(
-                fn (string $item) => "<li>$item</li>",
+                fn (string $item) => "<li class='content__li'>$item</li>",
                 $blockData->items
             )
         );
 
         return <<<"END"
-                <$listTag class="content-list">$listItems</$listTag>
+                <$listTag class="content__list">$listItems</$listTag>
             END;
     }
 }

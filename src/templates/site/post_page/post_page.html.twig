@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
 
+{% block meta %}
+    {% include 'common/parts/meta.html.twig' with {
+        'title': post.metaTitle,
+        'description': post.metaDescription,
+        'ogTitle': post.ogTitle,
+        'ogDescription': post.ogDescription,
+        'ogImage': host ~ '/uploads/post/' ~ post.ogImage
+    } %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('post-page') }}
+{% endblock %}
+
 {% block content %}
     <article class="content">
-        <h1 class="content__header">{{ slug }}</h1>
+        <h1 class="content__header">{{ post.title }}</h1>
+        <div class="breadcrumbs">
+            <a href="{{ path('app_index_page') }}" class="breadcrumbs__item breadcrumbs__item--link">Home</a> /
+            <a href="{{ path('app_blog_page') }}" class="breadcrumbs__item breadcrumbs__item--link">Our blog</a> /
+            <span class="breadcrumbs__item">{{ post.title }}</span>
+        </div>
+        <div>{{ editorjs_parse(post.content) | raw }}</div>
     </article>
 {% endblock %}

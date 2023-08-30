@@ -32,7 +32,7 @@ class HeaderParserTest extends KernelTestCase
         $parsedHTML = $extension->editorjsParse($fixtureJSON);
 
         $crawler = new Crawler($parsedHTML);
-        $h = $crawler->filter('h2');
+        $h = $crawler->filter('h2.content__header--h2');
         $this->assertCount(1, $h);
         $this->assertEquals('some text', $h->innerText());
     }
@@ -59,7 +59,7 @@ class HeaderParserTest extends KernelTestCase
         $parsedHTML = $extension->editorjsParse($fixtureJSON);
 
         $crawler = new Crawler($parsedHTML);
-        $h = $crawler->filter('h3');
+        $h = $crawler->filter('h3.content__header--h3');
         $this->assertCount(1, $h);
         $this->assertEquals('some text', $h->innerText());
     }

@@ -14,6 +14,7 @@ Encore
     .addStyleEntry('our-cases-page', './assets/site/our-cases-page/our-cases.page.scss')
     .addStyleEntry('blog-page', './assets/site/blog-page/blog.page.scss')
     .addStyleEntry('case-page', './assets/site/case-page/case.page.scss')
+    .addStyleEntry('post-page', './assets/site/post-page/post.page.scss')
     .addEntry('index-page', './assets/site/index-page/index.page.js')
     .addEntry('common', './assets/site/common.js')
     .addEntry('admin', './assets/admin/admin.js')
