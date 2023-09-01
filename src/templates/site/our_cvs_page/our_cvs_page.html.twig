@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Our CVs{% endblock %}
+{% block meta %}
+    {% include 'common/parts/meta.html.twig' with {
+        'title': 'CVs of specialists from our dedicated development team',
+        'description': 'Hire us to build an app or a system for your business to grow. Our company specializing in mobile and web development can help you with the coding part.',
+        'ogTitle': 'CVs of specialists from our dedicated development team',
+        'ogDescription': 'Hire us to build an app or a system for your business to grow. Our company specializing in mobile and web development can help you with the coding part.',
+        'ogImage': host ~ asset('build/images/main-og.webp')
+    } %}
+{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
