@@ -5,6 +5,10 @@
     top: 785px;
     left: 30px;
 
+    &--hidden {
+        display: none;
+    }
+
     &--fixed {
         position: fixed;
         top: 200px;
