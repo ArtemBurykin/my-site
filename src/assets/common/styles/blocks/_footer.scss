@@ -3,6 +3,8 @@
 .footer {
     background-color: $back1-color;
     width: 100%;
+    position: absolute;
+    bottom: 0;
 
     &__text {
         width: 900px;
