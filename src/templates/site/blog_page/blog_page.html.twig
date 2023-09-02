@@ -23,6 +23,7 @@
         <a href="{{ path('app_post_page', { 'slug' : post.seoUrl }) }}" class="blog-item__link">
             <div class="blog-item">
                 <h2 class="blog-item__title">{{ post.title }}</h2>
+                <p class="blog-item__date">{{ post.createdAt |date("Y, M jS \\a\\t g:ia") }}</p>
 
                 <div class="blog-item__data">
                     <p class="blog-item__description">{{ post.description }}</p>

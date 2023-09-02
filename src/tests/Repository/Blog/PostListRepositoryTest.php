@@ -31,7 +31,7 @@ class PostListRepositoryTest extends KernelTestCase
         $post1 = new Post();
         $post1->setSeoUrl('post-1')
             ->setTitle('post 1')
-            ->setCreatedAt(new DateTimeImmutable('-1 day'))
+            ->setCreatedAt(new DateTimeImmutable('2022-08-08'))
             ->setDescription('post 1 desc')
             ->setCategory($category1)
             ->setMainImage('image.png')
@@ -50,7 +50,7 @@ class PostListRepositoryTest extends KernelTestCase
         $post3->setSeoUrl('post-3')
             ->setTitle('post 3')
             ->setDescription('post 3 desc')
-            ->setCreatedAt(new DateTimeImmutable('-1 hour'))
+            ->setCreatedAt(new DateTimeImmutable('2023-01-02'))
             ->setCategory($category1)
             ->setContent('[]');
         $em->persist($post3);
@@ -71,7 +71,8 @@ class PostListRepositoryTest extends KernelTestCase
                 $post3->getSeoUrl(),
                 $post3->getTitle(),
                 $post3->getDescription(),
-                $post3->getMainImage()
+                $post3->getMainImage(),
+                $post3->getCreatedAt()
             ),
             $posts[0]
         );
@@ -82,7 +83,8 @@ class PostListRepositoryTest extends KernelTestCase
                 $post1->getSeoUrl(),
                 $post1->getTitle(),
                 $post1->getDescription(),
-                $post1->getMainImage()
+                $post1->getMainImage(),
+                $post1->getCreatedAt(),
             ),
             $posts[1]
         );
@@ -105,7 +107,7 @@ class PostListRepositoryTest extends KernelTestCase
         $post1 = new Post();
         $post1->setSeoUrl('post-1')
             ->setTitle('post 1')
-            ->setCreatedAt(new DateTimeImmutable('-1 day'))
+            ->setCreatedAt(new DateTimeImmutable('2022-08-08'))
             ->setDescription('post 1 desc')
             ->setCategory($category1)
             ->setMainImage('image.png')
@@ -124,7 +126,7 @@ class PostListRepositoryTest extends KernelTestCase
         $post3->setSeoUrl('post-3')
             ->setTitle('post 3')
             ->setDescription('post 3 desc')
-            ->setCreatedAt(new DateTimeImmutable('-1 hour'))
+            ->setCreatedAt(new DateTimeImmutable('2023-08-08'))
             ->setCategory($category1)
             ->setContent('[]');
         $em->persist($post3);
@@ -133,7 +135,7 @@ class PostListRepositoryTest extends KernelTestCase
         $post4->setSeoUrl('post-4')
             ->setTitle('post 4')
             ->setDescription('post 4 desc')
-            ->setCreatedAt(new DateTimeImmutable('-3 hours'))
+            ->setCreatedAt(new DateTimeImmutable('2023-01-01'))
             ->setContent('[]');
         $em->persist($post4);
 
@@ -141,7 +143,7 @@ class PostListRepositoryTest extends KernelTestCase
         $post5->setSeoUrl('post-5')
             ->setTitle('post 5')
             ->setDescription('post 4 desc')
-            ->setCreatedAt(new DateTimeImmutable('-5 hours'))
+            ->setCreatedAt(new DateTimeImmutable('2022-11-08'))
             ->setCategory($category1)
             ->setContent('[]');
         $em->persist($post5);
@@ -163,7 +165,8 @@ class PostListRepositoryTest extends KernelTestCase
                 $post3->getSeoUrl(),
                 $post3->getTitle(),
                 $post3->getDescription(),
-                $post3->getMainImage()
+                $post3->getMainImage(),
+                $post3->getCreatedAt(),
             ),
             $posts1Page[0]
         );
@@ -174,7 +177,8 @@ class PostListRepositoryTest extends KernelTestCase
                 $post4->getSeoUrl(),
                 $post4->getTitle(),
                 $post4->getDescription(),
-                $post4->getMainImage()
+                $post4->getMainImage(),
+                $post4->getCreatedAt(),
             ),
             $posts1Page[1]
         );
@@ -190,7 +194,8 @@ class PostListRepositoryTest extends KernelTestCase
                 $post5->getSeoUrl(),
                 $post5->getTitle(),
                 $post5->getDescription(),
-                $post5->getMainImage()
+                $post5->getMainImage(),
+                $post5->getCreatedAt(),
             ),
             $posts2Page[0]
         );
@@ -201,7 +206,8 @@ class PostListRepositoryTest extends KernelTestCase
                 $post1->getSeoUrl(),
                 $post1->getTitle(),
                 $post1->getDescription(),
-                $post1->getMainImage()
+                $post1->getMainImage(),
+                $post1->getCreatedAt(),
             ),
             $posts2Page[1]
         );

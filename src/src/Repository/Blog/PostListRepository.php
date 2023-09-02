@@ -68,7 +68,7 @@ class PostListRepository
     private function createBaseQueryBuilder(): QueryBuilder
     {
         $qb = $this->em->createQueryBuilder();
-        $qb->select('p.id, p.seoUrl, p.title, p.description, p.mainImage')
+        $qb->select('p.id, p.seoUrl, p.title, p.description, p.mainImage, p.createdAt')
             ->from(Post::class, 'p')
             ->orderBy('p.createdAt', 'DESC');
 
@@ -86,7 +86,8 @@ class PostListRepository
                 $item['seoUrl'],
                 $item['title'],
                 $item['description'],
-                $item['mainImage']
+                $item['mainImage'],
+                $item['createdAt'],
             ),
             $data
         );

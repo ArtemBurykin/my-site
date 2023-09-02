@@ -2,6 +2,8 @@
 
 namespace App\DTO;
 
+use DateTimeImmutable;
+
 final readonly class PostListItem
 {
     public function __construct(
@@ -10,6 +12,7 @@ final readonly class PostListItem
         public string $title,
         public string $description,
         public ?string $mainImage,
+        public DateTimeImmutable $createdAt,
     ) {
     }
 }

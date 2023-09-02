@@ -32,6 +32,21 @@
     }
   }
 
+  &__date {
+    font-family: $font-family;
+    font-size: $small-font-size;
+    line-height: $small-font-line-height;
+    text-decoration: none;
+    font-weight: 300;
+    color: $font-color;
+    margin: 0;
+
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+
   &__description {
     font-family: $font-family;
     font-size: $font-size-text;
