@@ -1,19 +1,21 @@
-export function themeToggle(toggleId, baseClass) {
-    const markerId = `${toggleId}-marker`;
+// IMHERE: fix the case when there few theme togglers on the page
+export function themeToggle(baseClass) {
     const markerClass = `${baseClass}__marker`;
 
     let currentTheme = null;
 
-    const marker = document.querySelector(`#${markerId}`);
+    const markers = document.querySelectorAll(`.${markerClass}`);
 
     const setMarkerToTheme = (theme) => {
-        if (theme === 'dark') {
-            marker.classList.add(`${markerClass}--dark`);
-            marker.classList.remove(`${markerClass}--light`);
-        } else {
-            marker.classList.add(`${markerClass}--light`);
-            marker.classList.remove(`${markerClass}--dark`);
-        }
+        markers.forEach((marker) => {
+            if (theme === 'dark') {
+                marker.classList.add(`${markerClass}--dark`);
+                marker.classList.remove(`${markerClass}--light`);
+            } else {
+                marker.classList.add(`${markerClass}--light`);
+                marker.classList.remove(`${markerClass}--dark`);
+            }
+        });
     };
 
     const setTheme = (theme, setInStore) => {
@@ -52,7 +54,10 @@ export function themeToggle(toggleId, baseClass) {
 
         setTheme(themeToSet, false);
 
-        document.querySelector(`#${toggleId}`).addEventListener('click', toggleTheme);
+        const toggles = document.querySelectorAll(`.${baseClass}`);
+        toggles.forEach((toggle) => {
+            toggle.addEventListener('click', toggleTheme);
+        });
     };
 
     init();

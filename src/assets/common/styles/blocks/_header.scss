@@ -110,6 +110,13 @@
             padding: 20px;
         }
     }
+
+    &__theme-toggle {
+        &--mobile {
+            margin-top: 30px;
+            justify-content: center;
+        }
+    }
 }
 
 body.dark-theme .header__menu-mobile-icon {
