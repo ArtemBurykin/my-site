@@ -13,6 +13,9 @@
         @include horizontal-mobile {
             font-size: $small-font-size;
             line-height: $small-font-line-height;
+        }
+
+        @include mobile {
             text-align: center;
         }
     }

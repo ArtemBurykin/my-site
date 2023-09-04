@@ -1,0 +1,26 @@
+<section class="content contact-form" id="contact-form">
+    {% if contactFormTitle is defined  %}
+        <h3 class="content__header">{{ contactFormTitle }}</h3>
+    {% endif %}
+
+    <input type="hidden" name="_token" value="{{ csrf_token('contact-form') }}"/>
+
+    <div>
+        <label for="email" class="contact-form__text">Your email:</label>
+        <input class="contact-form__field" type="email" id="email" name="email">
+    </div>
+
+    <div>
+        <label for="theme" class="contact-form__text">Theme:</label>
+        <input class="contact-form__field" type="text" id="theme" name="theme">
+    </div>
+
+    <div>
+        <label for="message" class="contact-form__text">Message:</label>
+        <textarea class="contact-form__field contact-form__field--textarea" id="message" name="message" rows="4"
+                  cols="50"></textarea>
+    </div>
+
+    <div class="btn contact-form__cta" id="contact-form-submit">Contact us</div>
+    <p class="contact-form__status" id="contact-form-status"></p>
+</section>

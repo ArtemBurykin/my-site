@@ -16,6 +16,7 @@ Encore
     .addStyleEntry('case-page', './assets/site/case-page/case.page.scss')
     .addStyleEntry('post-page', './assets/site/post-page/post.page.scss')
     .addEntry('index-page', './assets/site/index-page/index.page.js')
+    .addEntry('contacts-page', './assets/site/contacts-page/contacts.page.js')
     .addEntry('common', './assets/site/common.js')
     .addEntry('admin', './assets/admin/admin.js')
     .enableSassLoader()
