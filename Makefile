@@ -14,7 +14,7 @@ php-connect:
 	docker-compose exec php-fpm sh
 
 run-node:
-	docker-compose run --rm node bash
+	docker-compose run --rm node sh
 
 php-fix:
 	docker compose run --rm php-fpm php vendor/bin/php-cs-fixer fix
