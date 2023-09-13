@@ -9,7 +9,58 @@
 
 <url>
   <loc>https://itech-guild.org/</loc>
-  <lastmod>2023-05-21T12:09:35+00:00</lastmod>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://itech-guild.org/our-cvs</loc>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://itech-guild.org/our-cases</loc>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://itech-guild.org/blog</loc>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://itech-guild.org/contacts</loc>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://itech-guild.org/our-cases/mastera-lms</loc>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://itech-guild.org/our-cases/vocab-memorizer</loc>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://itech-guild.org/our-cases/sso</loc>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://itech-guild.org/blog/way-we-organize-projects</loc>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://itech-guild.org/blog/tdd-reliable-software</loc>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://itech-guild.org/blog/agile-pros-cons</loc>
+  <lastmod>2023-09-13T17:29:20+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
