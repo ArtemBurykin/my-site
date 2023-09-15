@@ -3,6 +3,7 @@ twig:
     globals:
         menu: '%menu%'
         host: '%host%'
+        ga_tracking: G-00000000
     form_themes:
         - 'admin/form/editorjs_widget.html.twig'
 
