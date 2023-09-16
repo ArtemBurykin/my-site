@@ -1,4 +1,3 @@
-// IMHERE: fix the case when there few theme togglers on the page
 export function themeToggle(baseClass) {
     const markerClass = `${baseClass}__marker`;
 

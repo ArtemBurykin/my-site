@@ -9,6 +9,14 @@ export const contactForm = function(formId, baseClass) {
     const submitBtn = form.querySelector(`#${formId}-submit`);
     const statusLabel = form.querySelector(`#${formId}-status`);
 
+    const emitAnalyticsEvent = (name) => {
+        const conversionEvent = new CustomEvent(
+            'analyticsEventOccurred',
+            {detail: {name}}
+        );
+        document.dispatchEvent(conversionEvent);
+    };
+
     /**
      * We'll use it in order to set the listener to mark fields either valid or invalid only once after the form
      * has been submitted.
@@ -36,6 +44,8 @@ export const contactForm = function(formId, baseClass) {
     };
 
     const submitForm = async () => {
+        emitAnalyticsEvent('contact_form_submitted');
+
         const allFormFields = Array.from(form.querySelectorAll('input, textarea'));
 
         const formData = new FormData();
@@ -83,6 +93,8 @@ export const contactForm = function(formId, baseClass) {
         const isFormValid = fields.reduce((isFormValid, field) => isFormValid && isFieldValid(field), true);
 
         if (!isFormValid) {
+            emitAnalyticsEvent('contact_form_invalid');
+
             statusLabel.innerText = 'The form is invalid';
             return;
         }
