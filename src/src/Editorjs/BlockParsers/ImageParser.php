@@ -18,7 +18,7 @@ class ImageParser implements BlockParser
 
         return <<< "END"
             <div class="content__img-container">
-                <img class="content__img" loading="lazy" src="$src" alt="$alt" />
+                <img class="content__img" src="$src" alt="$alt" />
             </div>
             END;
     }

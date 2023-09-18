@@ -3,6 +3,11 @@
 .cv {
   margin-bottom: 30px;
 
+  &__image {
+    width: 200px;
+    height: 223px;
+  }
+
   &__title {
     font-family: $font-family;
     font-size: 1.3rem;
