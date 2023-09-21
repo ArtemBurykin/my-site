@@ -5,7 +5,7 @@ up-build:
 	docker compose up --build -d --remove-orphans
 
 down:
-	docker compose down
+	docker compose down --remove-orphans && docker compose -f docker-compose.prod.yaml down --remove-orphans
 
 restart:
 	make down && make up

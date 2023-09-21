@@ -59,3 +59,8 @@ when@test:
         emailFrom: 'test@example.com'
         host: 'https://host.example'
         postsPerPage: 2
+
+
+when@prod:
+    parameters:
+        .container.dumper.inline_factories: true

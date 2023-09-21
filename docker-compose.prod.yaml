@@ -1,0 +1,79 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+      - "./dumps:/home/dumps"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      LANG: C.UTF-8
+    healthcheck:
+      test: "/usr/bin/mysql --password=$DB_ROOT_PASSWORD --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 120s
+      retries: 60
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+
+  nginx:
+    image: nginx:1.20
+    volumes:
+      - ./src:/home/src
+      - ./logs:/home/logs
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - ${PORT}:80
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    build:
+      context: ./docker/php-fpm
+      dockerfile: Dockerfile.prod
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    volumes:
+      - ./src:/home/src
+    working_dir: /home/src
+    depends_on:
+      - db
+    environment:
+      APP_ENV: prod
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      UID: ${UID}
+      GID: ${GID}
+
+  node:
+    image: node:16.15.1-alpine
+    volumes:
+      - ./src:/home/src
+    working_dir: /home/src
+
+  messenger:
+    build:
+      context: docker/php-fpm
+      dockerfile: Dockerfile.prod
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    environment:
+      APP_ENV: prod
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./src:/home/src
+    depends_on:
+      - db
+    user: ${UID}:${GID}
+    restart: always
+    working_dir: /home/src
+    command: sh -c "php bin/console messenger:consume async"
