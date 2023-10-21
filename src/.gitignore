@@ -19,6 +19,7 @@
 ###< symfony/phpunit-bridge ###
 
 /public/uploads/category/*
+/public/sitemap.xml
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
