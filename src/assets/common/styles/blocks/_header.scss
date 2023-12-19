@@ -5,6 +5,26 @@
     width: 100%;
     box-shadow: 0 0 10px $shadow-color;
 
+    &__logo {
+        width: 100px;
+
+        &--dark {
+            display: none;
+        }
+
+        &--light {
+            display: block;
+        }
+
+        @include horizontal-mobile {
+            width: 70px;
+        }
+
+        @include mobile {
+            margin-left: 10px;
+        }
+    }
+
     @include desktop {
         position: sticky;
     }
@@ -21,11 +41,8 @@
         align-items: center;
 
         @include tablet {
-            width: 700px;
-        }
-
-        @include horizontal-mobile {
-            width: 500px;
+            width: 100%;
+            padding: 0 30px;
         }
 
         @include mobile {
@@ -34,9 +51,10 @@
     }
 
     &__menu {
-        width: calc(100% - 220px);
+        width: calc(100% - 300px);
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
+        gap: 40px;
         align-items: center;
         padding: 25px 0;
 
@@ -45,17 +63,19 @@
         }
 
         @include horizontal-mobile {
-            width: calc(100% - 150px);
+            width: calc(100% - 240px);
+            gap: 20px;
         }
 
         &--mobile {
             display: none;
             width: 100%;
             padding: 10px 20px;
-            text-align: right;
+            justify-content: space-between;
+            align-items: center;
 
             @include mobile {
-                display: block;
+                display: flex;
             }
         }
     }
@@ -125,5 +145,13 @@ body.dark-theme .header__menu-mobile-icon {
 
 body.dark-theme .header__menu-popup-close {
     filter: invert(1);
+}
+
+body.dark-theme .header__logo--dark {
+    display: block;
+}
+
+body.dark-theme .header__logo--light {
+    display: none;
 }
 

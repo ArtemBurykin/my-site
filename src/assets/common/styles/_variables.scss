@@ -1,7 +1,7 @@
 $desktop: 1200px;
 $tablet: 960px;
-$horizonatal-mobile: 768px;
-$mobile: 576px;
+$horizontal-mobile: 768px;
+$mobile: 650px;
 
 @mixin large-screen {
     @media (min-width: #{$desktop}) {
@@ -22,7 +22,7 @@ $mobile: 576px;
 }
 
 @mixin horizontal-mobile {
-    @media (max-width: #{$horizonatal-mobile - 1px}) {
+    @media (max-width: #{$horizontal-mobile - 1px}) {
         @content;
     }
 }
