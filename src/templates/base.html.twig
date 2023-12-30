@@ -36,8 +36,10 @@
 <body>
 <header class="header">
     <div class="header__menu header__menu--mobile">
-        <img src="{{ asset('build/images/logo-dark.svg') }}" class="header__logo header__logo--dark" alt="Itech guild"/>
-        <img src="{{ asset('build/images/logo-light.svg') }}" class="header__logo header__logo--light" alt="Itech guild"/>
+        <a href="/">
+            <img src="{{ asset('build/images/logo-dark.svg') }}" class="header__logo header__logo--dark" alt="Itech guild"/>
+            <img src="{{ asset('build/images/logo-light.svg') }}" class="header__logo header__logo--light" alt="Itech guild"/>
+        </a>
         <img class="header__menu-mobile-icon" id="mobile-menu-show" src="{{ asset('build/images/menu-bar-icon.svg') }}" alt="menu">
         <nav class="header__menu-popup header__menu-popup--hidden">
             <div class="header__menu-popup-close" id="mobile-menu-close">
