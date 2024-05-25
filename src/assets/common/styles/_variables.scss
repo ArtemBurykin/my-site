@@ -42,15 +42,6 @@ $mobile: 650px;
     --shadow-color: #ccc;
 }
 
-body.dark-theme {
-    --background-color: #23263a;
-    --font-color: #fff;
-    --primary-color: #ff4a57;
-    --background-color-1: #212336;
-    --shadow-color: #212336;
-    --background-color-2: #2b2d41;
-}
-
 $primary-color: var(--primary-color);
 $back-color: var(--background-color);
 $font-color: var(--font-color);

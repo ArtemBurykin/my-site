@@ -53,15 +53,6 @@
             {% for item in menu %}
                 <a class="header__menu-item header__menu-item--mobile" href="{{ path(item.path) }}">{{ item.title }}</a>
             {% endfor %}
-            <div class="header__theme-toggle theme-toggle__container header__theme-toggle--mobile">
-                <img class="theme-toggle__icon" alt="light" src="{{ asset('build/images/sun.svg') }}">
-                <div class="theme-toggle" id="theme-toggle">
-                    <div id="theme-toggle-marker"
-                         class="theme-toggle__marker"
-                    ></div>
-                </div>
-                <img class="theme-toggle__icon" alt="dark" src="{{ asset('build/images/moon.svg') }}">
-            </div>
         </nav>
     </div>
 
@@ -75,16 +66,6 @@
                 <a class="header__menu-item" href="{{ path(item.path) }}">{{ item.title }}</a>
             {% endfor %}
         </nav>
-
-        <div class="header__theme-toggle theme-toggle__container">
-            <img class="theme-toggle__icon" alt="light" src="{{ asset('build/images/sun.svg') }}">
-            <div class="theme-toggle" id="theme-toggle">
-                <div id="theme-toggle-marker"
-                     class="theme-toggle__marker"
-                ></div>
-            </div>
-            <img class="theme-toggle__icon" alt="dark" src="{{ asset('build/images/moon.svg') }}">
-        </div>
     </div>
 </header>
 <div class="container">

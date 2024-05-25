@@ -140,20 +140,3 @@
         }
     }
 }
-
-body.dark-theme .header__menu-mobile-icon {
-    filter: invert(1);
-}
-
-body.dark-theme .header__menu-popup-close {
-    filter: invert(1);
-}
-
-body.dark-theme .header__logo--dark {
-    display: block;
-}
-
-body.dark-theme .header__logo--light {
-    display: none;
-}
-
