@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+    {% include 'common/parts/meta.html.twig' with {
+        'title': 'Услуги - АВЕ Системз | Разработка программного обеспечения на заказ, поддержка проектов',
+        'description': 'Разработка программного обеспечения на заказ с использованием PHP, Symfony, JS, HTML, React.',
+        'ogTitle': 'Услуги - АВЕ Системз | Разработка программного обеспечения на заказ, поддержка проектов',
+        'ogDescription': 'Разработка программного обеспечения на заказ с использованием PHP, Symfony, JS, HTML, React.',
+        'ogImage': host ~ asset('build/images/main-og.webp')
+    } %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+        <h1 class="content__header">Наши услуги</h1>
+    </section>
+{% endblock %}
