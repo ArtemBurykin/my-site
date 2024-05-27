@@ -71,13 +71,13 @@ class BlogPageControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertEquals('Our blog', $crawler->filter('h1')->text());
+        $this->assertEquals('Наш блог', $crawler->filter('h1')->text());
 
         $postTitles = $crawler->filter('h2');
         $this->assertCount(2, $postTitles);
         $this->assertEquals('post 3', $postTitles->eq(0)->text());
         $this->assertEquals('post 4', $postTitles->eq(1)->text());
 
-        $this->assertStringContainsString('1 of 2', $crawler->text());
+        $this->assertStringContainsString('1 из 2', $crawler->text());
     }
 }

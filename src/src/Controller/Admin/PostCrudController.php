@@ -7,6 +7,7 @@ use App\Entity\Blog\Post;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -33,6 +34,7 @@ class PostCrudController extends AbstractCrudController
         yield FormField::addTab('Main information');
         yield TextField::new('title')->setRequired(true);
         yield TextField::new('seoUrl')->setRequired(true);
+        yield DateTimeField::new('createdAt')->setRequired(false);
         yield AssociationField::new('category')->setRequired(false);
         yield TextareaField::new('description')->hideOnIndex();
 

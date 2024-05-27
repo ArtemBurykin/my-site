@@ -63,7 +63,7 @@ class OurCasesPageControllerTest extends WebTestCase
         $em->flush();
         $em->clear();
 
-        $crawler = $client->request(Request::METHOD_GET, '/our-cases');
+        $crawler = $client->request(Request::METHOD_GET, '/portfolio');
 
         $this->assertResponseIsSuccessful();
 
