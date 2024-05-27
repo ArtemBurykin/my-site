@@ -2,10 +2,10 @@
 
 {% block meta %}
     {% include 'common/parts/meta.html.twig' with {
-        'title': 'Our Blog | a backend, frontend development team - Itech quild',
-        'description': 'This is blog of our dedicated development team, where we write different posts about our experience, our ideas, and researches.',
-        'ogTitle': 'Our Blog | a backend, fronend development team - Itech guild',
-        'ogDescription': 'This is blog of our dedicated development team, where we write different posts about our experience, our ideas, and researches.',
+        'title': 'Наш блог | АВЕ Системз',
+        'description': 'Здесь мы делимся последними новостями, интересными идеями и подробностями о нашей работе. Получите уникальный взгляд на наш творческий процесс и то, как мы воплощаем идеи в жизнь.',
+        'ogTitle': 'Наш блог | АВЕ Системз',
+        'ogDescription': 'Здесь мы делимся последними новостями, интересными идеями и подробностями о нашей работе. Получите уникальный взгляд на наш творческий процесс и то, как мы воплощаем идеи в жизнь.',
         'ogImage': host ~ asset('build/images/blog-og.webp')
     } %}
 {% endblock %}
@@ -18,7 +18,7 @@
 {% block content %}
     <section class="content">
 
-    <h1 class="content__header">Our blog</h1>
+    <h1 class="content__header">Наш блог</h1>
     {% for post in posts %}
         <a href="{{ path('app_post_page', { 'slug' : post.seoUrl }) }}" class="blog-item__link">
             <div class="blog-item">

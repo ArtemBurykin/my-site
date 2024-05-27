@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/our-cases', name: 'app_our_cases_page')]
+#[Route('/portfolio', name: 'app_our_cases_page')]
 class OurCasesPageController extends AbstractController
 {
     public function __construct(
