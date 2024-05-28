@@ -18,9 +18,6 @@ parameters:
         home:
             path: app_index_page
             title: Главная
-        cvs:
-            path: app_our_cvs_page
-            title: Команда
         cases:
             path: app_our_cases_page
             title: Портфолио
