@@ -25,6 +25,7 @@ class FileUploader
         private readonly string $uploadDir,
         #[Autowire('%maxFileSize%')]
         private readonly int $allowedFileSize,
+        private readonly UniqueIdProviderInterface $uniqueIdProvider,
     ) {
     }
 
@@ -41,7 +42,8 @@ class FileUploader
     {
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $this->slugger->slug($originalFilename);
-        $fileName = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+        $uniqueId = $this->uniqueIdProvider->get();
+        $fileName = $safeFilename.'-'.$uniqueId.'.'.$file->guessExtension();
 
         $allowedSizeInBytes = $this->allowedFileSize * 1024 * 1024;
         if ($file->getSize() > $allowedSizeInBytes) {

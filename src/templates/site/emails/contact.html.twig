@@ -1,3 +1,6 @@
 <p>Email: {{ address }}</p>
-<p>Theme: {{ theme }}</p>
-<p>Message: {{ message }}</p>
+<p>Тема: {{ theme }}</p>
+<p>Сообщение: {{ message }}</p>
+{% if file is not empty %}
+<p>Файл: {{ file }}</p>
+{% endif %}
