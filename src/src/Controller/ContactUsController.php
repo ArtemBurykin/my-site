@@ -32,6 +32,8 @@ class ContactUsController extends AbstractController
         $address = $request->get('email');
         $theme = $request->get('theme');
         $message = $request->get('message');
+        $file = $request->files->get("file");
+        dump($file);
 
         if (!$csrfToken || !$address || !$theme || !$message) {
             throw new BadRequestHttpException('The form is not filled correctly');
@@ -51,7 +53,7 @@ class ContactUsController extends AbstractController
                 'theme' => $theme,
                 'message' => $message,
             ]);
-        $this->mailer->send($email);
+        //$this->mailer->send($email);
 
         return new Response();
     }

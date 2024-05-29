@@ -70,7 +70,7 @@ class ContactUsControllerTest extends WebTestCase
         $this->assertEquals('The csrf token is incorrect', $content['message']);
     }
 
-    public function testSuccessful()
+    public function testSuccessful_WithoutFile()
     {
         $client = static::createClient();
 
@@ -93,8 +93,40 @@ class ContactUsControllerTest extends WebTestCase
         // services.yaml::contactEmail
         $this->assertEmailAddressContains($email, 'to', 'test@example.com');
         $this->assertEmailHtmlBodyContains($email, "Email: $address");
-        $this->assertEmailHtmlBodyContains($email, "Theme: $theme");
-        $this->assertEmailHtmlBodyContains($email, "Message: $message");
+        $this->assertEmailHtmlBodyContains($email, "Тема: $theme");
+        $this->assertEmailHtmlBodyContains($email, "Сообщение: $message");
+    }
+
+    public function testSuccessful_WithFile()
+    {
+        $client = static::createClient();
+
+        $token = 'a_token';
+        $this->setCsrfToken($token);
+
+        $address = 'test@gmail.com';
+        $theme = 'a topic';
+        $message = 'test message';
+
+        $fakeFileName = sys_get_temp_dir().'/image.img';
+        file_put_contents($fakeFileName, '(⌐□_□)');
+        $this->assertFileExists($fakeFileName);
+
+        $client->request(
+            Request::METHOD_POST,
+            $this->getUrl(),
+            ['_token' => $token, 'email' => $address, 'theme' => $theme, 'message' => $message]
+        );
+        $this->assertResponseIsSuccessful();
+
+        $this->assertQueuedEmailCount(1);
+
+        $email = $this->getMailerMessage();
+        // services.yaml::contactEmail
+        $this->assertEmailAddressContains($email, 'to', 'test@example.com');
+        $this->assertEmailHtmlBodyContains($email, "Email: $address");
+        $this->assertEmailHtmlBodyContains($email, "Тема: $theme");
+        $this->assertEmailHtmlBodyContains($email, "Сообщение: $message");
     }
 
     private function getUrl(): string

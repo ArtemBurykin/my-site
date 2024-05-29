@@ -43,6 +43,10 @@ describe('contactForm', () => {
                 <textarea class="${baseClass}__field contact-form__field--textarea" id="message"
                           name="message" rows="4" cols="50"></textarea>
 
+                <label for="file" class="contact-form__label">Field</label>
+                <input class="contact-form__file-input" id="file" type="file"
+                          name="file"/>
+
                 <button class="contact-form__btn" id="form-id-submit">Send message</button>
                 <p class="contact-form__status" id="form-id-status"></p>
             </div>
@@ -56,7 +60,7 @@ describe('contactForm', () => {
         fetch.mockRestore();
     });
 
-    test('success: should send data to the backend', (done) => {
+    test('success: should send data to the backend without file', (done) => {
         global.fetch = jest.fn(() =>
             Promise.resolve({
                 json: () => Promise.resolve(''),
@@ -79,14 +83,64 @@ describe('contactForm', () => {
         expect(formData.get('email')).toBe('test@gmail.com');
         expect(formData.get('theme')).toBe('a theme');
         expect(formData.get('message')).toBe('a message');
+        expect(formData.get('file') instanceof File).toBeFalsy();
         expect(formData.get('_token')).toBe(csrfToken);
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('The message is sent');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Сообщение отправлено!');
 
             expect(document.querySelector(`.${baseClass}__field[name="email"]`).value).toBe('');
             expect(document.querySelector(`.${baseClass}__field[name="theme"]`).value).toBe('');
             expect(document.querySelector(`.${baseClass}__field[name="message"]`).value).toBe('');
+            expect(document.querySelector(`input[name="file"]`).value).toBe('');
+            expect(document.querySelector('input[name="_token"]').value).not.toBe('');
+
+            done();
+        });
+    });
+
+    test('success: should send data to the backend with file', (done) => {
+        global.fetch = jest.fn(() =>
+            Promise.resolve({
+                json: () => Promise.resolve(''),
+                ok: true
+            })
+        );
+
+        fillFields({ email: 'test@gmail.com', theme: 'a theme', message: 'a message' });
+
+        const fileInput = document.querySelector('.contact-form__file-input');
+        const myFile = new File(['Hello World!'], 'myFile.txt', {
+            type: 'text/plain',
+            lastModified: new Date(),
+        });
+        Object.defineProperty(fileInput, 'files',
+            { value: [myFile] }
+        );
+
+        document.querySelector(`#${formId}-submit`).click();
+
+        expect(fetch).toHaveBeenCalledTimes(1);
+
+        expect(fetch.mock.calls[0][0]).toBe(apiUrl);
+
+        const options = fetch.mock.calls[0][1];
+        expect(options.method).toBe('POST');
+
+        const formData = options.body;
+        expect(formData.get('email')).toBe('test@gmail.com');
+        expect(formData.get('theme')).toBe('a theme');
+        expect(formData.get('message')).toBe('a message');
+        expect(formData.get('file') instanceof File).toBeTruthy();
+        expect(formData.get('_token')).toBe(csrfToken);
+
+        setTimeout(() => {
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Сообщение отправлено!');
+
+            expect(document.querySelector(`.${baseClass}__field[name="email"]`).value).toBe('');
+            expect(document.querySelector(`.${baseClass}__field[name="theme"]`).value).toBe('');
+            expect(document.querySelector(`.${baseClass}__field[name="message"]`).value).toBe('');
+            expect(document.querySelector('input[name="file"]').value).toBe('');
             expect(document.querySelector('input[name="_token"]').value).not.toBe('');
 
             done();
@@ -142,7 +196,7 @@ describe('contactForm', () => {
         document.querySelector(`#${formId}-submit`).click();
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('An error occurred');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Произошла ошибка при отправке');
 
             done();
         }, 0);
@@ -161,7 +215,7 @@ describe('contactForm', () => {
         document.querySelector(`#${formId}-submit`).click();
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('An error occurred');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Произошла ошибка при отправке');
 
             done();
         }, 0);
@@ -175,7 +229,7 @@ describe('contactForm', () => {
         expect(fetch).toHaveBeenCalledTimes(0);
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('The form is invalid');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Форма заполнена некорректно');
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
@@ -201,7 +255,7 @@ describe('contactForm', () => {
         expect(fetch).toHaveBeenCalledTimes(0);
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('The form is invalid');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Форма заполнена некорректно');
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
@@ -228,7 +282,7 @@ describe('contactForm', () => {
         expect(fetch).toHaveBeenCalledTimes(0);
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('The form is invalid');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Форма заполнена некорректно');
 
             done();
         }, 0);
@@ -250,10 +304,10 @@ describe('contactForm', () => {
         document.querySelector(`#${formId}-submit`).click();
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Sending...');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Отправка...');
 
             setTimeout(() => {
-                expect(document.querySelector(`#${formId}-status`).innerText).not.toBe('Sending...');
+                expect(document.querySelector(`#${formId}-status`).innerText).not.toBe('Отправка...');
 
                 done();
             }, 5);
@@ -276,10 +330,10 @@ describe('contactForm', () => {
         document.querySelector(`#${formId}-submit`).click();
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Sending...');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Отправка...');
 
             setTimeout(() => {
-                expect(document.querySelector(`#${formId}-status`).innerText).not.toBe('Sending...');
+                expect(document.querySelector(`#${formId}-status`).innerText).not.toBe('Отправка...');
 
                 done();
             }, 5);

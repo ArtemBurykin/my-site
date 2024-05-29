@@ -6,21 +6,31 @@
     <input type="hidden" name="_token" value="{{ csrf_token('contact-form') }}"/>
 
     <div>
-        <label for="email" class="contact-form__text">Your email:</label>
+        <label for="email" class="contact-form__text">Ваш email:</label>
         <input class="contact-form__field" type="email" id="email" name="email">
     </div>
 
     <div>
-        <label for="theme" class="contact-form__text">Theme:</label>
+        <label for="theme" class="contact-form__text">Тема:</label>
         <input class="contact-form__field" type="text" id="theme" name="theme">
     </div>
 
     <div>
-        <label for="message" class="contact-form__text">Message:</label>
+        <label for="message" class="contact-form__text">Сообщение:</label>
         <textarea class="contact-form__field contact-form__field--textarea" id="message" name="message" rows="4"
                   cols="50"></textarea>
     </div>
 
-    <div class="btn contact-form__cta" id="contact-form-submit">Contact us</div>
+    <div>
+        <label for="file" class="contact-form__file-btn">Выберите файл</label>
+        <input class="contact-form__file-input"
+               accept=".jpg, .png, .jpeg, .gif, .webp, .doc, .docx, .xls, .xlsx, .pdf"
+               type="file"
+               id="file"
+               name="file"
+        />
+    </div>
+
+    <div class="btn contact-form__cta" id="contact-form-submit">Отправить</div>
     <p class="contact-form__status" id="contact-form-status"></p>
 </section>

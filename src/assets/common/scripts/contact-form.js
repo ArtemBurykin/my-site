@@ -36,7 +36,11 @@ export const contactForm = function(formId, baseClass) {
     };
 
     const isFieldValid = (field) => {
-        return validatorMap[field.name](field.value);
+        if (validatorMap[field.name]) {
+            return validatorMap[field.name](field.value);
+        }
+
+        return true;
     };
 
     const toggleErrorClassIfFieldIsValid = (field) => {
@@ -50,10 +54,14 @@ export const contactForm = function(formId, baseClass) {
 
         const formData = new FormData();
         allFormFields.forEach((field) => {
-            formData.append(field.name, field.value);
+            if (field.type !== 'file') {
+                formData.append(field.name, field.value);
+            } else if (field.files.length) {
+                formData.append(field.name, field.files[0]);
+            }
         });
 
-        statusLabel.innerText = 'Sending...';
+        statusLabel.innerText = 'Отправка...';
 
         const res = await fetch('/api/contact-us', {
             method: 'POST',
@@ -61,7 +69,7 @@ export const contactForm = function(formId, baseClass) {
         });
 
         if (!res.ok) {
-            const genericError = 'An error occurred';
+            const genericError = 'Произошла ошибка при отправке';
 
             res.json()
                 .then((error) => {
@@ -72,7 +80,12 @@ export const contactForm = function(formId, baseClass) {
         } else {
             const dataFormFields = Array.from(form.querySelectorAll(`.${baseClass}__field`));
             dataFormFields.forEach((field) => field.value = '');
-            statusLabel.innerText = 'The message is sent';
+            form.querySelectorAll('input[type="file"]').forEach((f) => {
+                f.value = null;
+                f.dispatchEvent(new Event('change'));
+            });
+
+            statusLabel.innerText = 'Сообщение отправлено!';
         }
 
         setTimeout(() => statusLabel.innerText = '', 2000);
@@ -95,7 +108,7 @@ export const contactForm = function(formId, baseClass) {
         if (!isFormValid) {
             emitAnalyticsEvent('contact_form_invalid');
 
-            statusLabel.innerText = 'The form is invalid';
+            statusLabel.innerText = 'Форма заполнена некорректно';
             return;
         }
 
