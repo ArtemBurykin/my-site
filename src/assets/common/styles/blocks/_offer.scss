@@ -1,8 +1,9 @@
 @import '../variables';
 
 .offer {
-    margin: 120px auto 0;
+    margin: 120px auto 80px;
     padding-left: 50px;
+    position: relative;
 
     @include tablet {
         margin-top: 80px;
@@ -13,6 +14,7 @@
         font-family: $font-family;
         font-size: 2.3rem;
         font-weight: 400;
+        margin: 30px 0;
         color: $font-color;
 
         @include tablet {
@@ -33,18 +35,20 @@
     &__desc {
         font-family: $font-family;
         font-size: 1.3rem;
-        line-height: 2.2rem;
+        line-height: 1.8rem;
         font-weight: 300;
+        margin-top: 10px;
+        margin-bottom: 10px;
         color: $font-color;
 
         @include tablet {
             font-size: 1.4rem;
-            line-height: 2rem;
+            line-height: 1.8rem;
         }
 
         @include horizontal-mobile {
             font-size: 1rem;
-            line-height: 1.7rem;
+            line-height: 1.3rem;
         }
 
         @include mobile {
@@ -53,6 +57,6 @@
     }
 
     &__cta {
-        margin: 20px 0;
+        margin: 30px 0 20px;
     }
 }
