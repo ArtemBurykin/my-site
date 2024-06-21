@@ -1,0 +1,45 @@
+@import '../variables';
+
+.clients {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__wrapper {
+    width: calc(100% - 100px);
+    overflow-x: scroll;
+    display: flex;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+
+  &__arrow {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background-image: url('../../images/chevron.svg');
+    background-size: contain;
+
+    &--left {
+      transform: rotate(180deg);
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__item {
+    width: 250px;
+    height: 150px;
+    flex-shrink: 0;
+    object-fit: contain;
+
+    @include horizontal-mobile {
+      width: 150px;
+      height: 80px;
+    }
+  }
+}

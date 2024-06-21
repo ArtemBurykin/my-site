@@ -107,41 +107,47 @@
             <span class="content__simple-text--stressed">С 2012 года</span> мы успешно разрабатываем программное
             обеспечение для клиентов из самых разных сфер деятельности.
         </p>
-        <h3 class="content__header content__header--h3">Нам доверяют!</h3>
-        <!-- IMHERE: fix this -->
+        <h3 class="content__header content__header--h3">Некоторые наши клиенты: </h3>
         <div class="clients">
-            <img src="{{ asset('build/images/mastera.svg') }}" class="clients__item" />
-            <img src="{{ asset('build/images/mcrkpo.png') }}" class="clients__item" />
+            <div class="clients__arrow clients__arrow--left"></div>
+            <div class="clients__wrapper">
+                <img src="{{ asset('build/images/bina_logo.png') }}" class="clients__item" />
+                <img src="{{ asset('build/images/mcrkpo.png') }}" class="clients__item" />
+                <img src="{{ asset('build/images/mastera.svg') }}" class="clients__item" />
+                <img src="{{ asset('build/images/birc.png') }}" class="clients__item" />
+                <img src="{{ asset('build/images/rostovcompozit.png') }}" class="clients__item" />
+                <img src="{{ asset('build/images/kfts.png') }}" class="clients__item" />
+                <img src="{{ asset('build/images/asklepius.png') }}" class="clients__item" />
+            </div>
+            <div class="clients__arrow clients__arrow--right"></div>
         </div>
     </section>
 
     <section class="content how-to-work">
-        <h3 class="content__header">How to work with us</h3>
+        <h3 class="content__header">Хотите узнать подробнее?</h3>
 
         <div class="how-to-work__process">
             <div class="how-to-work__step">
                 <p class="how-to-work__dig">1</p>
-                <p class="how-to-work__text">Contact us</p>
+                <p class="how-to-work__text">Запросите расчёт</p>
             </div>
 
             <div class="how-to-work__step how-to-work__step--large">
                 <p class=" how-to-work__dig">2</p>
-                <p class="how-to-work__text">We contact you back and discuss the project (the&nbsp;idea,
-                    tasks to
-                    be done, available options how job can be secured (contracts etc), the contents
-                    of&nbsp;the&nbsp;first
-                    iteration, etc)</p>
+                <p class="how-to-work__text">
+                    Мы свяжемся с Вами, уточним детали проекта, задачи,
+                    которые будет решать портал или приложение, а также ответим на все ваши вопросы.
+                </p>
             </div>
 
             <div class="how-to-work__step">
                 <p class="how-to-work__dig">3</p>
-                <p class="how-to-work__text">Seal the contract and start the first iteration
-                    of&nbsp;the&nbsp;project
+                <p class="how-to-work__text">Отправим Вам расчёт стоимости проекта с необходимыми пояснениями.
                 </p>
             </div>
         </div>
     </section>
 
-    {% include('common/parts/contact-form.html.twig') with {'contactFormTitle': 'Свяжитесь с нами'} %}
+    {% include('common/parts/contact-form.html.twig') with {'contactFormTitle': 'Запросите расчёт'} %}
 
 {% endblock %}
