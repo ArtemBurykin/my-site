@@ -1,0 +1,58 @@
+@import '../variables';
+
+.prices {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  @include horizontal-mobile {
+    grid-template-columns: 1fr;
+  }
+
+  &__item {
+    background: $back2-color;
+    border-radius: 5px;
+    padding: 15px;
+  }
+
+  &__item-title {
+      font-family: $font-family;
+      margin: 0 0 15px;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      font-weight: 400;
+      color: $primary-color;
+
+    @include horizontal-mobile {
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+    }
+  }
+
+  &__item-desc {
+    font-family: $font-family;
+    margin: 0 0 15px;
+    font-size: $font-size-text;
+    line-height: $line-height-base;
+    font-weight: 300;
+    color: $font-color;
+
+    @include horizontal-mobile {
+      font-size: $small-font-size;
+      line-height: $small-font-line-height;
+    }
+  }
+
+  &__item-price {
+    font-family: $font-family;
+    margin: 0 0 15px;
+    font-size: $font-size-text;
+    line-height: $line-height-base;
+    font-weight: 500;
+    color: $font-color;
+
+    @include horizontal-mobile {
+      font-size: $small-font-size;
+      line-height: $small-font-line-height;
+    }
+  }
+}
