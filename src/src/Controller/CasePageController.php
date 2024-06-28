@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/our-cases/{slug}', name: 'app_case_page')]
+#[Route('/portfolio/{slug}', name: 'app_case_page')]
 class CasePageController extends AbstractController
 {
     public function __construct(private readonly PostRepository $postRepository)

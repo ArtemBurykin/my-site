@@ -2,24 +2,24 @@
 
 {% block meta %}
     {% include 'common/parts/meta.html.twig' with {
-        'title': casesCategory.metaTitle,
-        'description': casesCategory.metaDescription,
-        'ogTitle': casesCategory.ogTitle,
-        'ogDescription': casesCategory.ogDescription,
-        'ogImage': host ~ '/uploads/category/' ~ casesCategory.ogImage
+        'title': portfolioCategory.metaTitle,
+        'description': portfolioCategory.metaDescription,
+        'ogTitle': portfolioCategory.ogTitle,
+        'ogDescription': portfolioCategory.ogDescription,
+        'ogImage': host ~ '/uploads/category/' ~ portfolioCategory.ogImage
     } %}
 {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('our-cases-page') }}
+    {{ encore_entry_link_tags('portfolio-page') }}
 {% endblock %}
 
 {% block content %}
     <section class="content">
-        <h1 class="content__header">{{ casesCategory.title }}</h1>
-        {% if casesCategory.description is not null %}
-            <p class="content__simple-text">{{ casesCategory.description }}</p>
+        <h1 class="content__header">{{ portfolioCategory.title }}</h1>
+        {% if portfolioCategory.description is not null %}
+            <p class="content__simple-text">{{ portfolioCategory.description }}</p>
         {% endif %}
         {% for case in cases %}
             <a href="{{ path('app_case_page', { 'slug' : case.seoUrl }) }}" class="blog-item__link">

@@ -16,7 +16,7 @@ class CasePageControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $client->request(Request::METHOD_GET, '/our-cases/other');
+        $client->request(Request::METHOD_GET, '/portfolio/other');
 
         $this->assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
     }
@@ -42,7 +42,7 @@ class CasePageControllerTest extends WebTestCase
         $em->flush();
         $em->clear();
 
-        $crawler = $client->request(Request::METHOD_GET, '/our-cases/post-1');
+        $crawler = $client->request(Request::METHOD_GET, '/portfolio/post-1');
 
         $this->assertResponseIsSuccessful();
 

@@ -9,7 +9,7 @@ use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 
-class OurCasesPageControllerTest extends WebTestCase
+class PortfolioPageControllerTest extends WebTestCase
 {
     use DependenciesTrait;
 

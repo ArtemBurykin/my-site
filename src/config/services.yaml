@@ -13,13 +13,13 @@ parameters:
     feedbackRecipient: '%env(FEEDBACK_RECIPIENT)%'
     emailFrom: '%env(SMTP_SENDER)%'
     router.request_context.host: '%env(HOST)%'
-    casesCategory: 'our-cases'
+    portfolioCategory: 'our-cases'
     menu:
         home:
             path: app_index_page
             title: Главная
         cases:
-            path: app_our_cases_page
+            path: app_portfolio_page
             title: Портфолио
         blog:
             path: app_blog_page
@@ -72,8 +72,6 @@ when@test:
 
         App\Service\UniqueIdProviderInterface:
             '@App\Tests\Utils\UniqueIdProviderStub'
-
-
 
 when@prod:
     parameters:

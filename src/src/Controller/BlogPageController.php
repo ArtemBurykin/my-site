@@ -16,7 +16,7 @@ class BlogPageController extends AbstractController
     public function __construct(
         private readonly PostListRepository $postListRepository,
         private readonly PaginationService $paginationService,
-        #[Autowire('%casesCategory%')]
+        #[Autowire('%portfolioCategory%')]
         private readonly string $casesCategorySlug,
     ) {
     }

@@ -10,7 +10,7 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addStyleEntry('reset-password', './assets/security/reset-password/styles/reset-password.scss')
-    .addStyleEntry('our-cases-page', './assets/site/our-cases-page/our-cases.page.scss')
+    .addStyleEntry('portfolio-page', './assets/site/portfolio-page/portfolio.page.scss')
     .addStyleEntry('blog-page', './assets/site/blog-page/blog.page.scss')
     .addStyleEntry('case-page', './assets/site/case-page/case.page.scss')
     .addStyleEntry('post-page', './assets/site/post-page/post.page.scss')
