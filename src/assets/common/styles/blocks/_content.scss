@@ -139,8 +139,10 @@
         height: 300px;
 
         @include mobile {
-            width: 240px;
-            height: 160px
+            width: 100%;
+            max-width: 450px;
+            max-height: 300px;
+            height: auto;
         }
     }
 
