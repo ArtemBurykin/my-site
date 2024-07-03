@@ -3,6 +3,8 @@ $tablet: 960px;
 $horizontal-mobile: 768px;
 $mobile: 650px;
 
+$border-radius: 6px;
+
 @mixin large-screen {
     @media (min-width: #{$desktop}) {
         @content;
