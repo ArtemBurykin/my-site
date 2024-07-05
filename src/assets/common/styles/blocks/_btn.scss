@@ -11,7 +11,13 @@
     cursor: pointer;
     font-weight: 400;
     color: white;
-    box-shadow: 5px 5px 10px $shadow-color;
+    transition: all 0.3s ease-out;
+    border-radius: $border-radius;
+
+    &:hover {
+        box-shadow: $box-shadow;
+    }
+
     outline: none;
 
     @include horizontal-mobile {

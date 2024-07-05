@@ -4,14 +4,13 @@
     &__step {
         width: 25%;
         background-color: $back2-color;
-        border: 1px solid $primary-color;
+        border-radius: $border-radius;
         padding: 20px;
-        transition: box-shadow 0.2s linear, border 0.2s linear;
+        transition: all 0.3s ease-out;
         cursor: pointer;
 
         &:hover {
-            box-shadow: 5px 5px 10px $shadow-color;
-            border: 1px solid $back2-color;
+            box-shadow: $box-shadow;
         }
 
         @include horizontal-mobile {
