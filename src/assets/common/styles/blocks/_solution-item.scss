@@ -9,57 +9,48 @@
   padding: 16px;
   margin-bottom: 80px;
 
+  @include mobile {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   &__wrapper {
     width: calc(100% - 250px);
+
+    @include mobile {
+      width: 100%;
+      text-align: center;
+      order: 1;
+    }
   }
 
   &__img {
     width: 200px;
     height: 200px;
     border-radius: $border-radius;
+
+    @include mobile {
+      order: 0;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
   }
 
   &__header {
-    font-family: $font-family;
-    font-size: $font-size-header;
-    line-height: 2.5rem;
-    font-weight: 400;
+    @include h2;
     margin: 0 0 10px;
     color: $font-color;
 
-    @include tablet {
-      font-size: 1.8rem;
-    }
-
-    @include horizontal-mobile {
-      font-size: 1.5rem;
-      line-height: 2rem;
-    }
-
     @include mobile {
-      font-size: 1.2rem;
-      line-height: 1.8rem;
+      text-align: center;
     }
   }
 
   &__text {
-      font-family: $font-family;
-      font-size: 1.2rem;
-      line-height: 1.6rem;
-      font-weight: 300;
+    @include big-text;
       margin-top: 10px;
       margin-bottom: 10px;
-      color: $font-color;
-
-      @include tablet {
-        font-size: 1.4rem;
-        line-height: 1.8rem;
-      }
-
-      @include horizontal-mobile {
-        font-size: 1rem;
-        line-height: 1.3rem;
-      }
 
       @include mobile {
         text-align: center;

@@ -39,21 +39,11 @@
   }
 
   &__text {
-    font-family: $font-family;
-    font-size: $font-size-text;
-    line-height: $line-height-base;
-    font-weight: 300;
+    @include plain-text;
     margin: 0;
-    color: $font-color;
-
-    @include horizontal-mobile {
-      font-size: $small-font-size;
-      line-height: $small-font-line-height;
-    }
   }
 
   &__accent {
-      font-weight: 400;
-      color: $primary-color;
+     @include stressed;
   }
 }

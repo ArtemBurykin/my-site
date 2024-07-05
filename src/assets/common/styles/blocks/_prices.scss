@@ -15,44 +15,19 @@
   }
 
   &__item-title {
-      font-family: $font-family;
-      margin: 0 0 15px;
-      font-size: 1.4rem;
-      line-height: 2rem;
-      font-weight: 400;
-      color: $primary-color;
-
-    @include horizontal-mobile {
-      font-size: 1.2rem;
-      line-height: 1.8rem;
-    }
+    @include h3;
+    margin: 0 0 15px;
+    color: $primary-color;
   }
 
   &__item-desc {
-    font-family: $font-family;
+    @include plain-text;
     margin: 0 0 15px;
-    font-size: $font-size-text;
-    line-height: $line-height-base;
-    font-weight: 300;
-    color: $font-color;
-
-    @include horizontal-mobile {
-      font-size: $small-font-size;
-      line-height: $small-font-line-height;
-    }
   }
 
   &__item-price {
-    font-family: $font-family;
+    @include plain-text;
     margin: 0 0 15px;
-    font-size: $font-size-text;
-    line-height: $line-height-base;
     font-weight: 500;
-    color: $font-color;
-
-    @include horizontal-mobile {
-      font-size: $small-font-size;
-      line-height: $small-font-line-height;
-    }
   }
 }

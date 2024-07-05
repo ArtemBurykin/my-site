@@ -57,3 +57,113 @@ $small-font-size: 0.9rem;
 $small-font-line-height: 1.4rem;
 $font-size-header: 1.8rem;
 $box-shadow: 5px 5px 10px $shadow-color;
+
+
+@mixin big-text {
+    font-family: $font-family;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    font-weight: 300;
+    color: $font-color;
+
+    @include horizontal-mobile {
+        font-size: 1.1rem;
+        line-height: 1.3rem;
+    }
+
+    @include mobile {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+}
+
+@mixin plain-text {
+    font-family: $font-family;
+    font-size: $font-size-text;
+    line-height: $line-height-base;
+    font-weight: 300;
+    color: $font-color;
+
+    @include horizontal-mobile {
+        font-size: $small-font-size;
+        line-height: $small-font-line-height;
+    }
+
+}
+
+@mixin stressed {
+    font-weight: 500;
+    color: $primary-color;
+}
+
+@mixin h1 {
+    font-family: $font-family;
+    font-size: 2.3rem;
+    font-weight: 400;
+    color: $font-color;
+    line-height: 2.4rem;
+
+    @include tablet {
+        font-size: 2rem;
+        line-height: 2.1rem;
+    }
+
+    @include horizontal-mobile {
+        font-size: 1.7rem;
+        line-height: 1.8rem;
+    }
+
+    @include mobile {
+        font-size: 1.3rem;
+        line-height: 1.7rem;
+        text-align: center;
+    }
+}
+
+@mixin h2 {
+    font-family: $font-family;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: $primary-color;
+    line-height: 2rem;
+
+    @include tablet {
+        font-size: 1.5rem;
+        line-height: 1.8rem;
+    }
+
+    @include horizontal-mobile {
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+    }
+
+    @include mobile {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        text-align: left;
+    }
+}
+
+@mixin h3 {
+    font-family: $font-family;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: $font-color;
+    line-height: 1.8rem;
+
+    @include tablet {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+    }
+
+    @include horizontal-mobile {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+    }
+
+    @include mobile {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        text-align: left;
+    }
+}

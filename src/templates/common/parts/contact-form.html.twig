@@ -1,6 +1,6 @@
 <section class="content contact-form" id="contact-form">
     {% if contactFormTitle is defined  %}
-        <h3 class="content__header">{{ contactFormTitle }}</h3>
+        <h3 class="content__header content__header--h2">{{ contactFormTitle }}</h3>
     {% endif %}
 
     <input type="hidden" name="_token" value="{{ csrf_token('contact-form') }}"/>
