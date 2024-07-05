@@ -22,38 +22,98 @@
 
 {% block content %}
     <section class="offer">
-        <h1 class="offer__main">
-            Сделаем веб-портал или приложение для вашего бизнеса!</h1>
-
         <h2 class="offer__desc">
-            Предлагаем решения для эффективной коммуникации с клиентами и&nbsp;оптимизации бизнес-процессов.</h2>
-        <h2 class="offer__desc">
-            Учитываем уникальные потребности вашей компании.</h2>
-            <h2 class="offer__desc">Стоимость от 200 000 руб. за индивидуальный проект.
+            Хотите увеличить продажи или повысить узнаваемость бренда в интернете?
         </h2>
+        <h1 class="offer__main">Мы создаем сайты и приложения, которые решают задачи  вашего бизнеса!</h1>
 
-        <div class="btn offer__cta" id="offer-cta">Запросите расчёт</div>
+        <div class="offer__list">
+           <div class="offer__list-item">
+              <div class="offer__list-marker"></div>
+               <div class="offer__list-text">Учитываем уникальные потребности вашей компании.</div>
+           </div>
+            <div class="offer__list-item">
+                <div class="offer__list-marker"></div>
+                <div class="offer__list-text">Вникаем и подбираем эффективные решения.</div>
+            </div>
+            <div class="offer__list-item">
+                <div class="offer__list-marker"></div>
+                <div class="offer__list-text">Стоимость от {n} руб. за индивидуальный проект.</div>
+            </div>
+            <div class="offer__list-item">
+                <div class="offer__list-marker"></div>
+                <div class="offer__list-text">Бесплатная консультация!</div>
+            </div>
+        </div>
+
+        <div class="btn offer__cta" id="offer-cta">Записаться на консультацию</div>
     </section>
 
     <section class="solution content">
-        <div class="content__block-text">
-            <h3 class="content__header content__header--h3">
-                Желаете усилить своё онлайн-присутствие, повысить продажи и закрепить бренд, но не знаете, какие инструменты и стратегии лучше всего подойдут для вашей уникальной ситуации?
-            </h3>
-            <p>
-                Наша команда готова не только разработать для вас веб-портал или приложение, оснащённые эффективными инструментами, но и предоставить консультации по выбору маркетинговых решений, которые будут включены в ваш проект.
-            </p>
-            <p>
-            Мы тщательно анализируем область, в которой вы работаете, и используем экспертные знания для создания продукта, соответствующего вашим потребностям.
-            </p>
-            <h3 class="content__header--h3 content__header">
-                Ваши инвестиции в интернет-маркетинг станут ключом к успеху бизнеса!
-            </h3>
+        <div class="solution-item">
+            <div class="solution-item__wrapper">
+                <h3 class="solution-item__header">
+                    Хотите продавать товары или продукты онлайн?
+                </h3>
+                <p class="solution-item__text">
+                    Создадим интернет-магазин, который будет работать,
+                    а также встроим прозрачный механизм аналитики, который станет надежной платформой для роста продаж!
+                </p>
+            </div>
+            <img class="solution-item__img"
+                 alt="Разработка сайтов (интернет-магазинов)"
+                 src="{{ asset('build/images/online-shop.webp') }}"/>
+        </div>
+
+        <div class="solution-item">
+            <div class="solution-item__wrapper">
+                <h3 class="solution-item__header">
+                    Хотите, чтобы больше людей узнало о вашей компании?
+                </h3>
+                <p class="solution-item__text">
+                    Готовы создать корпоративный сайт, который представит вашу компанию или бренд широкой аудитории,
+                    создаст имидж и принесет новых клиентов для бизнеса.
+                </p>
+            </div>
+            <img class="solution-item__img"
+                 alt="Разработка корпортивного сайта на заказ"
+                 src="{{ asset('build/images/corporate.webp') }}"/>
+        </div>
+
+        <div class="solution-item">
+            <div class="solution-item__wrapper">
+                <h3 class="solution-item__header">
+                    Хотите увеличить вовлеченность текущих клиентов ?
+                </h3>
+                <p class="solution-item__text">
+                    Разработаем мобильное приложение, которое позволит клиентам более комфортно взаимодействовать с вами,
+                    а также получать дополнительную информацию о новых предложениях.
+                    Наличие удобного способа коммуникации с вами - залог роста продаж!
+                </p>
+            </div>
+            <img class="solution-item__img"
+                 alt="Разработка корпортивного сайта на заказ"
+                 src="{{ asset('build/images/corporate.webp') }}"/>
+        </div>
+
+        <div class="solution-item">
+            <div class="solution-item__wrapper">
+                <h3 class="solution-item__header">
+                    Хотите увеличить продажи продукта или услуги?
+                </h3>
+                <p class="solution-item__text">
+                    Создадим посадочную страницу, которая будет учитывать
+                    все преимущества вашего бизнеса и заключит их в единый эффективны маркетинговый инструмент.
+                </p>
+            </div>
+            <img class="solution-item__img"
+                 alt="Разработка корпортивного сайта на заказ"
+                 src="{{ asset('build/images/corporate.webp') }}"/>
         </div>
     </section>
 
     <section class="content about-us">
-        <h3 id="about-company" class="content__header">Немного о нас</h3>
+        <h2 id="about-company" class="content__header content__header--h2">Немного о нас</h2>
         <p class="content__simple-text">
             Наша компания — команда профессионалов с более чем 10-летним
             опытом в разработке веб-порталов и приложений.
@@ -109,7 +169,7 @@
         </p>
     </section>
     <section class="content clients-block">
-        <h3 id="about-company" class="content__header">Некоторые наши клиенты:</h3>
+        <h3 id="about-company" class="content__header content__header--h2">Некоторые наши клиенты:</h3>
         <div class="clients">
             <div class="clients__arrow clients__arrow--left"></div>
             <div class="clients__wrapper">
@@ -125,51 +185,53 @@
         </div>
     </section>
     <section class="content prices-block">
-        <h3 class="content__header">Наша ценовая политика</h3>
+        <h3 class="content__header content__header--h2">Наша ценовая политика</h3>
+        <p class="content__simple-text">
+            Здесь мы приводим примерные цены на типичные услуги компании.
+            Однако, перечень наших услуг не ограничивается перечисленным.
+        </p>
         <div class="prices">
             <div class="prices__item">
-                <h4 class="prices__item-title">Базовый информационный портал</h4>
-                <div class="prices__item-desc">3 основных страницы (каждая из страниц может содержать до 10 различных информационных блоков), административная панель.</div>
+                <h4 class="prices__item-title">Базовый копоративный сайт</h4>
+                <div class="prices__item-desc">Сайт компании или бренда, представляющий всю необходимую информацию для
+                    успешного позиционирования компании в интернете.</div>
                 <div class="prices__item-price">от {n}</div>
             </div>
             <div class="prices__item">
-                <h4 class="prices__item-title">Добавление дополнительных основных страниц</h4>
-                <div class="prices__item-desc">Основная страница - страница на подобие главной или страницы услуг, продуктов. Например - каталог товаров.</div>
-                <div class="prices__item-price">от {n} рублей за страницу</div>
+                <h4 class="prices__item-title">Интернет-магазин</h4>
+                <div class="prices__item-desc">Сайт по продаже товаров и услуг в интернете.
+                    Обычно состоит из каталога товаров, где пользователь может выбирать товары, а также корзины с возможностью оплаты.</div>
+                <div class="prices__item-price">от {n}</div>
             </div>
             <div class="prices__item">
-                <h4 class="prices__item-title">Адаптивная версия портала</h4>
-                <div class="prices__item-desc">Создание веб-версии портала для мобильных устройств.</div>
-                <div class="prices__item-price">от {n} рублей</div>
+                <h3 class="prices__item-title">Информационный портал</h3>
+                <div class="prices__item-desc">
+                    Создание сайта с наличием информации различного рода в большом количестве.
+                    Обычно обладает продвинутым механизмом поиска информации.</div>
+                <div class="prices__item-price">от {n}</div>
             </div>
             <div class="prices__item">
-                <h3 class="prices__item-title">Личный кабинет пользователя портала</h3>
-                <div class="prices__item-desc">Добавление различных типов пользователя, для каждого из которых представлена своя информация или логика.</div>
-                <div class="prices__item-price">от {n} рублей</div>
-            </div>
-            <div class="prices__item">
-                <h4 class="prices__item-title">Мобильные приложения</h4>
-                <div class="prices__item-desc">Мобильные приложения позволяют представить часть функционала портала в виде
-                    более удобном для использования на мобильных устройствах.</div>
-                <div class="prices__item-price">от {n} рублей</div>
+                <h4 class="prices__item-title">Мобильное приложение</h4>
+                <div class="prices__item-desc">Приложение под iOS и/или Android, предоставляющее какой-либо сервис или автоматизирующее процесс.</div>
+                <div class="prices__item-price">от {n}</div>
             </div>
             <div class="prices__item">
                 <h4 class="prices__item-title">Единая точка входа</h4>
                 <div class="prices__item-desc">Один логин и пароль для доступа ко всем системам и сервисам компании.
                     Упрощает процесс авторизации и повышает удобство использования портала.</div>
-                <div class="prices__item-price">от {n} рублей</div>
+                <div class="prices__item-price">от {n}</div>
             </div>
             <div class="prices__item">
                 <h3 class="prices__item-title">Хранилище файлов</h3>
                 <div class="prices__item-desc">Организация хранилища файлов на портале с возможностью полного управления ими
                     (удаления, добавления, изменения) средствами портала.</div>
-                <div class="prices__item-price">от {n} рублей</div>
+                <div class="prices__item-price">от {n}</div>
             </div>
         </div>
     </section>
 
     <section class="content how-to-work">
-        <h3 class="content__header">Хотите узнать подробнее?</h3>
+        <h3 class="content__header content__header--h2">Хотите узнать подробнее?</h3>
 
         <div class="how-to-work__process">
             <div class="how-to-work__step">
@@ -180,8 +242,7 @@
             <div class="how-to-work__step how-to-work__step--large">
                 <p class=" how-to-work__dig">2</p>
                 <p class="how-to-work__text">
-                    Мы свяжемся с Вами, уточним детали проекта, задачи,
-                    которые будет решать портал или приложение, а также ответим на все ваши вопросы.
+                    Мы свяжемся с Вами, уточним подробности задач, который должен будет решать сайт или приложение, а также ответим на все ваши вопросы.
                 </p>
             </div>
 

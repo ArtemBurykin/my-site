@@ -2,8 +2,10 @@
 
 .prices {
   display: grid;
+  margin-top: 20px;
   grid-gap: 20px;
   grid-template-columns: 1fr 1fr;
+
   @include horizontal-mobile {
     grid-template-columns: 1fr;
   }
@@ -12,6 +14,12 @@
     background: $back2-color;
     border-radius: $border-radius;
     padding: 15px;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: $box-shadow;
+    }
   }
 
   &__item-title {
