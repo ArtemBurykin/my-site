@@ -24,12 +24,6 @@ parameters:
         blog:
             path: app_blog_page
             title: Блог
-        services:
-            path: app_services_page
-            title: Услуги
-        products:
-            path: app_products_page
-            title: Продукты
         contacts:
             path: app_contacts_page
             title: Контакты

@@ -4,6 +4,7 @@
     background-color: $back1-color;
     width: 100%;
     box-shadow: 0 0 10px $shadow-color;
+    position: sticky;
 
     &__logo {
         height: 60px;
@@ -51,19 +52,17 @@
     }
 
     &__menu {
-        width: calc(100% - 300px);
         display: flex;
         justify-content: flex-end;
         gap: 30px;
         align-items: center;
-        padding: 25px 0;
+        padding: 15px 0;
 
         @include tablet {
-            padding: 18px 0;
+            padding: 10px 0;
         }
 
         @include horizontal-mobile {
-            width: calc(100% - 240px);
             gap: 15px;
         }
 

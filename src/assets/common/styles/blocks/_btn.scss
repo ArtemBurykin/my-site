@@ -14,6 +14,11 @@
     transition: $transition;
     border-radius: $border-radius;
 
+    &--small {
+        padding: 0 20px;
+        font-size: $font-size-text;
+    }
+
     &:hover {
         box-shadow: $box-shadow;
         opacity: 0.9;
@@ -24,11 +29,21 @@
     @include horizontal-mobile {
         font-size: 1.2rem;
         line-height: 2.5rem;
+
+        &--small {
+            padding: 0 20px;
+            font-size: $small-font-size;
+        }
     }
 
     @include mobile {
         font-size: 1rem;
         display: block;
         padding: 10px 30px;
+
+        &--small {
+            padding: 0 20px;
+            font-size: $small-font-size;
+        }
     }
 }
