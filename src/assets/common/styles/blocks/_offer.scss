@@ -11,8 +11,8 @@
     }
 
     &__main {
-        @include h1;
-        margin: 20px 0 50px;
+        @include large-h1;
+        margin: 30px 0;
     }
 
     &__desc {
@@ -26,13 +26,13 @@
     }
 
     &__cta {
-        margin: 50px 0 20px;
+        margin: 30px 0 20px;
     }
 
     &__list-item {
         display: flex;
         margin-left: 20px;
-        align-items: center;
+        align-items: baseline;
 
         @include horizontal-mobile {
             margin-bottom: 10px;
