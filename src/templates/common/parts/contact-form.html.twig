@@ -1,36 +1,30 @@
-<section class="content contact-form" id="contact-form">
+{% if modifierClass is not defined %}
+    {% set modifierClass = '' %}
+{% endif %}
+
+<section class="contact-form" id="{{ formId }}">
     {% if contactFormTitle is defined  %}
         <h3 class="content__header content__header--h2">{{ contactFormTitle }}</h3>
     {% endif %}
 
     <input type="hidden" name="_token" value="{{ csrf_token('contact-form') }}"/>
 
-    <div>
-        <label for="email" class="contact-form__text">Ваш email:</label>
-        <input class="contact-form__field" type="email" id="email" name="email">
-    </div>
+    <div class="contact-form__container {{ modifierClass }}">
+        <div>
+            <input class="contact-form__field" type="email" id="email" name="email" placeholder="Email*">
+        </div>
 
-    <div>
-        <label for="theme" class="contact-form__text">Тема:</label>
-        <input class="contact-form__field" type="text" id="theme" name="theme">
-    </div>
+        <div>
+            <input class="contact-form__field" type="email" id="telegram" name="telegram" placeholder="Ваш телеграм">
+        </div>
 
-    <div>
-        <label for="message" class="contact-form__text">Сообщение:</label>
-        <textarea class="contact-form__field contact-form__field--textarea" id="message" name="message" rows="4"
-                  cols="50"></textarea>
-    </div>
+        <div>
+            <textarea class="contact-form__field contact-form__field--textarea" id="message" name="message" rows="4"
+                      placeholder="Что хотите обсудить?*"
+                      cols="50"></textarea>
+        </div>
 
-    <div>
-        <label for="file" class="contact-form__file-btn">Выберите файл</label>
-        <input class="contact-form__file-input"
-               accept=".jpg, .png, .jpeg, .gif, .webp, .doc, .docx, .xls, .xlsx, .pdf"
-               type="file"
-               id="file"
-               name="file"
-        />
+        <div class="btn contact-form__cta" id="{{ formId }}-submit">Отправить</div>
+        <p class="contact-form__status" id="{{ formId }}-status"></p>
     </div>
-
-    <div class="btn contact-form__cta" id="contact-form-submit">Отправить</div>
-    <p class="contact-form__status" id="contact-form-status"></p>
 </section>

@@ -10,14 +10,10 @@ describe('contactForm', () => {
     const baseClass = 'contact-form';
     const errorClass = `${baseClass}__field--error`;
 
-    const fillFields = ({email, theme, message}) => {
+    const fillFields = ({email, message}) => {
         const emailField = document.querySelector(`.${baseClass}__field[name="email"]`);
         emailField.value = email;
         emailField.dispatchEvent(new Event('change'));
-
-        const themeField = document.querySelector(`.${baseClass}__field[name="theme"]`);
-        themeField.value = theme;
-        themeField.dispatchEvent(new Event('change'));
 
         const messageField = document.querySelector(`.${baseClass}__field[name="message"]`);
         messageField.value = message;
@@ -35,9 +31,6 @@ describe('contactForm', () => {
 
                 <label for="email" class="contact-form__label">Your email:</label>
                 <input class="${baseClass}__field" type="email" id="email" name="email"/>
-
-                <label for="theme" class="contact-form__label">Theme</label>
-                <input class="${baseClass}__field" type="text" id="theme" name="theme"/>
 
                 <label for="message" class="contact-form__label">Message</label>
                 <textarea class="${baseClass}__field contact-form__field--textarea" id="message"
@@ -68,7 +61,7 @@ describe('contactForm', () => {
             })
         );
 
-        fillFields({ email: 'test@gmail.com', theme: 'a theme', message: 'a message' });
+        fillFields({ email: 'test@gmail.com', message: 'a message' });
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -81,7 +74,6 @@ describe('contactForm', () => {
 
         const formData = options.body;
         expect(formData.get('email')).toBe('test@gmail.com');
-        expect(formData.get('theme')).toBe('a theme');
         expect(formData.get('message')).toBe('a message');
         expect(formData.get('file') instanceof File).toBeFalsy();
         expect(formData.get('_token')).toBe(csrfToken);
@@ -90,7 +82,6 @@ describe('contactForm', () => {
             expect(document.querySelector(`#${formId}-status`).innerText).toBe('Сообщение отправлено!');
 
             expect(document.querySelector(`.${baseClass}__field[name="email"]`).value).toBe('');
-            expect(document.querySelector(`.${baseClass}__field[name="theme"]`).value).toBe('');
             expect(document.querySelector(`.${baseClass}__field[name="message"]`).value).toBe('');
             expect(document.querySelector(`input[name="file"]`).value).toBe('');
             expect(document.querySelector('input[name="_token"]').value).not.toBe('');
@@ -107,7 +98,7 @@ describe('contactForm', () => {
             })
         );
 
-        fillFields({ email: 'test@gmail.com', theme: 'a theme', message: 'a message' });
+        fillFields({ email: 'test@gmail.com', message: 'a message' });
 
         const fileInput = document.querySelector('.contact-form__file-input');
         const myFile = new File(['Hello World!'], 'myFile.txt', {
@@ -129,7 +120,6 @@ describe('contactForm', () => {
 
         const formData = options.body;
         expect(formData.get('email')).toBe('test@gmail.com');
-        expect(formData.get('theme')).toBe('a theme');
         expect(formData.get('message')).toBe('a message');
         expect(formData.get('file') instanceof File).toBeTruthy();
         expect(formData.get('_token')).toBe(csrfToken);
@@ -138,7 +128,6 @@ describe('contactForm', () => {
             expect(document.querySelector(`#${formId}-status`).innerText).toBe('Сообщение отправлено!');
 
             expect(document.querySelector(`.${baseClass}__field[name="email"]`).value).toBe('');
-            expect(document.querySelector(`.${baseClass}__field[name="theme"]`).value).toBe('');
             expect(document.querySelector(`.${baseClass}__field[name="message"]`).value).toBe('');
             expect(document.querySelector('input[name="file"]').value).toBe('');
             expect(document.querySelector('input[name="_token"]').value).not.toBe('');
@@ -155,7 +144,7 @@ describe('contactForm', () => {
             })
         );
 
-        fillFields({ email: 'test@gmail.com', theme: 'a theme', message: 'a message' });
+        fillFields({ email: 'test@gmail.com', message: 'a message' });
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -168,13 +157,11 @@ describe('contactForm', () => {
 
         const formData = options.body;
         expect(formData.get('email')).toBe('test@gmail.com');
-        expect(formData.get('theme')).toBe('a theme');
         expect(formData.get('message')).toBe('a message');
         expect(formData.get('_token')).toBe(csrfToken);
 
         setTimeout(() => {
             expect(document.querySelector(`.${baseClass}__field[name="email"]`).value).toBe('test@gmail.com');
-            expect(document.querySelector(`.${baseClass}__field[name="theme"]`).value).toBe('a theme');
             expect(document.querySelector(`.${baseClass}__field[name="message"]`).value).toBe('a message');
 
             expect(document.querySelector(`#${formId}-status`).innerText).toBe('The process failed');
@@ -191,7 +178,7 @@ describe('contactForm', () => {
             })
         );
 
-        fillFields({ email: 'test@gmail.com', theme: 'a theme', message: 'a message' });
+        fillFields({ email: 'test@gmail.com', message: 'a message' });
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -210,7 +197,7 @@ describe('contactForm', () => {
             })
         );
 
-        fillFields({ email: 'test@gmail.com', theme: 'a theme', message: 'a message' });
+        fillFields({ email: 'test@gmail.com', message: 'a message' });
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -222,7 +209,7 @@ describe('contactForm', () => {
     });
 
     test('fields are empty: should show errors', (done) => {
-        fillFields({ email: '', theme: '', message: '' });
+        fillFields({ email: '', message: '' });
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -233,10 +220,6 @@ describe('contactForm', () => {
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
-            ).toBe(true);
-
-            expect(
-                document.querySelector(`.${baseClass}__field[name="theme"]`).classList.contains(errorClass)
             ).toBe(true);
 
             expect(
@@ -248,7 +231,7 @@ describe('contactForm', () => {
     });
 
     test('the email is invalid: should show the error', (done) => {
-        fillFields({ email: 'test', theme: 'test', message: 'test' });
+        fillFields({ email: 'test', message: 'test' });
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -262,10 +245,6 @@ describe('contactForm', () => {
             ).toBe(true);
 
             expect(
-                document.querySelector(`.${baseClass}__field[name="theme"]`).classList.contains(errorClass)
-            ).toBe(false);
-
-            expect(
                 document.querySelector(`.${baseClass}__field[name="message"]`).classList.contains(errorClass)
             ).toBe(false);
 
@@ -275,7 +254,7 @@ describe('contactForm', () => {
 
     test('the csrfToken is empty', (done) => {
         document.querySelector('input[name="_token"]').value = '';
-        fillFields({ email: 'test', theme: 'test', message: 'test' });
+        fillFields({ email: 'test', message: 'test' });
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -299,7 +278,7 @@ describe('contactForm', () => {
             ))
         );
 
-        fillFields({ email: 'test@gmail.com', theme: 'a theme', message: 'a message' });
+        fillFields({ email: 'test@gmail.com', message: 'a message' });
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -325,7 +304,7 @@ describe('contactForm', () => {
             ))
         );
 
-        fillFields({ email: 'test@gmail.com', theme: 'a theme', message: 'a message' });
+        fillFields({ email: 'test@gmail.com', message: 'a message' });
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -341,14 +320,10 @@ describe('contactForm', () => {
     });
 
     test('if the form has not been submitted should not add error classes while changing values', () => {
-        fillFields({ email: '', theme: '', message: '' });
+        fillFields({ email: '', message: '' });
 
         expect(
             document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
-        ).toBe(false);
-
-        expect(
-            document.querySelector(`.${baseClass}__field[name="theme"]`).classList.contains(errorClass)
         ).toBe(false);
 
         expect(
@@ -357,7 +332,7 @@ describe('contactForm', () => {
     });
 
     test('if the form has been submitted should add error classes while changing values', (done) => {
-        fillFields({ email: '', theme: '', message: '' });
+        fillFields({ email: '', message: '' });
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -367,35 +342,23 @@ describe('contactForm', () => {
             ).toBe(true);
 
             expect(
-                document.querySelector(`.${baseClass}__field[name="theme"]`).classList.contains(errorClass)
-            ).toBe(true);
-
-            expect(
                 document.querySelector(`.${baseClass}__field[name="message"]`).classList.contains(errorClass)
             ).toBe(true);
 
-            fillFields({ email: 'test', theme: 'test', message: 'test' });
+            fillFields({ email: 'test', message: 'test' });
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
             ).toBe(true);
 
             expect(
-                document.querySelector(`.${baseClass}__field[name="theme"]`).classList.contains(errorClass)
-            ).toBe(false);
-
-            expect(
                 document.querySelector(`.${baseClass}__field[name="message"]`).classList.contains(errorClass)
             ).toBe(false);
 
-            fillFields({ email: 'test@gmail.com', theme: 'test', message: 'test' });
+            fillFields({ email: 'test@gmail.com', message: 'test' });
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
-            ).toBe(false);
-
-            expect(
-                document.querySelector(`.${baseClass}__field[name="theme"]`).classList.contains(errorClass)
             ).toBe(false);
 
             expect(

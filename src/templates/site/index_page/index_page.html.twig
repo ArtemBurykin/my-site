@@ -254,6 +254,8 @@
         </div>
     </section>
 
-    {% include('common/parts/contact-form.html.twig') with {'contactFormTitle': 'Запросите расчёт'} %}
+    <div class="content">
+        {% include('common/parts/contact-form.html.twig') with {'contactFormTitle': 'Обсудить проект', 'formId': 'contact-form'} %}
+    </div>
 
 {% endblock %}

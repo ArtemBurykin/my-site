@@ -29,5 +29,7 @@
         <p class="content__simple-text">Телеграм: <a target="_blank" href="https://t.me/Avburykin" rel="nofollow">@avburykin</a></p>
         <p class="content__simple-text">Email: <a href="mailto: info@avesystems.ru">info@avesystems.ru</a></p>
     </section>
-    {% include('common/parts/contact-form.html.twig') %}
+    <div class="content">
+        {% include('common/parts/contact-form.html.twig') with {formId: 'contact-form'} %}
+    </div>
 {% endblock %}

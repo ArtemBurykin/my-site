@@ -31,7 +31,6 @@ export const contactForm = function(formId, baseClass) {
     const validatorMap = {
         _token: (value) => value !== '',
         email: (value) => value !== '' && isValueCorrectEmail(value),
-        theme: (value) => value !== '',
         message: (value) => value !== ''
     };
 

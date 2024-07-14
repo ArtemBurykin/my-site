@@ -1,0 +1,44 @@
+@import '../variables';
+.popup {
+  display: none;
+
+  &--open {
+    display: block;
+  }
+
+  &__form {
+    border-radius: $border-radius;
+    max-width: 350px;
+    width: 100%;
+    position: absolute;
+    padding: 40px 15px 0;
+    top: 100px;
+    transition: top 0.3s ease-out;
+    height: auto;
+    overflow-y: auto;
+    left: calc(50% - 150px);
+    background: white;
+    z-index: 20;
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    cursor: pointer;
+    height: 15px;
+    right: 15px;
+    width: 15px;
+  }
+
+
+  &__overlay {
+    overflow: hidden;
+    background: rgba(0,0,0,0.2);
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+}

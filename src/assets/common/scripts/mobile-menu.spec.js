@@ -3,7 +3,7 @@
  */
 import {mobileMenu} from './mobile-menu';
 
-describe('themeToggle', () => {
+describe('mobileMenu', () => {
     beforeEach(() => {
         document.body.innerHTML = `
             <body>
