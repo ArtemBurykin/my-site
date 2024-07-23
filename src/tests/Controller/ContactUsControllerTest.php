@@ -2,10 +2,7 @@
 
 namespace App\Tests\Controller;
 
-use App\Service\UniqueIdProviderInterface;
-use App\Tests\Utils\UniqueIdProviderStub;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -20,22 +17,17 @@ class ContactUsControllerTest extends WebTestCase
         return [
             'no token' => [[
                 'email' => 'test@gmail.com',
-                'theme' => 'a theme',
+                'telegram' => '@tel',
                 'message' => 'test message',
             ]],
             'no email' => [[
                 '_token' => 'token',
-                'theme' => 'a theme',
-                'message' => 'test message',
-            ]],
-            'no theme' => [[
-                '_token' => 'token',
-                'email' => 'test@gmail.com',
+                'telegram' => '@tel',
                 'message' => 'test message',
             ]],
             'no message' => [[
                 '_token' => 'token',
-                'theme' => 'a theme',
+                'telegram' => '@tel',
                 'email' => 'test@gmail.com',
             ]],
         ];
@@ -64,7 +56,7 @@ class ContactUsControllerTest extends WebTestCase
         $client->request(
             Request::METHOD_POST,
             $this->getUrl(),
-            ['_token' => 'other', 'email' => 'test@gmail.com', 'theme' => 'topic', 'message' => 'test']
+            ['_token' => 'other', 'email' => 'test@gmail.com', 'telegram' => '@tel', 'message' => 'test']
         );
 
         $this->assertResponseStatusCodeSame(Response::HTTP_BAD_REQUEST);
@@ -73,7 +65,7 @@ class ContactUsControllerTest extends WebTestCase
         $this->assertEquals('The csrf token is incorrect', $content['message']);
     }
 
-    public function testSuccessfulWithoutFile()
+    public function testSuccessfulWithTelegram()
     {
         $client = static::createClient();
 
@@ -81,12 +73,12 @@ class ContactUsControllerTest extends WebTestCase
         $this->setCsrfToken($token);
 
         $address = 'test@gmail.com';
-        $theme = 'a topic';
+        $telegram = '@tel';
         $message = 'test message';
         $client->request(
             Request::METHOD_POST,
             $this->getUrl(),
-            ['_token' => $token, 'email' => $address, 'theme' => $theme, 'message' => $message]
+            ['_token' => $token, 'email' => $address, 'telegram' => $telegram, 'message' => $message]
         );
         $this->assertResponseIsSuccessful();
 
@@ -96,37 +88,25 @@ class ContactUsControllerTest extends WebTestCase
         // services.yaml::contactEmail
         $this->assertEmailAddressContains($email, 'to', 'test@example.com');
         $this->assertEmailHtmlBodyContains($email, "Email: $address");
-        $this->assertEmailHtmlBodyContains($email, "Тема: $theme");
+        $this->assertEmailHtmlBodyContains($email, "Телеграм: $telegram");
         $this->assertEmailHtmlBodyContains($email, "Сообщение: $message");
     }
 
-    public function testSuccessfulWithFile()
+    public function testSuccessfulWithoutTelegram()
     {
         $client = static::createClient();
-        /** @var UniqueIdProviderStub $uniqIdProviderStub */
-        $uniqIdProviderStub = static::getContainer()->get(UniqueIdProviderInterface::class);
-        $uniqIdProviderStub->setId('123');
 
         $token = 'a_token';
         $this->setCsrfToken($token);
 
         $address = 'test@gmail.com';
-        $theme = 'a topic';
         $message = 'test message';
-
-        $fakeFileName = sys_get_temp_dir().'/text.txt';
-        file_put_contents($fakeFileName, '(⌐□_□)');
-        $this->assertFileExists($fakeFileName);
-
         $client->request(
             Request::METHOD_POST,
             $this->getUrl(),
-            ['_token' => $token, 'email' => $address, 'theme' => $theme, 'message' => $message],
-            ['file' => new UploadedFile($fakeFileName, 'text.txt', 'text/plain')]
+            ['_token' => $token, 'email' => $address, 'message' => $message]
         );
         $this->assertResponseIsSuccessful();
-
-        $this->assertFileExists('public/uploads/user-files/text-123.txt');
 
         $this->assertQueuedEmailCount(1);
 
@@ -134,12 +114,8 @@ class ContactUsControllerTest extends WebTestCase
         // services.yaml::contactEmail
         $this->assertEmailAddressContains($email, 'to', 'test@example.com');
         $this->assertEmailHtmlBodyContains($email, "Email: $address");
-        $this->assertEmailHtmlBodyContains($email, "Тема: $theme");
+        $this->assertEmailHtmlBodyContains($email, "Телеграм: ");
         $this->assertEmailHtmlBodyContains($email, "Сообщение: $message");
-        // @see services.yaml::host
-        $this->assertEmailHtmlBodyContains($email, 'Файл: https://host.example/uploads/user-files/text-123.txt');
-
-        unlink('public/uploads/user-files/text-123.txt');
     }
 
     private function getUrl(): string

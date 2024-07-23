@@ -25,9 +25,6 @@ class ContactUsController extends AbstractController
         #[Autowire('%emailFrom%')]
         private readonly string $emailFrom,
         private readonly MailerInterface $mailer,
-        private readonly FileUploader $fileUploader,
-        #[Autowire('%host%')]
-        private readonly string $host,
     ) {
     }
 
@@ -35,17 +32,10 @@ class ContactUsController extends AbstractController
     {
         $csrfToken = $request->get('_token');
         $address = $request->get('email');
-        $theme = $request->get('theme');
         $message = $request->get('message');
-        $file = $request->files->get('file');
+        $telegram = $request->get('telegram', '');
 
-        $filePath = null;
-        if ($file) {
-            $filename = $this->fileUploader->uploadFile($file, 'user-files');
-            $filePath = $this->host.'/uploads/user-files/'.$filename;
-        }
-
-        if (!$csrfToken || !$address || !$theme || !$message) {
+        if (!$csrfToken || !$address || !$message) {
             throw new BadRequestHttpException('The form is not filled correctly');
         }
 
@@ -60,9 +50,8 @@ class ContactUsController extends AbstractController
             ->htmlTemplate('site/emails/contact.html.twig')
             ->context([
                 'address' => $address,
-                'theme' => $theme,
                 'message' => $message,
-                'file' => $filePath,
+                'telegram' => $telegram,
             ]);
         $this->mailer->send($email);
 
