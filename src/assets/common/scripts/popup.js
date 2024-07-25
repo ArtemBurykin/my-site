@@ -8,16 +8,16 @@ export const popup = function(popupId) {
 
         const render = () => {
             popup.classList.toggle(`${popupCls}--open`, isPopupShown);
-        }
+        };
 
         const closePopup = (e) => {
             if (e.target !== e.currentTarget) {
-               return;
+                return;
             }
 
             isPopupShown = false;
             render();
-        }
+        };
 
         const overlay = popup.querySelector(`.${popupCls}__overlay`);
         overlay.addEventListener('click', closePopup);

@@ -134,7 +134,7 @@ $transition: all 0.3s ease-out;
     }
 
     @include mobile {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         line-height: 1.7rem;
         text-align: center;
     }
@@ -156,8 +156,8 @@ $transition: all 0.3s ease-out;
     }
 
     @include mobile {
-        font-size: 1.2rem;
-        text-align: left;
+        font-size: 1.4rem;
+        text-align: center;
     }
 }
 
@@ -177,6 +177,6 @@ $transition: all 0.3s ease-out;
     }
 
     @include mobile {
-        text-align: left;
+        text-align: center;
     }
 }

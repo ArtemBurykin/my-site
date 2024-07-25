@@ -6,3 +6,11 @@
 @import '../../common/styles/blocks/clients';
 @import '../../common/styles/blocks/prices';
 @import '../../common/styles/blocks/solution-item';
+
+.main-block {
+  margin: 120px 0;
+
+  @include mobile {
+    margin: 80px 0;
+  }
+}

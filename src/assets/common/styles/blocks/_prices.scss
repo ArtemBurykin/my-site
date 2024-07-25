@@ -1,31 +1,28 @@
 @import '../variables';
 
 .prices {
-  display: grid;
   margin-top: 20px;
-  grid-gap: 20px;
-  grid-template-columns: 1fr 1fr;
-
-  @include horizontal-mobile {
-    grid-template-columns: 1fr;
-  }
 
   &__item {
+    display: grid;
     background: $back2-color;
+    grid-template-columns: 2fr 3fr 1fr;
     border-radius: $border-radius;
+    gap: 20px;
+    margin-bottom: 10px;
     padding: 15px;
     transition: $transition;
     cursor: pointer;
 
-    &:hover {
-      box-shadow: $box-shadow;
+    @include mobile {
+      display: block;
     }
   }
 
   &__item-title {
-    @include h3;
+    @include big-text;
+    @include stressed;
     margin: 0 0 15px;
-    color: $primary-color;
   }
 
   &__item-desc {
@@ -34,8 +31,12 @@
   }
 
   &__item-price {
-    @include plain-text;
+    @include big-text;
     margin: 0 0 15px;
     font-weight: 500;
+
+    @include mobile {
+      margin: 0;
+    }
   }
 }

@@ -3,11 +3,11 @@
 .solution-item {
   display: flex;
   width: 100%;
-  background: $back2-color;
   justify-content: space-between;
+  align-items: center;
   border-radius: $border-radius;
-  padding: 16px;
-  margin-bottom: 80px;
+  padding: 5px;
+  margin-bottom: 30px;
 
   @include mobile {
     flex-wrap: wrap;

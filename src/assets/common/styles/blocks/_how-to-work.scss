@@ -2,74 +2,23 @@
 
 .how-to-work {
     &__step {
-        width: 25%;
-        background-color: $back2-color;
-        border-radius: $border-radius;
-        padding: 20px;
-        transition: all 0.3s ease-out;
-        cursor: pointer;
-
-        &:hover {
-            box-shadow: $box-shadow;
-        }
-
-        @include horizontal-mobile {
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        @include mobile {
-            width: 100%;
-            margin-bottom: 20px;
-            margin-left: 10px;
-            margin-right: 10px;
-            padding: 10px;
-        }
-
-        &--large {
-            width: 45%;
-
-            @include horizontal-mobile {
-                width: 100%;
-            }
-        }
+        display: flex;
+        gap: 10px;
+        margin: 5px 0;
     }
 
     &__dig {
-        font-family: $font-family;
-        font-size: $font-size-header;
-        font-weight: 500;
-        color: $primary-color;
-        text-align: center;
+        @include big-text;
+        @include stressed;
         margin: 0;
-
-        @include horizontal-mobile {
-            font-size: 1.5rem;
-            line-height: 2rem;
-        }
-
-        @include mobile {
-            font-size: 1.2rem;
-            line-height: 1.8rem;
-        }
     }
 
     &__text {
-        @include plain-text;
-        text-align: center;
-        font-weight: 400;
+        @include big-text;
+        margin:0;
     }
 
     &__process {
-        width: 100%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        margin-top: 50px;
-
-        @include horizontal-mobile {
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
+        margin-bottom: 30px;
     }
 }
