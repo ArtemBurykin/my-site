@@ -67,6 +67,10 @@
     &__big-text {
         @include big-text;
         text-align: left;
+
+        a {
+            color: $font-color;
+        }
     }
 
     &__simple-text {
