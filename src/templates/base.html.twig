@@ -73,11 +73,12 @@
 <footer class="footer">
     <p class="footer__text">© АВЕ Системз, {{ 'now' | date('Y') }} </p>
 </footer>
-{% embed 'common/parts/popup.html.twig' with {id: 'contact-form-popup'} only %}
+{% embed 'common/parts/popup.html.twig' with {id: 'contact-form-popup', modifier: 'narrow'} only %}
     {% block popup_content %}
         {% include('common/parts/contact-form.html.twig') with
             {'modifierClass': 'contact-form__container--fluid', 'formId': 'contact-popup'} only %}
     {% endblock %}
 {% endembed %}
+
 </body>
 </html>

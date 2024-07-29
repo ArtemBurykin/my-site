@@ -68,6 +68,11 @@
         @include big-text;
         text-align: left;
 
+        &--link {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
         a {
             color: $font-color;
         }

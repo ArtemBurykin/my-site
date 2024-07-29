@@ -122,13 +122,30 @@
     </section>
     <section class="reviews-block main-block">
         <h3 id="reviews" class="content__header content__header--h2">Отзывы</h3>
-            <p class="content__big-text"><a href="{{ asset('build/images/l1.jpg') }}" target="_blank">Кинологический центр ФТС РФ</a></p>
-            <p class="content__big-text"><a href="{{ asset('build/images/l2.jpg') }}" target="_blank">МЦРКПО</a></p>
-            <p class="content__big-text"><a href="{{ asset('build/images/l3.jpg') }}" target="_blank">Асклепиус</a></p>
-            <p class="content__big-text"><a href="{{ asset('build/images/l4.jpg') }}" target="_blank">Пекител</a></p>
-        <p class="content__big-text"><a href="{{ asset('build/images/l5.jpg') }}" target="_blank">Программы и комплексы</a></p>
-        <p class="content__big-text"><a href="{{ asset('build/images/l6.jpg') }}" target="_blank">Бина групп</a></p>
-
+            <p class="content__big-text preview-trigger content__big-text--link"
+               data-trigger-popup-id="image-popup"
+               data-image="{{ asset('build/images/l1.jpg') }}"
+            >Кинологический центр ФТС РФ</p>
+            <p class="content__big-text preview-trigger content__big-text--link"
+               data-trigger-popup-id="image-popup"
+               data-image="{{ asset('build/images/l2.jpg') }}"
+            >МЦРКПО</p>
+            <p class="content__big-text preview-trigger content__big-text--link"
+               data-trigger-popup-id="image-popup"
+               data-image="{{ asset('build/images/l3.jpg') }}"
+            >Асклепиус</p>
+            <p class="content__big-text preview-trigger content__big-text--link"
+               data-trigger-popup-id="image-popup"
+               data-image="{{ asset('build/images/l4.jpg') }}"
+            >Пекител</p>
+        <p class="content__big-text preview-trigger content__big-text--link"
+           data-trigger-popup-id="image-popup"
+           data-image="{{ asset('build/images/l5.jpg') }}"
+        >Программы и комплексы</p>
+        <p class="content__big-text preview-trigger content__big-text--link"
+           data-trigger-popup-id="image-popup"
+           data-image="{{ asset('build/images/l6.jpg') }}"
+        >Бина групп</p>
     </section>
 
     <section class="main-block about-us">
@@ -241,6 +258,9 @@
 
         {% include('common/parts/contact-form.html.twig') with {'formId': 'contact-form'} %}
     </section>
-
-
+    {% embed 'common/parts/popup.html.twig' with {id: 'image-popup', modifier: 'wide'} only %}
+        {% block popup_content %}
+            <div id="image-preview" class="image-preview"></div>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

@@ -8,7 +8,29 @@
 
   &__form {
     border-radius: $border-radius;
-    max-width: 350px;
+
+    &--narrow {
+      max-width: 350px;
+      left: calc(50% - 175px);
+
+      @include mobile {
+        max-width: none;
+        width: 90%;
+        left: 5%;
+      }
+    }
+
+    &--wide {
+      max-width: 500px;
+      left: calc(50% - 250px);
+
+      @include horizontal-mobile {
+        width: 90%;
+        max-width: none;
+        left: 5%;
+      }
+    }
+
     width: 100%;
     position: absolute;
     padding: 40px 15px 0;
@@ -16,7 +38,6 @@
     transition: top 0.3s ease-out;
     height: auto;
     overflow-y: auto;
-    left: calc(50% - 150px);
     background: white;
     z-index: 20;
   }
