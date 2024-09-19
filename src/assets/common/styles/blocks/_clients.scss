@@ -16,5 +16,10 @@
       width: 150px;
       height: 80px;
     }
+
+    @include mobile {
+      width: 100%;
+      object-fit: scale-down;
+    }
   }
 }

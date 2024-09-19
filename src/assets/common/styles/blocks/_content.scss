@@ -17,6 +17,7 @@
         &--h3 {
             @include h3;
             margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         @include horizontal-mobile {
@@ -28,6 +29,7 @@
 
             &--h3 {
                 margin-top: 20px;
+                margin-bottom: 20px;
             }
         }
 
@@ -132,5 +134,9 @@
     &__li {
         @include plain-text;
         margin-bottom: 10px;
+    }
+
+    b {
+        @include stressed;
     }
 }
