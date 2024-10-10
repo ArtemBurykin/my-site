@@ -259,6 +259,7 @@
         {% include('common/parts/contact-form.html.twig') with {'formId': 'contact-form'} %}
     </section>
     {% embed 'common/parts/popup.html.twig' with {id: 'image-popup', modifier: 'wide'} only %}
+        {% block popup_title %}{% endblock %}
         {% block popup_content %}
             <div id="image-preview" class="image-preview"></div>
         {% endblock %}

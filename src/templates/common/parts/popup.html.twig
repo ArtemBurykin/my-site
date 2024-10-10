@@ -1,8 +1,13 @@
 <div class="popup" id="{{ id }}">
     <div class="popup__overlay">
         <div class="popup__form popup__form--{{ modifier }}">
+            <div class="popup__header">
+                {{ block('popup_title') }}
+            </div>
             <img src="{{ asset('build/images/close.svg') }}" alt="close" class="popup__close"/>
-            {{ block('popup_content') }}
+            <div class="popup__content">
+                {{ block('popup_content') }}
+            </div>
         </div>
     </div>
 </div>
