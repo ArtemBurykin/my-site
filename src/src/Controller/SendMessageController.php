@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Service\FileUploader;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -12,12 +11,11 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-// IMHERE: fix this
 /**
  * The controller to send a feedback form by an email.
  */
 #[Route('/api/contact-us', name: 'app_contact_us', methods: 'POST', format: 'json')]
-class ContactUsController extends AbstractController
+class SendMessageController extends AbstractController
 {
     public function __construct(
         #[Autowire('%feedbackRecipient%')]
@@ -35,7 +33,7 @@ class ContactUsController extends AbstractController
         $message = $request->get('message');
         $telegram = $request->get('telegram', '');
 
-        if (!$csrfToken || !$address || !$message) {
+        if (!$csrfToken || !$message || (!$address && !$telegram)) {
             throw new BadRequestHttpException('The form is not filled correctly');
         }
 

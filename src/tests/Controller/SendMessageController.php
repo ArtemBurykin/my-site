@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Csrf\TokenStorage\SessionTokenStorage;
 
-class ContactUsControllerTest extends WebTestCase
+class SendMessageController extends WebTestCase
 {
     public function dataProviderIncorrectFormData()
     {
@@ -20,9 +20,8 @@ class ContactUsControllerTest extends WebTestCase
                 'telegram' => '@tel',
                 'message' => 'test message',
             ]],
-            'no email' => [[
+            'no email and no telegram' => [[
                 '_token' => 'token',
-                'telegram' => '@tel',
                 'message' => 'test message',
             ]],
             'no message' => [[
@@ -78,7 +77,7 @@ class ContactUsControllerTest extends WebTestCase
         $client->request(
             Request::METHOD_POST,
             $this->getUrl(),
-            ['_token' => $token, 'email' => $address, 'telegram' => $telegram, 'message' => $message]
+            ['_token' => $token, 'email' => '', 'telegram' => $telegram, 'message' => $message]
         );
         $this->assertResponseIsSuccessful();
 
@@ -87,7 +86,7 @@ class ContactUsControllerTest extends WebTestCase
         $email = $this->getMailerMessage();
         // services.yaml::contactEmail
         $this->assertEmailAddressContains($email, 'to', 'test@example.com');
-        $this->assertEmailHtmlBodyContains($email, "Email: $address");
+        $this->assertEmailHtmlBodyContains($email, 'Email: ');
         $this->assertEmailHtmlBodyContains($email, "Телеграм: $telegram");
         $this->assertEmailHtmlBodyContains($email, "Сообщение: $message");
     }
@@ -114,7 +113,7 @@ class ContactUsControllerTest extends WebTestCase
         // services.yaml::contactEmail
         $this->assertEmailAddressContains($email, 'to', 'test@example.com');
         $this->assertEmailHtmlBodyContains($email, "Email: $address");
-        $this->assertEmailHtmlBodyContains($email, "Телеграм: ");
+        $this->assertEmailHtmlBodyContains($email, 'Телеграм: ');
         $this->assertEmailHtmlBodyContains($email, "Сообщение: $message");
     }
 

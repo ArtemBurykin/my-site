@@ -9,6 +9,9 @@ export const contactForm = function(formId, baseClass) {
     const submitBtn = form.querySelector(`#${formId}-submit`);
     const statusLabel = form.querySelector(`#${formId}-status`);
 
+    const emailField = form.querySelector('input[name="email"]');
+    const tgField = form.querySelector('input[name="telegram"]');
+
     const emitAnalyticsEvent = (name) => {
         const conversionEvent = new CustomEvent(
             'analyticsEventOccurred',
@@ -23,27 +26,61 @@ export const contactForm = function(formId, baseClass) {
      */
     let hasFormBeenSubmitted = false;
 
+    let formValidityMap = {
+        email: false,
+        telegram: false,
+        message: false,
+        _token: false,
+    };
+
+    const validatorMap = {
+        _token: (value) => value !== '',
+        message: (value) => value !== ''
+    };
+
     const isValueCorrectEmail = (value) => {
         const emailRx = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/;
         return emailRx.test(value);
     };
 
-    const validatorMap = {
-        _token: (value) => value !== '',
-        email: (value) => value !== '' && isValueCorrectEmail(value),
-        message: (value) => value !== ''
-    };
+    const validateForm = () => {
+        const fields = Array.from(form.querySelectorAll('input, textarea'));
 
-    const isFieldValid = (field) => {
-        if (validatorMap[field.name]) {
-            return validatorMap[field.name](field.value);
+        const fieldValidationMap = fields
+            .filter(field => !!validatorMap[field.name])
+            .reduce((fieldsMap, field) => {
+                fieldsMap[field.name] = validatorMap[field.name](field.value);
+                return fieldsMap;
+            }, {});
+
+        formValidityMap = Object.assign({}, formValidityMap, fieldValidationMap);
+
+        const errors = [];
+
+        if (tgField.value !== '' || emailField.value !== '') {
+            formValidityMap.telegram = true;
+            formValidityMap.email = true;
+        } else {
+            formValidityMap.email = false;
+            formValidityMap.telegram = false;
+            errors.push('Укажите, пожалуйста, или email или telegram');
         }
 
-        return true;
+        if (emailField.value !== '' && !isValueCorrectEmail(emailField.value)) {
+            formValidityMap.email = false;
+            errors.push('Указан некорректный email');
+        }
+
+        const isNotValid = Object.keys(formValidityMap).some(k => formValidityMap[k] !== true);
+        if (isNotValid) {
+            errors.push('Форма заполнена некорректно');
+        }
+
+        return errors;
     };
 
     const toggleErrorClassIfFieldIsValid = (field) => {
-        field.classList.toggle(`${baseClass}__field--error`, !isFieldValid(field));
+        field.classList.toggle(`${baseClass}__field--error`, !formValidityMap[field.name]);
     };
 
     const submitForm = async () => {
@@ -53,11 +90,7 @@ export const contactForm = function(formId, baseClass) {
 
         const formData = new FormData();
         allFormFields.forEach((field) => {
-            if (field.type !== 'file') {
-                formData.append(field.name, field.value);
-            } else if (field.files.length) {
-                formData.append(field.name, field.files[0]);
-            }
+            formData.append(field.name, field.value);
         });
 
         statusLabel.innerText = 'Отправка...';
@@ -79,10 +112,6 @@ export const contactForm = function(formId, baseClass) {
         } else {
             const dataFormFields = Array.from(form.querySelectorAll(`.${baseClass}__field`));
             dataFormFields.forEach((field) => field.value = '');
-            form.querySelectorAll('input[type="file"]').forEach((f) => {
-                f.value = null;
-                f.dispatchEvent(new Event('change'));
-            });
 
             statusLabel.innerText = 'Сообщение отправлено!';
         }
@@ -91,23 +120,27 @@ export const contactForm = function(formId, baseClass) {
     };
 
     submitBtn.addEventListener('click', async () => {
+        const errors = validateForm();
         const fields = Array.from(form.querySelectorAll('input, textarea'));
         fields.forEach(toggleErrorClassIfFieldIsValid);
 
         if (!hasFormBeenSubmitted) {
             fields.forEach((field) => {
-                field.addEventListener('change', () => toggleErrorClassIfFieldIsValid(field));
+                field.addEventListener('change', () => {
+                    const errs = validateForm();
+                    const allFormFields = Array.from(form.querySelectorAll('input, textarea'));
+                    allFormFields.forEach(f => toggleErrorClassIfFieldIsValid(f));
+                    statusLabel.innerHTML = errs.join('<br/>');
+                });
             });
 
             hasFormBeenSubmitted = true;
         }
 
-        const isFormValid = fields.reduce((isFormValid, field) => isFormValid && isFieldValid(field), true);
-
-        if (!isFormValid) {
+        if (errors.length > 0) {
             emitAnalyticsEvent('contact_form_invalid');
 
-            statusLabel.innerText = 'Форма заполнена некорректно';
+            statusLabel.innerHTML = errors.join('<br/>');
             return;
         }
 

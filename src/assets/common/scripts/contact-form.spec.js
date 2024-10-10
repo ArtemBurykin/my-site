@@ -10,7 +10,7 @@ describe('contactForm', () => {
     const baseClass = 'contact-form';
     const errorClass = `${baseClass}__field--error`;
 
-    const fillFields = ({email, message}) => {
+    const fillFields = ({email, message, telegram = ''}) => {
         const emailField = document.querySelector(`.${baseClass}__field[name="email"]`);
         emailField.value = email;
         emailField.dispatchEvent(new Event('change'));
@@ -18,6 +18,10 @@ describe('contactForm', () => {
         const messageField = document.querySelector(`.${baseClass}__field[name="message"]`);
         messageField.value = message;
         messageField.dispatchEvent(new Event('change'));
+
+        const telegramField = document.querySelector(`.${baseClass}__field[name="telegram"]`);
+        telegramField.value = telegram;
+        telegramField.dispatchEvent(new Event('change'));
     };
 
     beforeEach(() => {
@@ -31,14 +35,13 @@ describe('contactForm', () => {
 
                 <label for="email" class="contact-form__label">Your email:</label>
                 <input class="${baseClass}__field" type="email" id="email" name="email"/>
+                
+                <label for="telegram" class="contact-form__label">Your tg:</label>
+                <input class="${baseClass}__field" type="text" id="telegram" name="telegram"/>
 
                 <label for="message" class="contact-form__label">Message</label>
                 <textarea class="${baseClass}__field contact-form__field--textarea" id="message"
                           name="message" rows="4" cols="50"></textarea>
-
-                <label for="file" class="contact-form__label">Field</label>
-                <input class="contact-form__file-input" id="file" type="file"
-                          name="file"/>
 
                 <button class="contact-form__btn" id="form-id-submit">Send message</button>
                 <p class="contact-form__status" id="form-id-status"></p>
@@ -53,7 +56,7 @@ describe('contactForm', () => {
         fetch.mockRestore();
     });
 
-    test('success: should send data to the backend without file', (done) => {
+    test('success: should send data to the backend', (done) => {
         global.fetch = jest.fn(() =>
             Promise.resolve({
                 json: () => Promise.resolve(''),
@@ -61,7 +64,7 @@ describe('contactForm', () => {
             })
         );
 
-        fillFields({ email: 'test@gmail.com', message: 'a message' });
+        fillFields({ email: 'test@gmail.com', message: 'a message', telegram: '@some'});
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -75,7 +78,7 @@ describe('contactForm', () => {
         const formData = options.body;
         expect(formData.get('email')).toBe('test@gmail.com');
         expect(formData.get('message')).toBe('a message');
-        expect(formData.get('file') instanceof File).toBeFalsy();
+        expect(formData.get('telegram')).toBe('@some');
         expect(formData.get('_token')).toBe(csrfToken);
 
         setTimeout(() => {
@@ -83,14 +86,14 @@ describe('contactForm', () => {
 
             expect(document.querySelector(`.${baseClass}__field[name="email"]`).value).toBe('');
             expect(document.querySelector(`.${baseClass}__field[name="message"]`).value).toBe('');
-            expect(document.querySelector(`input[name="file"]`).value).toBe('');
+            expect(document.querySelector(`.${baseClass}__field[name="telegram"]`).value).toBe('');
             expect(document.querySelector('input[name="_token"]').value).not.toBe('');
 
             done();
         });
     });
 
-    test('success: should send data to the backend with file', (done) => {
+    test('success: email is empty, but telegram is filled', () => {
         global.fetch = jest.fn(() =>
             Promise.resolve({
                 json: () => Promise.resolve(''),
@@ -98,42 +101,26 @@ describe('contactForm', () => {
             })
         );
 
-        fillFields({ email: 'test@gmail.com', message: 'a message' });
-
-        const fileInput = document.querySelector('.contact-form__file-input');
-        const myFile = new File(['Hello World!'], 'myFile.txt', {
-            type: 'text/plain',
-            lastModified: new Date(),
-        });
-        Object.defineProperty(fileInput, 'files',
-            { value: [myFile] }
-        );
+        fillFields({ email: '', message: 'a message', telegram: '@some'});
 
         document.querySelector(`#${formId}-submit`).click();
 
         expect(fetch).toHaveBeenCalledTimes(1);
+    });
 
-        expect(fetch.mock.calls[0][0]).toBe(apiUrl);
+    test('success: email is not empty, but telegram is', () => {
+        global.fetch = jest.fn(() =>
+            Promise.resolve({
+                json: () => Promise.resolve(''),
+                ok: true
+            })
+        );
 
-        const options = fetch.mock.calls[0][1];
-        expect(options.method).toBe('POST');
+        fillFields({ email: 'test@test.com', message: 'a message', telegram: ''});
 
-        const formData = options.body;
-        expect(formData.get('email')).toBe('test@gmail.com');
-        expect(formData.get('message')).toBe('a message');
-        expect(formData.get('file') instanceof File).toBeTruthy();
-        expect(formData.get('_token')).toBe(csrfToken);
+        document.querySelector(`#${formId}-submit`).click();
 
-        setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Сообщение отправлено!');
-
-            expect(document.querySelector(`.${baseClass}__field[name="email"]`).value).toBe('');
-            expect(document.querySelector(`.${baseClass}__field[name="message"]`).value).toBe('');
-            expect(document.querySelector('input[name="file"]').value).toBe('');
-            expect(document.querySelector('input[name="_token"]').value).not.toBe('');
-
-            done();
-        });
+        expect(fetch).toHaveBeenCalledTimes(1);
     });
 
     test('error: should show the error', (done) => {
@@ -170,7 +157,7 @@ describe('contactForm', () => {
         }, 0);
     });
 
-    test('error: but not correct object, should show the general description', (done) => {
+    test('error: error promise is rejected, should show the general description', (done) => {
         global.fetch = jest.fn(() =>
             Promise.resolve({
                 json: () => Promise.reject('Not correct JSON'),
@@ -189,7 +176,7 @@ describe('contactForm', () => {
         }, 0);
     });
 
-    test('error: object without message, should show the general description', (done) => {
+    test('error: the error is not specified, should show the general description', (done) => {
         global.fetch = jest.fn(() =>
             Promise.resolve({
                 json: () => Promise.resolve({}),
@@ -208,15 +195,16 @@ describe('contactForm', () => {
         }, 0);
     });
 
-    test('fields are empty: should show errors', (done) => {
-        fillFields({ email: '', message: '' });
+    test('all fields are empty: should show errors', (done) => {
+        fillFields({ email: '', message: '', telegram: ''});
 
         document.querySelector(`#${formId}-submit`).click();
 
         expect(fetch).toHaveBeenCalledTimes(0);
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Форма заполнена некорректно');
+            expect(document.querySelector(`#${formId}-status`).innerHTML)
+                .toContain('Укажите, пожалуйста, или email или telegram');
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
@@ -224,6 +212,10 @@ describe('contactForm', () => {
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="message"]`).classList.contains(errorClass)
+            ).toBe(true);
+
+            expect(
+                document.querySelector(`.${baseClass}__field[name="telegram"]`).classList.contains(errorClass)
             ).toBe(true);
 
             done();
@@ -238,7 +230,8 @@ describe('contactForm', () => {
         expect(fetch).toHaveBeenCalledTimes(0);
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Форма заполнена некорректно');
+            expect(document.querySelector(`#${formId}-status`).innerHTML)
+                .toContain('Указан некорректный email');
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
@@ -261,7 +254,7 @@ describe('contactForm', () => {
         expect(fetch).toHaveBeenCalledTimes(0);
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Форма заполнена некорректно');
+            expect(document.querySelector(`#${formId}-status`).innerHTML).toContain('Форма заполнена некорректно');
 
             done();
         }, 0);
@@ -327,18 +320,26 @@ describe('contactForm', () => {
         ).toBe(false);
 
         expect(
+            document.querySelector(`.${baseClass}__field[name="telegram"]`).classList.contains(errorClass)
+        ).toBe(false);
+
+        expect(
             document.querySelector(`.${baseClass}__field[name="message"]`).classList.contains(errorClass)
         ).toBe(false);
     });
 
     test('if the form has been submitted should add error classes while changing values', (done) => {
-        fillFields({ email: '', message: '' });
+        fillFields({ email: '', message: '', telegram: '' });
 
         document.querySelector(`#${formId}-submit`).click();
 
         setTimeout(() => {
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
+            ).toBe(true);
+
+            expect(
+                document.querySelector(`.${baseClass}__field[name="telegram"]`).classList.contains(errorClass)
             ).toBe(true);
 
             expect(
@@ -352,6 +353,24 @@ describe('contactForm', () => {
             ).toBe(true);
 
             expect(
+                document.querySelector(`.${baseClass}__field[name="telegram"]`).classList.contains(errorClass)
+            ).toBe(false);
+
+            expect(
+                document.querySelector(`.${baseClass}__field[name="message"]`).classList.contains(errorClass)
+            ).toBe(false);
+
+            fillFields({ email: '', message: 'test', telegram: '@some' });
+
+            expect(
+                document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
+            ).toBe(false);
+
+            expect(
+                document.querySelector(`.${baseClass}__field[name="telegram"]`).classList.contains(errorClass)
+            ).toBe(false);
+
+            expect(
                 document.querySelector(`.${baseClass}__field[name="message"]`).classList.contains(errorClass)
             ).toBe(false);
 
@@ -359,6 +378,10 @@ describe('contactForm', () => {
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
+            ).toBe(false);
+
+            expect(
+                document.querySelector(`.${baseClass}__field[name="telegram"]`).classList.contains(errorClass)
             ).toBe(false);
 
             expect(
