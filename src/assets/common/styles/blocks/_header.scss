@@ -118,6 +118,11 @@
         font-weight: 400;
         color: $font-color;
         text-decoration: none;
+        transition: color 0.3s ease-in;
+
+        &:hover {
+            color: $primary-color;
+        }
 
         @include tablet {
             font-size: $small-font-size;
