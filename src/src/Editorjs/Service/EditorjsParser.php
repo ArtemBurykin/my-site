@@ -5,7 +5,7 @@ namespace App\Editorjs\Service;
 use App\Editorjs\BlockParsers\BlockParser;
 use BadMethodCallException;
 use stdClass;
-use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
+use Symfony\Component\DependencyInjection\Attribute\AutowireIterator;
 use Traversable;
 
 /**
@@ -19,7 +19,7 @@ class EditorjsParser
      * @param BlockParser[] $parserPlugins коллекция парсеров, получаемая из конфигурации
      */
     public function __construct(
-        #[TaggedIterator('app.editorjs_parser_extension', null, 'getBlockType')]
+        #[AutowireIterator('app.editorjs_parser_extension', null, 'getBlockType')]
         iterable $parserPlugins
     ) {
         if (!$parserPlugins instanceof Traversable) {
