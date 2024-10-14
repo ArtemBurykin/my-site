@@ -15,6 +15,11 @@
     {{ encore_entry_link_tags('case-page') }}
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('case-page') }}
+{% endblock %}
+
 {% block content %}
     <article class="content">
         <h1 class="content__header">{{ case.title }}</h1>
@@ -25,4 +30,10 @@
         </div>
         <div>{{ editorjs_parse(case.content) | raw }}</div>
     </article>
+    {% embed 'common/parts/popup.html.twig' with {id: 'image-popup', modifier: 'fluid'} only %}
+        {% block popup_title %}{% endblock %}
+        {% block popup_content %}
+            <div id="image-preview" class="image-preview"></div>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

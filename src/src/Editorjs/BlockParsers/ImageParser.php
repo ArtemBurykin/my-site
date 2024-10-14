@@ -17,7 +17,10 @@ class ImageParser implements BlockParser
         $alt = htmlspecialchars($blockData->caption);
 
         return <<< "END"
-            <div class="content__img-container">
+            <div class="content__img-container preview-trigger"
+                data-trigger-popup-id="image-popup"
+                data-image="$src"
+            >
                 <img class="content__img" src="$src" alt="$alt" />
             </div>
             END;

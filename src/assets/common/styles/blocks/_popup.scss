@@ -31,6 +31,17 @@
       }
     }
 
+    &--fluid {
+      max-width: 900px;
+      left: calc(50% - 450px);
+
+      @include tablet {
+        width: 90%;
+        max-width: none;
+        left: 5%;
+      }
+    }
+
     width: 100%;
     position: absolute;
     padding: 0 20px 0;
@@ -57,7 +68,7 @@
   }
 
   &__content {
-    margin: 20px 0;
+    margin: 40px 0 20px;
   }
 
   &__overlay {
