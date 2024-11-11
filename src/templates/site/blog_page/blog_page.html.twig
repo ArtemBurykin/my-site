@@ -26,7 +26,10 @@
                 <p class="blog-item__date">{{ post.createdAt |date("d.m.Y G:i") }}</p>
 
                 <div class="blog-item__data">
-                    <p class="blog-item__description">{{ post.description }}</p>
+                    <div class="blog-item__data-container {% if post.mainImage is null %}blog-item__data-container--no-image{% endif %}">
+                        <p class="blog-item__description">{{ post.description }}</p>
+                        <a href="{{ path('app_post_page', { 'slug' : post.seoUrl }) }}" class="blog-item__more">Подробнее</a>
+                    </div>
                     {% if post.mainImage is not null %}
                         <div class="blog-item__img-container">
                             <img

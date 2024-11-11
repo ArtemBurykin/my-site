@@ -27,7 +27,10 @@
                 <h2 class="blog-item__title">{{ case.title }}</h2>
 
                 <div class="blog-item__data">
-                    <p class="blog-item__description">{{ case.description }}</p>
+                    <div class="blog-item__data-container {% if case.mainImage is null %}blog-item__data-container--no-image{% endif %}">
+                        <p class="blog-item__description">{{ case.description }}</p>
+                        <a href="{{ path('app_case_page', { 'slug' : case.seoUrl }) }}" class="blog-item__more">Подробнее</a>
+                    </div>
                     {% if case.mainImage is not null %}
                         <div class="blog-item__img-container">
                             <img

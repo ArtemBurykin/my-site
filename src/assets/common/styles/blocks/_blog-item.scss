@@ -43,9 +43,27 @@
   &__description {
     @include plain-text;
     margin: 0;
+  }
+
+  &__more {
+    @include plain-text;
+    display: block;
+    margin-top: 10px;
+  }
+
+  &__data-container {
+    width: calc(100% - 100px);
+    padding-right: 20px;
+
+    &--no-image {
+      width: 100%;
+      padding-right: 0;
+    }
 
     @include mobile {
+      width: 100%;
       order: 1;
+      padding-right: 0;
       text-align: center;
     }
   }
@@ -69,7 +87,6 @@
 
   &__data {
     display: flex;
-    gap: 20px;
 
     @include mobile {
       gap: 0;
