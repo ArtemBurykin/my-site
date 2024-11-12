@@ -71,7 +71,7 @@
     {% block content %}{% endblock %}
 </div>
 <footer class="footer">
-    <p class="footer__text">© АВЕ Системз, {{ 'now' | date('Y') }} </p>
+    <p class="footer__text">© АВЕ Системз, 2012-{{ 'now' | date('Y') }} </p>
 </footer>
 {% embed 'common/parts/popup.html.twig' with {id: 'contact-form-popup', modifier: 'narrow'} only %}
     {% block popup_title %}Обсудить проект.{% endblock %}
