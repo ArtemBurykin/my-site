@@ -30,6 +30,7 @@ export const contactForm = function(formId, baseClass) {
         email: false,
         telegram: false,
         message: false,
+        check: false,
         _token: false,
     };
 
@@ -69,6 +70,14 @@ export const contactForm = function(formId, baseClass) {
         if (emailField.value !== '' && !isValueCorrectEmail(emailField.value)) {
             formValidityMap.email = false;
             errors.push('Указан некорректный email');
+        }
+
+        const personalDataAgreementChbx= form.querySelector('input[name="check"]');
+        if (personalDataAgreementChbx.checked) {
+            formValidityMap.check = true;
+        } else {
+            formValidityMap.check = false;
+            errors.push('Необходимо согласие на обработку данных');
         }
 
         const isNotValid = Object.keys(formValidityMap).some(k => formValidityMap[k] !== true);

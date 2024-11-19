@@ -17,7 +17,7 @@
     &__status {
         font-family: $font-family;
         font-size: $font-size-text;
-        line-height: $line-height-base;
+        line-height: 140%;
         color: $font-color;
         margin: 20px 0;
         font-weight: 300;
@@ -91,6 +91,21 @@
         border: 1px solid $back2-color;
         transition: border 0.3s ease-out;
         background-color: $back2-color;
+    }
 
+    &__agreement {
+        margin-bottom: 30px;
+    }
+
+    &__agreement-label {
+        font-family: $font-family;
+        font-size: $font-size-text;
+        line-height: 140%;
+        color: $font-color;
+        font-weight: 300;
+
+        a {
+            color: $font-color;
+        }
     }
 }

@@ -11,7 +11,7 @@
 
     <div class="contact-form__container {{ modifierClass }}">
         <div>
-            <input class="contact-form__field" type="email" id="email" name="email" placeholder="Email*">
+            <input class="contact-form__field" type="email" id="email" name="email" placeholder="Email">
         </div>
 
         <div>
@@ -22,6 +22,12 @@
             <textarea class="contact-form__field contact-form__field--textarea" id="message" name="message" rows="4"
                       placeholder="Что хотите обсудить?*"
                       cols="50"></textarea>
+        </div>
+        <div class="contact-form__agreement">
+            <input type="checkbox" name="check"/>
+            <label for="check" class="contact-form__agreement-label">
+                Согласен на <a href="{{ asset('build/images/personal-data-agreement.docx') }}">обработку персональных данных</a>
+            </label>
         </div>
 
         <div class="btn contact-form__cta" id="{{ formId }}-submit">Отправить</div>

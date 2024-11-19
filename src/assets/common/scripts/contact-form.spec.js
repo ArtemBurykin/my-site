@@ -10,6 +10,11 @@ describe('contactForm', () => {
     const baseClass = 'contact-form';
     const errorClass = `${baseClass}__field--error`;
 
+    const agreeWithStorageOfPersonalData = () => {
+        const agreementChbx = document.getElementById('check');
+        agreementChbx.checked = true;
+    }
+
     const fillFields = ({email, message, telegram = ''}) => {
         const emailField = document.querySelector(`.${baseClass}__field[name="email"]`);
         emailField.value = email;
@@ -42,6 +47,9 @@ describe('contactForm', () => {
                 <label for="message" class="contact-form__label">Message</label>
                 <textarea class="${baseClass}__field contact-form__field--textarea" id="message"
                           name="message" rows="4" cols="50"></textarea>
+                
+                <input type="checkbox" name="check" value="agree" id="check">
+                <label for="data-check" class="contact-form__label">Я согласен</label>
 
                 <button class="contact-form__btn" id="form-id-submit">Send message</button>
                 <p class="contact-form__status" id="form-id-status"></p>
@@ -65,6 +73,7 @@ describe('contactForm', () => {
         );
 
         fillFields({ email: 'test@gmail.com', message: 'a message', telegram: '@some'});
+        agreeWithStorageOfPersonalData();
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -102,6 +111,7 @@ describe('contactForm', () => {
         );
 
         fillFields({ email: '', message: 'a message', telegram: '@some'});
+        agreeWithStorageOfPersonalData();
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -117,10 +127,36 @@ describe('contactForm', () => {
         );
 
         fillFields({ email: 'test@test.com', message: 'a message', telegram: ''});
+        agreeWithStorageOfPersonalData();
 
         document.querySelector(`#${formId}-submit`).click();
 
         expect(fetch).toHaveBeenCalledTimes(1);
+    });
+
+    test('error: personal data check is off', (done) => {
+        global.fetch = jest.fn(() =>
+            Promise.resolve({
+                json: () => Promise.resolve(''),
+                ok: true
+            })
+        );
+
+        fillFields({ email: '', message: 'a message', telegram: '@some'});
+
+        document.querySelector(`#${formId}-submit`).click();
+
+        expect(fetch).toHaveBeenCalledTimes(0);
+
+        setTimeout(() => {
+            expect(document.querySelector(`.${baseClass}__field[name="telegram"]`).value).toBe('@some');
+            expect(document.querySelector(`.${baseClass}__field[name="message"]`).value).toBe('a message');
+
+            expect(document.querySelector(`#${formId}-status`).innerHTML)
+                .toContain('Необходимо согласие на обработку данных');
+
+            done();
+        }, 0);
     });
 
     test('error: should show the error', (done) => {
@@ -132,6 +168,7 @@ describe('contactForm', () => {
         );
 
         fillFields({ email: 'test@gmail.com', message: 'a message' });
+        agreeWithStorageOfPersonalData();
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -166,6 +203,7 @@ describe('contactForm', () => {
         );
 
         fillFields({ email: 'test@gmail.com', message: 'a message' });
+        agreeWithStorageOfPersonalData();
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -185,6 +223,7 @@ describe('contactForm', () => {
         );
 
         fillFields({ email: 'test@gmail.com', message: 'a message' });
+        agreeWithStorageOfPersonalData();
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -272,6 +311,7 @@ describe('contactForm', () => {
         );
 
         fillFields({ email: 'test@gmail.com', message: 'a message' });
+        agreeWithStorageOfPersonalData();
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -298,6 +338,7 @@ describe('contactForm', () => {
         );
 
         fillFields({ email: 'test@gmail.com', message: 'a message' });
+        agreeWithStorageOfPersonalData();
 
         document.querySelector(`#${formId}-submit`).click();
 
@@ -330,6 +371,7 @@ describe('contactForm', () => {
 
     test('if the form has been submitted should add error classes while changing values', (done) => {
         fillFields({ email: '', message: '', telegram: '' });
+        agreeWithStorageOfPersonalData();
 
         document.querySelector(`#${formId}-submit`).click();
 
