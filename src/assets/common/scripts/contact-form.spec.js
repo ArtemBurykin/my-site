@@ -13,7 +13,7 @@ describe('contactForm', () => {
     const agreeWithStorageOfPersonalData = () => {
         const agreementChbx = document.getElementById('check');
         agreementChbx.checked = true;
-    }
+    };
 
     const fillFields = ({email, message, telegram = ''}) => {
         const emailField = document.querySelector(`.${baseClass}__field[name="email"]`);

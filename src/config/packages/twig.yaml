@@ -3,7 +3,7 @@ twig:
     globals:
         menu: '%menu%'
         host: '%host%'
-        ga_tracking: '%env(GA_TRACKING)%'
+        ya_metrika: '%env(YA_METRIKA)%'
     form_themes:
         - 'admin/form/editorjs_widget.html.twig'
 

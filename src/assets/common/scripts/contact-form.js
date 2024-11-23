@@ -72,7 +72,7 @@ export const contactForm = function(formId, baseClass) {
             errors.push('Указан некорректный email');
         }
 
-        const personalDataAgreementChbx= form.querySelector('input[name="check"]');
+        const personalDataAgreementChbx = form.querySelector('input[name="check"]');
         if (personalDataAgreementChbx.checked) {
             formValidityMap.check = true;
         } else {
@@ -93,8 +93,6 @@ export const contactForm = function(formId, baseClass) {
     };
 
     const submitForm = async () => {
-        emitAnalyticsEvent('contact_form_submitted');
-
         const allFormFields = Array.from(form.querySelectorAll('input, textarea'));
 
         const formData = new FormData();
@@ -124,6 +122,8 @@ export const contactForm = function(formId, baseClass) {
 
             statusLabel.innerText = 'Сообщение отправлено!';
         }
+
+        emitAnalyticsEvent('contact_form_submitted');
 
         setTimeout(() => statusLabel.innerText = '', 2000);
     };

@@ -1,19 +1,19 @@
 /**
  *  @jest-environment jsdom
  */
-import {gaConversions} from './ga-conversions';
+import {analyticsConversions} from './analytics-conversions';
 
 describe('gaConversions', () => {
-    const gtagStub = jest.fn();
+    const analyticsStub = jest.fn();
     beforeEach(() => {
         document.body.innerHTML = `
             <body>
             </body>
             `;
 
-        window.gtag = gtagStub;
+        window.ym = analyticsStub;
 
-        gaConversions();
+        analyticsConversions('345');
     });
 
     afterEach(() => {
@@ -28,6 +28,6 @@ describe('gaConversions', () => {
 
         document.dispatchEvent(event);
 
-        expect(gtagStub).toHaveBeenCalledWith('event', 'test', {'location': 'http://localhost/'});
+        expect(analyticsStub).toHaveBeenCalledWith('345', 'reachGoal', 'test');
     });
 });
