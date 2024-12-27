@@ -20,7 +20,7 @@
 
 /public/uploads/category/*
 /public/sitemap.xml
-
+/public/robots.txt
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
 /public/build/
