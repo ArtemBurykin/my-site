@@ -1,7 +1,7 @@
 @import '../variables';
 
 .footer {
-    background-color: $back1-color;
+    background-color: $invert-back-color;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -14,7 +14,7 @@
         font-weight: 300;
         line-height: 3rem;
         letter-spacing: 0.04rem;
-        color: $font-color;
+        color: $invert-font-color;
         text-align: center;
 
         @include tablet {

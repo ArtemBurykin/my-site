@@ -1,34 +1,10 @@
 @import '../variables';
 
 .header {
-    background-color: $back1-color;
+    background-color: #222;
     width: 100%;
     box-shadow: 0 0 10px $shadow-color;
     position: sticky;
-
-    &__logo {
-        height: 60px;
-
-        &--dark {
-            display: none;
-        }
-
-        &--light {
-            display: block;
-        }
-
-        @include horizontal-mobile {
-            height: 42px;
-        }
-
-        @include mobile {
-            margin-left: 10px;
-        }
-    }
-
-    @include desktop {
-        position: sticky;
-    }
 
     top: 0;
     z-index: 1;
@@ -36,6 +12,7 @@
 
     &__menu-wrapper {
         width: 900px;
+        padding: 10px 0;
         display: flex;
         margin: 0 auto;
         justify-content: space-between;
@@ -43,7 +20,7 @@
 
         @include tablet {
             width: 100%;
-            padding: 0 30px;
+            padding: 10px 30px;
         }
 
         @include mobile {
@@ -85,7 +62,7 @@
         top: 0;
         left: 0;
         right: 0;
-        background-color: $back-color;
+        background-color: $invert-back-color;
         overflow: hidden;
         height: 100%;
         transition: height 0.2s ease-in, padding-top 0.2s ease-in;
@@ -102,6 +79,7 @@
         height: 50px;
         padding: 10px;
         position: absolute;
+        filter: invert(1);
         right: 20px;
         top: 10px;
     }
@@ -116,16 +94,12 @@
         font-family: $font-family;
         font-size: $font-size-text;
         font-weight: 400;
-        color: $font-color;
+        color: $invert-font-color;
         text-decoration: none;
         transition: color 0.3s ease-in;
 
         &:hover {
-            color: $primary-color;
-        }
-
-        @include tablet {
-            font-size: $small-font-size;
+            color: $font-hover-color;
         }
 
         &--mobile {
@@ -139,6 +113,27 @@
         &--mobile {
             margin-top: 30px;
             justify-content: center;
+        }
+    }
+
+    &__contacts {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        &--mobile {
+            margin-top: 20px;
+            justify-content: center;
+        }
+    }
+
+    &__contact {
+        height: 30px;
+        width: 30px;
+        display: block;
+
+        img {
+            height: 100%;
+            object-fit: scale-down;
         }
     }
 }

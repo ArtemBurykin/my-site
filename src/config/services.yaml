@@ -17,10 +17,10 @@ parameters:
     menu:
         home:
             path: app_index_page
-            title: Главная
+            title: Home
         blog:
             path: app_blog_page
-            title: Блог
+            title: Blog
 
 services:
     # default configuration for services in *this* file

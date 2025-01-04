@@ -20,8 +20,7 @@
     }
 
     &:hover {
-        box-shadow: $box-shadow;
-        opacity: 0.9;
+        background-color: $primary-hover-color;
     }
 
     outline: none;

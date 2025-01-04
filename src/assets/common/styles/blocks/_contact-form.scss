@@ -43,28 +43,9 @@
         display: none;
     }
 
-    &__file-btn {
-        border: 1px solid $back2-color;
-        background: $back1-color;
-        border-radius: $border-radius;
-        color: $font-color;
-        line-height: 34px;
-        display: block;
-        cursor: pointer;
-        padding: 8px 15px;
-        margin-bottom: 30px;
-        font-family: $font-family;
-        font-size: $font-size-text;
-        width: 50%;
-
-        @include horizontal-mobile {
-            width: 100%;
-        }
-    }
-
     &__field {
         &:hover {
-            border: 1px solid $back1-color;
+            border: 1px solid $separator-color;
         }
 
         &--error {
@@ -88,9 +69,9 @@
         height: 50px;
         width: 100%;
         margin-bottom: 30px;
-        border: 1px solid $back2-color;
+        border: 1px solid $separator-color;
         transition: border 0.3s ease-out;
-        background-color: $back2-color;
+        background-color: $separator-color;
     }
 
     &__agreement {

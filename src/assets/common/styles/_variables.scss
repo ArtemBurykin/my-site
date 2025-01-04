@@ -37,19 +37,25 @@ $border-radius: 6px;
 
 :root {
     --font-color: #111;
+    --invert-font-color: #fff;
     --background-color: #fff;
-    --background-color-1: #eee;
-    --background-color-2: #f8f8f8;
-    --primary-color: #1f526c;
+    --invert-background: #222;
+    --primary-color: #5f6f52;
     --shadow-color: #ccc;
+    --separator-color: #eee;
+    --primary-hover-color: #a9b388;
+    --font-hover-color: #888;
 }
 
 $primary-color: var(--primary-color);
 $back-color: var(--background-color);
 $font-color: var(--font-color);
+$font-hover-color: var(--font-hover-color);
+$primary-hover-color: var(--primary-hover-color);
 $shadow-color: var(--shadow-color);
-$back1-color: var(--background-color-1);
-$back2-color: var(--background-color-2);
+$invert-back-color: var(--invert-background);
+$invert-font-color: var(--invert-font-color);
+$separator-color: var(--separator-color);
 $font-family: "Roboto";
 $font-size-text: 1rem;
 $line-height-base: 1.8rem;

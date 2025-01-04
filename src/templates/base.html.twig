@@ -47,9 +47,6 @@
 <body>
 <header class="header">
     <div class="header__menu header__menu--mobile">
-        <a href="/">
-            <img src="{{ asset('build/images/logo-light.svg') }}" class="header__logo header__logo--light" alt="AVE Systems"/>
-        </a>
         <img class="header__menu-mobile-icon" id="mobile-menu-show" src="{{ asset('build/images/menu-bar-icon.svg') }}" alt="menu">
         <nav class="header__menu-popup header__menu-popup--hidden">
             <div class="header__menu-popup-close" id="mobile-menu-close">
@@ -63,19 +60,24 @@
             {% for item in menu %}
                 <a class="header__menu-item header__menu-item--mobile" href="{{ path(item.path) }}">{{ item.title }}</a>
             {% endfor %}
+            <div class="header__contacts header__contacts--mobile">
+                <a href="mailto:nisoartem@gmail.com" class="header__contact"><img src="{{ asset('build/images/email.svg') }}" alt="telegram"/></a>
+                <a href="https://t.me/Avburykin" class="header__contact"><img src="{{ asset('build/images/tg.svg') }}" alt="telegram"/></a>
+            </div>
         </nav>
     </div>
 
     <div class="header__menu-wrapper">
-        <a href="/">
-            <img src="{{ asset('build/images/logo-light.svg') }}" class="header__logo header__logo--light" alt="AVE Systems"/>
-        </a>
         <nav class="header__menu">
             {% for item in menu %}
                 <a class="header__menu-item" href="{{ path(item.path) }}">{{ item.title }}</a>
             {% endfor %}
-            <div class="btn btn--small contact-trigger" data-trigger-popup-id="contact-form-popup">Обсудить проект</div>
         </nav>
+        <div class="header__contacts">
+            <a href="mailto:nisoartem@gmail.com" class="header__contact"><img src="{{ asset('build/images/email.svg') }}" alt="telegram"/></a>
+            <a href="https://t.me/Avburykin" class="header__contact"><img src="{{ asset('build/images/tg.svg') }}" alt="telegram"/></a>
+            <div class="btn btn--small contact-trigger" data-trigger-popup-id="contact-form-popup">Contact me</div>
+        </div>
     </div>
 </header>
 <div class="container">
