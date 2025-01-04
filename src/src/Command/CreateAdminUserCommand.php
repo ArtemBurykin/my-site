@@ -21,7 +21,7 @@ class CreateAdminUserCommand extends Command
 {
     public function __construct(
         private readonly UserRepository $userRepository,
-        private readonly UserPasswordHasherInterface $hasher
+        private readonly UserPasswordHasherInterface $hasher,
     ) {
         parent::__construct();
     }

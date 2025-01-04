@@ -18,15 +18,9 @@ parameters:
         home:
             path: app_index_page
             title: Главная
-        cases:
-            path: app_portfolio_page
-            title: Портфолио
         blog:
             path: app_blog_page
             title: Блог
-        contacts:
-            path: app_contacts_page
-            title: Контакты
 
 services:
     # default configuration for services in *this* file

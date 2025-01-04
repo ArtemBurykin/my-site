@@ -14,7 +14,7 @@ final class PaginationService
 {
     public function __construct(
         #[Autowire('%postsPerPage%')]
-        private readonly int $postsPerPage
+        private readonly int $postsPerPage,
     ) {
     }
 

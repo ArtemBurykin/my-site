@@ -10,14 +10,11 @@ Encore
     .setOutputPath('public/build/')
     .setPublicPath('/build')
     .addStyleEntry('reset-password', './assets/security/reset-password/styles/reset-password.scss')
-    .addStyleEntry('portfolio-page', './assets/site/portfolio-page/portfolio.page.scss')
     .addStyleEntry('blog-page', './assets/site/blog-page/blog.page.scss')
     .addStyleEntry('post-page', './assets/site/post-page/post.page.scss')
     .addEntry('index-page', './assets/site/index-page/index.page.js')
-    .addEntry('contacts-page', './assets/site/contacts-page/contacts.page.js')
     .addEntry('common', './assets/site/common.js')
     .addEntry('admin', './assets/admin/admin.js')
-    .addEntry('case-page', './assets/site/case-page/case.page.js')
     .enableSassLoader()
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

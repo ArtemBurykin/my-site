@@ -20,7 +20,7 @@ class EditorjsParser
      */
     public function __construct(
         #[AutowireIterator('app.editorjs_parser_extension', null, 'getBlockType')]
-        iterable $parserPlugins
+        iterable $parserPlugins,
     ) {
         if (!$parserPlugins instanceof Traversable) {
             throw new BadMethodCallException();

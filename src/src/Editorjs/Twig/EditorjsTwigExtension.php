@@ -10,7 +10,7 @@ use Twig\TwigFunction;
 class EditorjsTwigExtension extends AbstractExtension
 {
     public function __construct(
-        private readonly EditorjsParser $editorjsParser
+        private readonly EditorjsParser $editorjsParser,
     ) {
     }
 
