@@ -22,41 +22,94 @@
 
 {% block content %}
     <section class="offer">
-        <h2 class="offer__desc">
-            Хотите увеличить продажи или повысить узнаваемость бренда в интернете?
-        </h2>
-        <h1 class="offer__main">Мы создаем сайты и приложения, которые решают задачи  вашего бизнеса!</h1>
+        <h1 class="offer__main">Hello, I'm Artem Burykin. <br/>A full-stack developer.</h1>
+        <h2 class="offer__desc">I specialize in creating web and mobile applications for businesses of all sizes, from small startups to large enterprises.</h2>
+        <div class="btn offer__cta" id="offer-cta" data-trigger-popup-id="contact-form-popup">Contact me</div>
+    </section>
 
-        <div class="offer__list">
-           <div class="offer__list-item">
-              <div class="offer__list-marker"></div>
-               <div class="offer__list-text">Учитываем уникальные потребности вашей компании.</div>
-           </div>
-            <div class="offer__list-item">
-                <div class="offer__list-marker"></div>
-                <div class="offer__list-text">Вникаем и подбираем эффективные решения.</div>
-            </div>
-            <div class="offer__list-item">
-                <div class="offer__list-marker"></div>
-                <div class="offer__list-text">Хорошее соотношение цены и качества. <a href="#prices">Подробнее.</a></div>
-            </div>
-            <div class="offer__list-item">
-                <div class="offer__list-marker"></div>
-                <div class="offer__list-text">Бесплатная консультация!</div>
-            </div>
-        </div>
+    <section class="main-block my-cv content">
+        <h2 class="content__header content__header--h2">My CV.</h2>
+        <section>
+            <h3 class="content__header content__header--h3">About me</h3>
+            <p class="content__simple-text">I am a software engineer, enthusiast, and an IT craftsman with more than {{ dates.startCareer | years_since }} years of experience.</p>
+            <p class="content__simple-text">Most of the time, I work on web-based business projects. My focus is always on creating flexible, scalable architectures for projects and aligning the development process with the needs of the business. I usually strive to write code in the most efficient way possible to achieve the business goals.</p>
+        </section>
 
-        <div class="btn offer__cta" id="offer-cta" data-trigger-popup-id="contact-form-popup">Обсудить проект</div>
+        <section>
+            <h3 class="content__header content__header--h3">Education</h3>
+            <p class="content__simple-text">Bauman Moscow State Technical University (2007-2013).</p>
+        </section>
+
+        <section>
+            <h3 class="content__header content__header--h3">My tech stack</h3>
+            <ul class="content__ul">
+                <li class="content__li"><b>JavaScript (TypeScript)</b> for both the frontend and the backend.
+                    <ul class="content__ul">
+                        <li class="content__li">Angular (used extensively more than {{ dates.angular | years_since }} years)</li>
+                        <li class="content__li">React with more than {{ dates.react | years_since }} years of experience</li>
+                        <li class="content__li">Express.js ({{ dates.express | years_since }} years of experience)</li>
+                    </ul>
+                </li>
+
+                <li class="content__li"><b>PHP</b>
+                    <ul class="content__ul">
+                        <li class="content__li">Symfony (my primary framework, {{ dates.symfony | years_since }} years of experience)</li>
+                        <li class="content__li">WordPress ({{ dates.wordpress | years_since }} years of experience)</li>
+                    </ul>
+                </li>
+
+                <li class="content__li"><b>Clojure</b> ({{ dates.clojure | years_since }} years of experience). Mainly small applications, microservices, workers.</li>
+                <li class="content__li"><b>Flutter</b> ({{ dates.flutter | years_since }} years of experience)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3 class="content__header content__header--h3">My work experience</h3>
+            <h4 class="content__header content__header--h4">2009-2011: Freelance</h4>
+            <ul class="content__ul">
+                <li class="content__li">Developed websites using Joomla and WordPress.</li>
+                <li class="content__li">Built custom software solutions (e.g., mailing, time planning) with C++ (Qt).</li>
+            </ul>
+
+            <h4 class="content__header content__header--h4">2011-2012: Web Designer & System Administrator (Tourism Agency)</h4>
+            <ul class="content__ul">
+                <li class="content__li">Automated client management with a custom information system (C++/Qt).</li>
+                <li class="content__li">Designed and developed the agency’s website using Joomla.</li>
+            </ul>
+
+            <h4 class="content__header content__header--h4">2012-2017: Co-Founder & Full-Stack Developer (AVE Systems)</h4>
+            <ul class="content__ul">
+                <li class="content__li">Delivered diverse projects across multiple tech stacks to address business needs.</li>
+                <li class="content__li">Played a key role in solving complex business challenges.</li>
+            </ul>
+
+            <h4 class="content__header content__header--h4">2017-Present: CTO (AVE Systems)</h4>
+            <ul class="content__ul">
+                <li class="content__li">Streamlined business processes and led project development.</li>
+                <li class="content__li">Implemented TDD, code reviews, CI/CD pipelines, and Scrum methodologies company-wide.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3 class="content__header content__header--h3">Facts about my expertise</h3>
+            <ul class="content__ul">
+                <li class="content__li">To deliver a seamless user experience, I developed an authentication server and implemented Single Sign-On (SSO) across multiple systems.</li>
+                <li class="content__li">I planned and led the decomposition of a system into microservices to enhance its scalability and agility.</li>
+                <li class="content__li">I implemented an integration platform to connect multiple systems, significantly reducing the company's budget expenditures.</li>
+                <li class="content__li">I prioritize writing tests with TDD (Test driven development), embrace DDD (Domain Driven Design), and aim for simplicity and minimalism in my work. By approaching problems from multiple perspectives, I strive to develop more efficient solutions.</li>
+                <li class="content__li">I am committed to continuous professional growth, constantly exploring new approaches and methodologies to enhance my skills as a developer.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h4 class="content__header content__header--h3">Non-work related facts</h4>
+            <p class="content__simple-text">Like every human being, I also have hobbies :) I enjoy dancing Argentine tango, learning foreign languages, and contemplating the beauty of nature.</p>
+        </section>
     </section>
 
     <section class="main-block contact-me">
+
+        <h2 class="content-header content__header--h2">Contact me</h2>
         {% include('common/parts/contact-form.html.twig') with {'formId': 'contact-form'} %}
     </section>
-
-    {% embed 'common/parts/popup.html.twig' with {id: 'image-popup', modifier: 'wide'} only %}
-        {% block popup_title %}{% endblock %}
-        {% block popup_content %}
-            <div id="image-preview" class="image-preview"></div>
-        {% endblock %}
-    {% endembed %}
 {% endblock %}

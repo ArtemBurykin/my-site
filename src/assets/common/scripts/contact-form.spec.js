@@ -91,7 +91,7 @@ describe('contactForm', () => {
         expect(formData.get('_token')).toBe(csrfToken);
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Сообщение отправлено!');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('The message sent!');
 
             expect(document.querySelector(`.${baseClass}__field[name="email"]`).value).toBe('');
             expect(document.querySelector(`.${baseClass}__field[name="message"]`).value).toBe('');
@@ -153,7 +153,7 @@ describe('contactForm', () => {
             expect(document.querySelector(`.${baseClass}__field[name="message"]`).value).toBe('a message');
 
             expect(document.querySelector(`#${formId}-status`).innerHTML)
-                .toContain('Необходимо согласие на обработку данных');
+                .toContain('You have to agree to the privacy policy');
 
             done();
         }, 0);
@@ -208,7 +208,7 @@ describe('contactForm', () => {
         document.querySelector(`#${formId}-submit`).click();
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Произошла ошибка при отправке');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('An error occurred');
 
             done();
         }, 0);
@@ -228,7 +228,7 @@ describe('contactForm', () => {
         document.querySelector(`#${formId}-submit`).click();
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Произошла ошибка при отправке');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('An error occurred');
 
             done();
         }, 0);
@@ -243,7 +243,7 @@ describe('contactForm', () => {
 
         setTimeout(() => {
             expect(document.querySelector(`#${formId}-status`).innerHTML)
-                .toContain('Укажите, пожалуйста, или email или telegram');
+                .toContain('Please, provide a email or a telegram');
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
@@ -270,7 +270,7 @@ describe('contactForm', () => {
 
         setTimeout(() => {
             expect(document.querySelector(`#${formId}-status`).innerHTML)
-                .toContain('Указан некорректный email');
+                .toContain('The email is incorrect');
 
             expect(
                 document.querySelector(`.${baseClass}__field[name="email"]`).classList.contains(errorClass)
@@ -293,7 +293,7 @@ describe('contactForm', () => {
         expect(fetch).toHaveBeenCalledTimes(0);
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerHTML).toContain('Форма заполнена некорректно');
+            expect(document.querySelector(`#${formId}-status`).innerHTML).toContain('The form is incorrect');
 
             done();
         }, 0);
@@ -316,10 +316,10 @@ describe('contactForm', () => {
         document.querySelector(`#${formId}-submit`).click();
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Отправка...');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Sending...');
 
             setTimeout(() => {
-                expect(document.querySelector(`#${formId}-status`).innerText).not.toBe('Отправка...');
+                expect(document.querySelector(`#${formId}-status`).innerText).not.toBe('Sending...');
 
                 done();
             }, 5);
@@ -343,10 +343,10 @@ describe('contactForm', () => {
         document.querySelector(`#${formId}-submit`).click();
 
         setTimeout(() => {
-            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Отправка...');
+            expect(document.querySelector(`#${formId}-status`).innerText).toBe('Sending...');
 
             setTimeout(() => {
-                expect(document.querySelector(`#${formId}-status`).innerText).not.toBe('Отправка...');
+                expect(document.querySelector(`#${formId}-status`).innerText).not.toBe('Sending...');
 
                 done();
             }, 5);

@@ -12,6 +12,14 @@ export const contactForm = function(formId, baseClass) {
     const emailField = form.querySelector('input[name="email"]');
     const tgField = form.querySelector('input[name="telegram"]');
 
+    const sentMsg = 'The message sent!';
+    const incorrectEmailMsg = 'The email is incorrect.';
+    const serverErrorMsg = 'An error occurred';
+    const contactsMissingMsg = 'Please, provide a email or a telegram';
+    const notAgreeWithPolicyMsg = 'You have to agree to the privacy policy';
+    const incorrectFormMsg = 'The form is incorrect';
+    const sendingMsg = 'Sending...';
+
     const emitAnalyticsEvent = (name) => {
         const conversionEvent = new CustomEvent(
             'analyticsEventOccurred',
@@ -64,12 +72,12 @@ export const contactForm = function(formId, baseClass) {
         } else {
             formValidityMap.email = false;
             formValidityMap.telegram = false;
-            errors.push('Укажите, пожалуйста, или email или telegram');
+            errors.push(contactsMissingMsg);
         }
 
         if (emailField.value !== '' && !isValueCorrectEmail(emailField.value)) {
             formValidityMap.email = false;
-            errors.push('Указан некорректный email');
+            errors.push(incorrectEmailMsg);
         }
 
         const personalDataAgreementChbx = form.querySelector('input[name="check"]');
@@ -77,12 +85,12 @@ export const contactForm = function(formId, baseClass) {
             formValidityMap.check = true;
         } else {
             formValidityMap.check = false;
-            errors.push('Необходимо согласие на обработку данных');
+            errors.push(notAgreeWithPolicyMsg);
         }
 
         const isNotValid = Object.keys(formValidityMap).some(k => formValidityMap[k] !== true);
         if (isNotValid) {
-            errors.push('Форма заполнена некорректно');
+            errors.push(incorrectFormMsg);
         }
 
         return errors;
@@ -100,7 +108,7 @@ export const contactForm = function(formId, baseClass) {
             formData.append(field.name, field.value);
         });
 
-        statusLabel.innerText = 'Отправка...';
+        statusLabel.innerText = sendingMsg;
 
         const res = await fetch('/api/contact-us', {
             method: 'POST',
@@ -108,7 +116,7 @@ export const contactForm = function(formId, baseClass) {
         });
 
         if (!res.ok) {
-            const genericError = 'Произошла ошибка при отправке';
+            const genericError = serverErrorMsg;
 
             res.json()
                 .then((error) => {
@@ -120,7 +128,7 @@ export const contactForm = function(formId, baseClass) {
             const dataFormFields = Array.from(form.querySelectorAll(`.${baseClass}__field`));
             dataFormFields.forEach((field) => field.value = '');
 
-            statusLabel.innerText = 'Сообщение отправлено!';
+            statusLabel.innerText = sentMsg;
         }
 
         emitAnalyticsEvent('contact_form_submitted');

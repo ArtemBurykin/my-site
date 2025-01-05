@@ -15,22 +15,22 @@
         </div>
 
         <div>
-            <input class="contact-form__field" type="text" id="telegram" name="telegram" placeholder="Ваш телеграм">
+            <input class="contact-form__field" type="text" id="telegram" name="telegram" placeholder="Telegram">
         </div>
 
         <div>
             <textarea class="contact-form__field contact-form__field--textarea" id="message" name="message" rows="4"
-                      placeholder="Что хотите обсудить?*"
+                      placeholder="Message*"
                       cols="50"></textarea>
         </div>
         <div class="contact-form__agreement">
             <input type="checkbox" name="check"/>
             <label for="check" class="contact-form__agreement-label">
-                Согласен на <a href="{{ asset('build/images/personal-data-agreement.docx') }}">обработку персональных данных</a>
+                I agree to <a href="{{ asset('build/images/personal-data-agreement.docx') }}">privacy policy</a>
             </label>
         </div>
 
-        <div class="btn contact-form__cta" id="{{ formId }}-submit">Отправить</div>
+        <div class="btn contact-form__cta" id="{{ formId }}-submit">Send</div>
         <p class="contact-form__status" id="{{ formId }}-status"></p>
     </div>
 </section>

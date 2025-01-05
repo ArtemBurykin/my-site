@@ -84,10 +84,10 @@
     {% block content %}{% endblock %}
 </div>
 <footer class="footer">
-    <p class="footer__text">© АВЕ Системз, 2012-{{ 'now' | date('Y') }} </p>
+    <p class="footer__text">© Artem Burykin, {{ 'now' | date('Y') }} </p>
 </footer>
 {% embed 'common/parts/popup.html.twig' with {id: 'contact-form-popup', modifier: 'narrow'} only %}
-    {% block popup_title %}Обсудить проект.{% endblock %}
+    {% block popup_title %}Contact me.{% endblock %}
     {% block popup_content %}
         {% include('common/parts/contact-form.html.twig') with
             {'modifierClass': 'contact-form__container--fluid', 'formId': 'contact-popup'} only %}
