@@ -2,14 +2,8 @@
 
 .blog-item {
   margin: 30px 0 0;
-  padding: 10px;
   transition: $transition;
   border-radius: $border-radius;
-
-  &:hover {
-    background: $back-color;
-    box-shadow: $box-shadow;
-  }
 
   &__link {
     text-decoration: none;
@@ -49,6 +43,10 @@
     @include plain-text;
     display: block;
     margin-top: 10px;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   &__data-container {

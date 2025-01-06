@@ -2,7 +2,7 @@
     {% if pagination.prevPage is not null %}
         <a class="pagination__btn" href="{{ baseUrl }}?page={{ pagination.prevPage }}"><< Prev</a>
     {% endif %}
-    <div class="pagination__count">{{ page }} из {{ pagination.totalPages }}</div>
+    <div class="pagination__count">{{ page }} from {{ pagination.totalPages }}</div>
     {% if pagination.nextPage is not null %}
         <a class="pagination__btn" href="{{ baseUrl }}?page={{ pagination.nextPage }}">Next >></a>
     {% endif %}

@@ -2,11 +2,11 @@
 
 {% block meta %}
     {% include 'common/parts/meta.html.twig' with {
-        'title': 'Наш блог | АВЕ Системз',
-        'description': 'Здесь мы делимся последними новостями, интересными идеями и подробностями о нашей работе. Получите уникальный взгляд на наш творческий процесс и то, как мы воплощаем идеи в жизнь.',
-        'ogTitle': 'Наш блог | АВЕ Системз',
-        'ogDescription': 'Здесь мы делимся последними новостями, интересными идеями и подробностями о нашей работе. Получите уникальный взгляд на наш творческий процесс и то, как мы воплощаем идеи в жизнь.',
-        'ogImage': host ~ asset('build/images/blog-og.webp')
+        'title': 'Blog | Artem Burykin',
+        'description': 'Here I write about interesting topics',
+        'ogTitle': 'Blog | Artem Burykin',
+        'ogDescription': 'Here I write about interesting topics',
+        'ogImage': host ~ asset('build/images/blog-og.png')
     } %}
 {% endblock %}
 
@@ -18,7 +18,7 @@
 {% block content %}
     <section class="content">
 
-    <h1 class="content__header">Наш блог</h1>
+    <h1 class="content__header">Blog</h1>
     {% for post in posts %}
         <a href="{{ path('app_post_page', { 'slug' : post.seoUrl }) }}" class="blog-item__link">
             <div class="blog-item">
@@ -28,7 +28,7 @@
                 <div class="blog-item__data">
                     <div class="blog-item__data-container {% if post.mainImage is null %}blog-item__data-container--no-image{% endif %}">
                         <p class="blog-item__description">{{ post.description }}</p>
-                        <a href="{{ path('app_post_page', { 'slug' : post.seoUrl }) }}" class="blog-item__more">Подробнее</a>
+                        <a href="{{ path('app_post_page', { 'slug' : post.seoUrl }) }}" class="blog-item__more">More</a>
                     </div>
                     {% if post.mainImage is not null %}
                         <div class="blog-item__img-container">
