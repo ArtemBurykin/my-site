@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="0.76463877"
-     inkscape:cx="547.97117"
-     inkscape:cy="374.03282"
+     inkscape:zoom="1.59375"
+     inkscape:cx="256"
+     inkscape:cy="256"
      inkscape:window-width="1850"
      inkscape:window-height="1016"
      inkscape:window-x="0"
@@ -38,15 +38,24 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       style="fill:#1f526c;fill-opacity:1;-inkscape-stroke:none"
-       d="M 0.00905348,0 0,512 H 512 V 0 L 256,400 Z"
-       id="path1"
-       sodipodi:nodetypes="cccccc" />
-    <path
-       style="fill:#3da220;fill-opacity:1;-inkscape-stroke:none"
-       d="M 50,0 256,321.875 462,0 Z"
-       id="path2"
-       sodipodi:nodetypes="cccc" />
+    <rect
+       style="fill:#222222;fill-opacity:1;stroke-width:10;stroke-linecap:round;stroke-linejoin:round"
+       id="rect1"
+       width="512"
+       height="512"
+       x="0.73284316"
+       y="0.71323532" />
+    <text
+       xml:space="preserve"
+       style="font-weight:600;font-size:487.154px;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';text-align:center;text-anchor:middle;fill:#5f6f52;fill-opacity:1;stroke-width:21.4921;stroke-linecap:round;stroke-linejoin:round"
+       x="254.43369"
+       y="435.14322"
+       id="text1"
+       transform="scale(1.0061547,0.99388294)"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="254.43369"
+         y="435.14322"
+         style="stroke-width:21.4921">A</tspan></text>
   </g>
 </svg>
