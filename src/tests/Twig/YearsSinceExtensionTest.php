@@ -11,7 +11,8 @@ class YearsSinceExtensionTest extends TestCase
 {
     use ClockSensitiveTrait;
 
-    public function testCalculateYearsSince(): void {
+    public function testCalculateYearsSince(): void
+    {
         $clock = static::mockTime(new DateTimeImmutable('2024-03-02'));
 
         $ext = new YearsSinceExtension();
@@ -22,5 +23,4 @@ class YearsSinceExtensionTest extends TestCase
         $this->assertSame(2, $ext->calculateYearSince('2021-03-02'));
         $this->assertSame(5, $ext->calculateYearSince('2018-12-02'));
     }
-
 }

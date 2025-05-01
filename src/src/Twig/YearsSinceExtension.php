@@ -13,15 +13,13 @@ class YearsSinceExtension extends AbstractExtension
 
     public function getFilters(): array
     {
-        return array(
-            new TwigFilter('years_since', array($this, 'calculateYearSince')),
-        );
+        return [
+            new TwigFilter('years_since', [$this, 'calculateYearSince']),
+        ];
     }
 
     /**
      * @param string $date in format Y-m-d
-     *
-     * @return int
      */
     public function calculateYearSince(string $date): int
     {
