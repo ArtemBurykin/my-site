@@ -2,6 +2,7 @@ import EditorJS from '@editorjs/editorjs';
 import Image from './editorjs-blocks/image/image';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
+import editorjsCodecup from '@calumk/editorjs-codecup';
 
 /**
  * The storage of all initialized editorjs instances.
@@ -31,6 +32,7 @@ window.initEditorjs = (holderId, data) => {
                     },
                 },
             },
+            code : editorjsCodecup
         };
 
         const saveChanges = async function(holderId) {

@@ -15,6 +15,11 @@
     {{ encore_entry_link_tags('post-page') }}
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('post-page') }}
+{% endblock %}
+
 {% block content %}
     <article class="content">
         <h1 class="content__header">{{ post.title }}</h1>
