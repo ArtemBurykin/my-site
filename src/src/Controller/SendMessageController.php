@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 /**
  * The controller to send a feedback form by an email.
@@ -28,10 +28,10 @@ class SendMessageController extends AbstractController
 
     public function __invoke(Request $request): Response
     {
-        $csrfToken = $request->get('_token');
-        $address = $request->get('email');
-        $message = $request->get('message');
-        $telegram = $request->get('telegram', '');
+        $csrfToken = $request->request->get('_token');
+        $address = $request->request->get('email');
+        $message = $request->request->get('message');
+        $telegram = $request->request->get('telegram', '');
 
         if (!$csrfToken || !$message || (!$address && !$telegram)) {
             throw new BadRequestHttpException('The form is not filled correctly');

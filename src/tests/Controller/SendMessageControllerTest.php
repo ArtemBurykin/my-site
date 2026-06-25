@@ -2,6 +2,7 @@
 
 namespace App\Tests\Controller;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,9 +11,9 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Csrf\TokenStorage\SessionTokenStorage;
 
-class SendMessageController extends WebTestCase
+class SendMessageControllerTest extends WebTestCase
 {
-    public function dataProviderIncorrectFormData()
+    public static function dataProviderIncorrectFormData()
     {
         return [
             'no token' => [[
@@ -32,9 +33,7 @@ class SendMessageController extends WebTestCase
         ];
     }
 
-    /**
-     * @dataProvider dataProviderIncorrectFormData
-     */
+    #[DataProvider('dataProviderIncorrectFormData')]
     public function testFailFormDataIncorrect(array $formData)
     {
         $client = static::createClient();
