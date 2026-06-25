@@ -23,7 +23,7 @@ class BlogPageController extends AbstractController
 
     public function __invoke(Request $request): Response
     {
-        $page = $request->get('page', 1);
+        $page = $request->query->get('page', 1);
         $posts = $this->postListRepository->findExcludingCategoryOnPage($this->casesCategorySlug, $page);
 
         $postsCount = $this->postListRepository->getCountOfPostsExcludingCategory($this->casesCategorySlug);

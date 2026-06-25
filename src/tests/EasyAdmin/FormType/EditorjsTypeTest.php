@@ -3,8 +3,10 @@
 namespace App\Tests\EasyAdmin\FormType;
 
 use App\EasyAdmin\FormType\EditorjsType;
+use PHPUnit\Framework\Attributes\AllowMockObjectsWithoutExpectations;
 use Symfony\Component\Form\Test\TypeTestCase;
 
+#[AllowMockObjectsWithoutExpectations]
 class EditorjsTypeTest extends TypeTestCase
 {
     public function testNoInitialData()

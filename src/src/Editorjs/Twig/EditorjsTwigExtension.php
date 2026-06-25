@@ -25,7 +25,7 @@ class EditorjsTwigExtension extends AbstractExtension
     {
         $data = json_decode($dataString);
 
-        if (!($data instanceof stdClass)) {
+        if (!$data instanceof stdClass) {
             return null;
         }
 

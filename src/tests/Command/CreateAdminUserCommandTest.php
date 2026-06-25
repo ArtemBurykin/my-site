@@ -4,6 +4,7 @@ namespace App\Tests\Command;
 
 use App\Entity\User;
 use App\Tests\Traits\DependenciesTrait;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Exception\RuntimeException;
@@ -43,7 +44,7 @@ class CreateAdminUserCommandTest extends KernelTestCase
         $this->assertTrue($this->getPasswordHasher()->isPasswordValid($user, $password));
     }
 
-    public function dataProviderParams()
+    public static function dataProviderParams()
     {
         return [
             'without email' => [['password' => '123456']],
@@ -51,9 +52,7 @@ class CreateAdminUserCommandTest extends KernelTestCase
         ];
     }
 
-    /**
-     * @dataProvider dataProviderParams
-     */
+    #[DataProvider('dataProviderParams')]
     public function testFailWithoutParam(array $params)
     {
         $kernel = self::bootKernel();

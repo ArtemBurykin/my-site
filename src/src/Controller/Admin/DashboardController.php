@@ -2,17 +2,15 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Blog\Category;
-use App\Entity\Blog\Post;
+use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
+#[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
-    #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
         return $this->render('admin/dashboard.html.twig', []);
@@ -27,7 +25,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToCrud('Blog categories', 'fas fa-list', Category::class);
-        yield MenuItem::linkToCrud('Blog posts', 'fas fa-list', Post::class);
+        yield MenuItem::linkTo(CategoryCrudController::class, 'Blog categories', 'fas fa-list');
+        yield MenuItem::linkTo(PostCrudController::class, 'Blog posts', 'fas fa-list');
     }
 }
