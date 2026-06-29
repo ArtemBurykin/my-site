@@ -9,7 +9,7 @@ use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 
-class BlogPageControllerTest extends WebTestCase
+class CasesPageControllerTest extends WebTestCase
 {
     use DependenciesTrait;
 
@@ -19,23 +19,23 @@ class BlogPageControllerTest extends WebTestCase
 
         $em = $this->getEntityManager();
 
-        $category1 = new Category();
-        $category1->setTitle('category 1')
+        $categoryToExclude = new Category();
+        $categoryToExclude->setTitle('category 1')
             ->setSeoUrl('category-1');
-        $em->persist($category1);
+        $em->persist($categoryToExclude);
 
         /** @see services.yaml::casesCategory */
-        $categoryToExclude = new Category();
-        $categoryToExclude->setTitle('Our cases')
+        $category = new Category();
+        $category->setTitle('Our cases')
             ->setSeoUrl('cases');
-        $em->persist($categoryToExclude);
+        $em->persist($category);
 
         $post1 = new Post();
         $post1->setSeoUrl('post-1')
             ->setTitle('post 1')
             ->setCreatedAt(new DateTimeImmutable('-1 day'))
             ->setDescription('post 1 desc')
-            ->setCategory($category1)
+            ->setCategory($category)
             ->setContent('[]');
         $em->persist($post1);
 
@@ -52,7 +52,7 @@ class BlogPageControllerTest extends WebTestCase
             ->setTitle('post 3')
             ->setDescription('post 3 desc')
             ->setCreatedAt(new DateTimeImmutable('-1 hour'))
-            ->setCategory($category1)
+            ->setCategory($category)
             ->setContent('[]');
         $em->persist($post3);
 
@@ -67,17 +67,15 @@ class BlogPageControllerTest extends WebTestCase
         $em->flush();
         $em->clear();
 
-        $crawler = $client->request(Request::METHOD_GET, '/blog');
+        $crawler = $client->request(Request::METHOD_GET, '/cases');
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertEquals('Blog', $crawler->filter('h1')->text());
+        $this->assertEquals('My cases', $crawler->filter('h1')->text());
 
         $postTitles = $crawler->filter('h2');
         $this->assertCount(2, $postTitles);
         $this->assertEquals('post 3', $postTitles->eq(0)->text());
-        $this->assertEquals('post 4', $postTitles->eq(1)->text());
-
-        $this->assertStringContainsString('1 from 2', $crawler->text());
+        $this->assertEquals('post 1', $postTitles->eq(1)->text());
     }
 }

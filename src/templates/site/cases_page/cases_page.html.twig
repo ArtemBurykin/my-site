@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+    {% include 'common/parts/meta.html.twig' with {
+        'title': 'My cases | Artem Burykin',
+        'description': 'Here are examples of tasks I solved',
+        'ogTitle': 'My cases | Artem Burykin',
+        'ogDescription': 'Here are examples of tasks I solved',
+        'ogImage': host ~ asset('build/images/cases-og.png')
+    } %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('cases-page') }}
+{% endblock %}
+
+{% block content %}
+    <section class="content">
+
+    <h1 class="content__header">My cases</h1>
+        {% include 'common/parts/posts.html.twig' with {'posts': posts, 'postUrl': 'app_case_page'} %}
+    </section>
+{% endblock %}

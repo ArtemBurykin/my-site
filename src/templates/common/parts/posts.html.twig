@@ -1,0 +1,24 @@
+{% for post in posts %}
+    <a href="{{ path(postUrl, { 'slug' : post.seoUrl }) }}" class="blog-item__link">
+        <div class="blog-item">
+            <h2 class="blog-item__title">{{ post.title }}</h2>
+            <p class="blog-item__date">{{ post.createdAt |date("d.m.Y G:i") }}</p>
+
+            <div class="blog-item__data">
+                <div class="blog-item__data-container {% if post.mainImage is empty %}blog-item__data-container--no-image{% endif %}">
+                    <p class="blog-item__description">{{ post.description }}</p>
+                    <a href="{{ path(postUrl, { 'slug' : post.seoUrl }) }}" class="blog-item__more">More</a>
+                </div>
+                {% if post.mainImage is not empty %}
+                    <div class="blog-item__img-container">
+                        <img
+                                src="/uploads/post/{{ post.mainImage }}"
+                                alt="{{ post.title }}"
+                                class="blog-item__img"
+                        />
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </a>
+{% endfor %}

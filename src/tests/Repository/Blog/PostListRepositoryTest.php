@@ -61,7 +61,7 @@ class PostListRepositoryTest extends KernelTestCase
         /** @var PostListRepository $rep */
         $rep = static::getContainer()->get(PostListRepository::class);
 
-        $posts = $rep->findByCategory($category1);
+        $posts = $rep->findByCategory($category1->getSeoUrl());
 
         $this->assertCount(2, $posts);
 

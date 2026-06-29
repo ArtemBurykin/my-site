@@ -3,7 +3,6 @@
 namespace App\Repository\Blog;
 
 use App\DTO\PostListItem;
-use App\Entity\Blog\Category;
 use App\Entity\Blog\Post;
 use App\Service\PaginationService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,12 +19,14 @@ class PostListRepository
     /**
      * @return PostListItem[]
      */
-    public function findByCategory(Category $category): array
+    public function findByCategory(string $categorySlug): array
     {
         $qb = $this->createBaseQueryBuilder();
 
-        $qb->where('p.category = :category')
-            ->setParameter('category', $category->getId());
+        $qb
+            ->where('c.seoUrl = :slug')
+            ->leftJoin('p.category', 'c')
+            ->setParameter('slug', $categorySlug);
 
         $data = $qb->getQuery()->getResult();
 

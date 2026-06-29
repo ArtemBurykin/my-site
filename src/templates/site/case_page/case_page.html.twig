@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block meta %}
+    {% include 'common/parts/meta.html.twig' with {
+        'title': post.metaTitle,
+        'description': post.metaDescription,
+        'ogTitle': post.ogTitle,
+        'ogDescription': post.ogDescription,
+        'ogImage': host ~ '/uploads/post/' ~ post.ogImage
+    } %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('case-page') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('case-page') }}
+{% endblock %}
+
+{% block content %}
+    <article class="content">
+        <h1 class="content__header">{{ post.title }}</h1>
+        <div class="breadcrumbs">
+            <a href="{{ path('app_index_page') }}" class="breadcrumbs__item breadcrumbs__item--link">Home</a> /
+            <a href="{{ path('app_cases_page') }}" class="breadcrumbs__item breadcrumbs__item--link">My cases</a> /
+            <span class="breadcrumbs__item">{{ post.title }}</span>
+        </div>
+        <div>{{ editorjs_parse(post.content) | raw }}</div>
+    </article>
+{% endblock %}

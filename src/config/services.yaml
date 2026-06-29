@@ -13,7 +13,7 @@ parameters:
     feedbackRecipient: '%env(FEEDBACK_RECIPIENT)%'
     emailFrom: '%env(SMTP_SENDER)%'
     router.request_context.host: '%env(HOST)%'
-    portfolioCategory: 'our-cases'
+    portfolioCategory: 'cases'
     menu:
         home:
             path: app_index_page
@@ -21,6 +21,9 @@ parameters:
         blog:
             path: app_blog_page
             title: Blog
+        cases:
+            path: app_cases_page
+            title: Cases
 
 services:
     # default configuration for services in *this* file
