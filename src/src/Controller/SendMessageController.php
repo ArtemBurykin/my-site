@@ -41,7 +41,7 @@ class SendMessageController extends AbstractController
             throw new BadRequestHttpException('The csrf token is incorrect');
         }
 
-        $email = (new TemplatedEmail())
+        $email = new TemplatedEmail()
             ->from($this->emailFrom)
             ->to($this->feedbackRecipient)
             ->subject('Contact form sent')
